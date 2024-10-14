@@ -1,4 +1,4 @@
-package hospital;
+package models;
 
 public class AdmissionRecord {
     private int admissionId;

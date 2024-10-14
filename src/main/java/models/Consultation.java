@@ -1,4 +1,4 @@
-package hospital;
+package models;
 
 public class Consultation {
     private int consultationId;
@@ -26,55 +26,62 @@ public class Consultation {
         return consultationId;
     }
 
-    public void setConsultationId(int consultationId) {
+    public Consultation setConsultationId(int consultationId) {
         this.consultationId = consultationId;
+        return this;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public Consultation setDate(String date) {
         this.date = date;
+        return this;
     }
 
     public int getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
+    public Consultation setDoctorId(int doctorId) {
         this.doctorId = doctorId;
+        return this;
     }
 
     public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public Consultation setPatientId(int patientId) {
         this.patientId = patientId;
+        return this;
     }
 
     public String getDiagnose() {
         return diagnose;
     }
 
-    public void setDiagnose(String diagnose) {
+    public Consultation setDiagnose(String diagnose) {
         this.diagnose = diagnose;
+        return this;
     }
 
     public int getPrescriptionId() {
         return prescriptionId;
     }
 
-    public void setPrescriptionId(int prescriptionId) {
+    public Consultation setPrescriptionId(int prescriptionId) {
         this.prescriptionId = prescriptionId;
+        return this;
     }
 
     public boolean isAdmittedForTreatment() {
         return admittedForTreatment;
     }
 
-    public void setAdmittedForTreatment(boolean admittedForTreatment) {
+    public Consultation setAdmittedForTreatment(boolean admittedForTreatment) {
         this.admittedForTreatment = admittedForTreatment;
+        return this;
     }
 }

@@ -1,4 +1,4 @@
-package hospital;
+package models;
 
 public class Patient {
     private int patientId;
@@ -22,39 +22,61 @@ public class Patient {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public Patient setPatientId(int patientId) {
         this.patientId = patientId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Patient setName(String name) {
         this.name = name;
+        return this;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public Patient setAge(int age) {
         this.age = age;
+        return this;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public Patient setAddress(String address) {
         this.address = address;
+        return this;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public Patient setPhone(String phone) {
         this.phone = phone;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Patient [patientId=");
+        builder.append(patientId);
+        builder.append(", name=");
+        builder.append(name);
+        builder.append(", age=");
+        builder.append(age);
+        builder.append(", address=");
+        builder.append(address);
+        builder.append(", phone=");
+        builder.append(phone);
+        builder.append("]");
+        return builder.toString();
     }
 }
