@@ -2,10 +2,7 @@ package controllers;
 
 import dao.PatientDAO;
 import models.Patient;
-import views.patient.Index;
-import views.patient.InsertedPatient;
-import views.patient.RequestPatientData;
-import views.patient.ShowPatient;
+import views.patient.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,18 +12,25 @@ public class PatientController {
     private PatientDAO patientDAO;
 
     //Views
-    private ShowPatient showPatient;
-    private RequestPatientData requestPatientData;
-    private InsertedPatient insertedPatient;
+    private Show showPatient;
+    private RequestData requestPatientData;
+    private Inserted insertedPatient;
 
     public PatientController(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
 
+    public int requestPatientId(){
+        RequestId req = new RequestId();
+        HashMap<String, String> patientOptions = req.getInputs();
+        int id = Integer.parseInt(patientOptions.get("id"));
+        return id;
+    }
+
     public void show(int id) {
         Optional<Patient> patient = patientDAO.select(id);
         if(patient.isPresent()) {
-            showPatient = new ShowPatient();
+            showPatient = new Show();
             HashMap<String, Object> data = new HashMap<>();
             data.put("element", patient.get());
             showPatient.setInputs(data);
@@ -34,8 +38,18 @@ public class PatientController {
         }
     }
 
+    public void delete(int id) {
+        int deleted = patientDAO.delete(id);
+        Deleted del = new Deleted();
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("deletedRows", deleted);
+        data.put("deletedId", id);
+        del.setInputs(data);
+        del.display();
+    }
+
     public void insert() {
-        requestPatientData = new RequestPatientData();
+        requestPatientData = new RequestData();
         requestPatientData.display();
         HashMap<String, String> pd = requestPatientData.getInputs();
 
@@ -47,7 +61,7 @@ public class PatientController {
 
         int affectedRows = patientDAO.insert(patient);
         if(affectedRows > 0) {
-            insertedPatient = new InsertedPatient();
+            insertedPatient = new Inserted();
             HashMap<String, Object> data = new HashMap<>();
             data.put("element", patient);
             insertedPatient.setInputs(data);

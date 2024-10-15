@@ -43,7 +43,7 @@ public class MySQLPatientDAO implements PatientDAO {
      * @param obj
      */
     @Override
-    public void update(int id, Patient obj) {
+    public int update(int id, Patient obj) {
         String sql = "update Patient set " +
                 "name = ?," +
                 "age = ?," +
@@ -60,37 +60,32 @@ public class MySQLPatientDAO implements PatientDAO {
             ps.setInt(5, id);
 
             int affectedRows = ps.executeUpdate();
-            if(affectedRows > 0){
-                System.out.println("Patient has been updated");
-                return;
-            }
-            System.out.println("No records with such Id were found");
+            return affectedRows;
 
         }catch(SQLException e){
             e.printStackTrace();
         }
+
+        return -1;
     }
 
     /**
      * @param id
      */
     @Override
-    public void delete(int id) {
+    public int delete(int id) {
         String sql = "delete from patient where patientId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             int rowsAffected = ps.executeUpdate();
-            if(rowsAffected > 0){
-                System.out.println("Patient has been deleted");
-            }else{
-                System.out.println("No records with such Id were found.");
-                System.out.println("No records were deleted.");
-            }
+            return rowsAffected;
         }catch(SQLException e){
             e.printStackTrace();
         }
+
+        return -1;
     }
 
     /**

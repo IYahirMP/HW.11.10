@@ -6,13 +6,13 @@ import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public final class PatientOps extends FeedbackView {
+public final class Operations extends FeedbackView {
 
-    public PatientOps(HashMap<String, String> inputs){
+    public Operations(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public PatientOps(){
+    public Operations(){
         super(new HashMap<>());
     }
 
@@ -21,7 +21,8 @@ public final class PatientOps extends FeedbackView {
         System.out.println("1 - Show [requires Patient ID]");
         System.out.println("2 - Insert [requires input]");
         System.out.println("3 - Index");
-        System.out.println("4 - Exit");
+        System.out.println("4 - Delete [requires Patient ID]");
+        System.out.println("5 - Exit");
     }
 
     public HashMap<String, String> getInputs(){
@@ -32,7 +33,7 @@ public final class PatientOps extends FeedbackView {
         processInputs(stringInputs);
 
         int val = Integer.parseInt(inputs.get("menuOption"));
-        if (val < 1 || val > 4){
+        if (val < 1 || val > 5){
             System.out.println("Option is not valid, please try again.");
             getInputs();
         };

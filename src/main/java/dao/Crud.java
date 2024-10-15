@@ -5,8 +5,8 @@ import java.util.Optional;
 
 public interface Crud<T> {
     public int insert(T obj);
-    public void update(int id, T obj);
-    public void delete(int id);
+    public int update(int id, T obj);
+    public int delete(int id);
     public Optional<T> select(int id);
     public List<T> selectAll();
 }

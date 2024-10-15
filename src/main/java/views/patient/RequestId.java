@@ -5,12 +5,12 @@ import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public class RequestPatientId extends FeedbackView {
-    public RequestPatientId(HashMap<String, String> inputs){
+public class RequestId extends FeedbackView {
+    public RequestId(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public RequestPatientId(){
+    public RequestId(){
         super(new HashMap<>());
     }
 
@@ -20,7 +20,7 @@ public class RequestPatientId extends FeedbackView {
 
     public HashMap<String, String> getInputs(){
         StringInput[] stringInputs = {
-                new StringInput("id",   "Patient id (integer):", StringInput.TypeOfString.NUMBER),
+                new StringInput("id",   "Patient id (integer)", StringInput.TypeOfString.NUMBER),
         };
 
         processInputs(stringInputs);

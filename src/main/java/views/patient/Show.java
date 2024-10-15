@@ -5,12 +5,12 @@ import models.Patient;
 
 import java.util.HashMap;
 
-public class ShowPatient extends FeedbackView {
-    public ShowPatient(HashMap<String, String> inputs){
+public class Show extends FeedbackView {
+    public Show(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public ShowPatient(){
+    public Show(){
         super(new HashMap<>());
     }
 

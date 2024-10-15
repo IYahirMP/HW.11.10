@@ -5,12 +5,12 @@ import models.Patient;
 
 import java.util.HashMap;
 
-public class InsertedPatient extends FeedbackView {
-    public InsertedPatient(HashMap<String, String> inputs){
+public class Inserted extends FeedbackView {
+    public Inserted(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public InsertedPatient(){
+    public Inserted(){
         super(new HashMap<>());
     }
 

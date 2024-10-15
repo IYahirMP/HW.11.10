@@ -2,11 +2,9 @@ package controllers;
 
 import dao.PatientDAO;
 import dao.factories.DAOFactory;
-import dao.factories.MySQLDAOFactory;
 import views.DataSourceSelection;
 import views.EntitySelection;
-import views.patient.PatientOps;
-import views.patient.RequestPatientId;
+import views.patient.Operations;
 
 import java.util.HashMap;
 
@@ -44,7 +42,7 @@ public class MainController {
     }
 
     public void showPatientMenu(){
-        PatientOps patientOps = new PatientOps();
+        Operations patientOps = new Operations();
         patientOps.display();
         HashMap<String,String> menuOptions = patientOps.getInputs();
         int val = Integer.parseInt(menuOptions.get("menuOption"));
@@ -54,13 +52,15 @@ public class MainController {
 
         switch(val){
             case 1 -> {
-                RequestPatientId req = new RequestPatientId();
-                HashMap<String, String> patientOptions = req.getInputs();
-                int id = Integer.parseInt(patientOptions.get("id"));
+                int id = patientController.requestPatientId();
                 patientController.show(id);
             }
             case 2 -> patientController.insert();
             case 3 -> patientController.index();
+            case 4 -> {
+                int id = patientController.requestPatientId();
+                patientController.delete(id);
+            }
 
         }
     }
