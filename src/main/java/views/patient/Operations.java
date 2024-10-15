@@ -22,7 +22,8 @@ public final class Operations extends FeedbackView {
         System.out.println("2 - Insert [requires input]");
         System.out.println("3 - Index");
         System.out.println("4 - Delete [requires Patient ID]");
-        System.out.println("5 - Exit");
+        System.out.println("5 - Update [requires Patient ID and Patient data]");
+        System.out.println("6 - Exit");
     }
 
     public HashMap<String, String> getInputs(){
@@ -33,7 +34,7 @@ public final class Operations extends FeedbackView {
         processInputs(stringInputs);
 
         int val = Integer.parseInt(inputs.get("menuOption"));
-        if (val < 1 || val > 5){
+        if (val < 1 || val > 6){
             System.out.println("Option is not valid, please try again.");
             getInputs();
         };

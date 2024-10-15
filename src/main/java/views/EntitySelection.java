@@ -17,7 +17,7 @@ public final class EntitySelection extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please, select one data source:");
+        System.out.println("Please, select one entity:");
         System.out.println("1 - Patient");
         System.out.println("2 - EmergencyContact");
         System.out.println("3 - Doctor");

@@ -1,11 +1,5 @@
 import controllers.MainController;
-import controllers.PatientController;
-import dao.PatientDAO;
-import dao.factories.MySQLDAOFactory;
-import models.Patient;
 
-import java.util.List;
-import java.util.Optional;
 
 public class main {
 

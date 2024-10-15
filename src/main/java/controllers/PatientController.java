@@ -15,6 +15,7 @@ public class PatientController {
     private Show showPatient;
     private RequestData requestPatientData;
     private Inserted insertedPatient;
+    private Updated updatedPatient;
 
     public PatientController(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
@@ -48,17 +49,7 @@ public class PatientController {
         del.display();
     }
 
-    public void insert() {
-        requestPatientData = new RequestData();
-        requestPatientData.display();
-        HashMap<String, String> pd = requestPatientData.getInputs();
-
-        Patient patient = new Patient()
-                .setAddress(pd.get("address"))
-                .setPhone(pd.get("phone"))
-                .setName(pd.get("name"))
-                .setAge(Integer.parseInt(pd.get("age")));
-
+    public void insert(Patient patient) {
         int affectedRows = patientDAO.insert(patient);
         if(affectedRows > 0) {
             insertedPatient = new Inserted();
@@ -69,6 +60,34 @@ public class PatientController {
         }else{
             System.out.println("Insert failed");
         }
+    }
+
+    public void update(int id, Patient patient) {
+        int affectedRows = patientDAO.update(id, patient);
+        if(affectedRows > 0) {
+            updatedPatient = new Updated();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("patient", patient);
+            data.put("updatedRows", affectedRows);
+            data.put("updatedId", id);
+            updatedPatient.setInputs(data);
+            updatedPatient.display();
+        }else{
+            System.out.println("Insert failed");
+        }
+    }
+
+    public Patient getPatientData(){
+        requestPatientData = new RequestData();
+        requestPatientData.display();
+        HashMap<String, String> pd = requestPatientData.getInputs();
+
+        Patient patient = new Patient()
+                .setAddress(pd.get("address"))
+                .setPhone(pd.get("phone"))
+                .setName(pd.get("name"))
+                .setAge(Integer.parseInt(pd.get("age")));
+        return patient;
     }
 
     public void index(){
