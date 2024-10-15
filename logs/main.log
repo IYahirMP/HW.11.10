@@ -1,0 +1,5 @@
+2024-10-15 07:33:02,925 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:33:12,352 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:34:31,035 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:38:11,967 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:38:21,368 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid word should only contain alphabetic characters.
