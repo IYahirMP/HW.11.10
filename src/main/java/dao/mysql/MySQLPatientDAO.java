@@ -19,8 +19,23 @@ public class MySQLPatientDAO implements PatientDAO {
      * @param obj
      */
     @Override
-    public void insert(Patient obj) {
+    public int insert(Patient obj) {
+        String sql = "insert into Patient (name, age, address, phone) values(?, ?, ?, ?)";
 
+        try(Connection con = createConnection()){
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, obj.getName());
+            ps.setInt(2, obj.getAge());
+            ps.setString(3, obj.getAddress());
+            ps.setString(4, obj.getPhone());
+
+            int affectedRows = ps.executeUpdate();
+            return affectedRows;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 
     /**

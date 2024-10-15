@@ -19,7 +19,8 @@ public final class PatientOps extends FeedbackView {
     public void display(){
         System.out.println("Supported operations for Patient entity are:");
         System.out.println("1 - Show [requires Patient ID]");
-        System.out.println("2 - Exit");
+        System.out.println("2 - Insert [requires input]");
+        System.out.println("3 - Exit");
     }
 
     public HashMap<String, String> getInputs(){
