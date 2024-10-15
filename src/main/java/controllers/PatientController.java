@@ -2,11 +2,13 @@ package controllers;
 
 import dao.PatientDAO;
 import models.Patient;
+import views.patient.Index;
 import views.patient.InsertedPatient;
 import views.patient.RequestPatientData;
 import views.patient.ShowPatient;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class PatientController {
@@ -53,5 +55,15 @@ public class PatientController {
         }else{
             System.out.println("Insert failed");
         }
+    }
+
+    public void index(){
+        List<Patient> patients = patientDAO.selectAll();
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("element", patients);
+        Index index = new Index();
+        index.setInputs(data);
+
+        index.display();
     }
 }

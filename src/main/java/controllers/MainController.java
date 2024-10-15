@@ -59,9 +59,9 @@ public class MainController {
                 int id = Integer.parseInt(patientOptions.get("id"));
                 patientController.show(id);
             }
-            case 2-> {
-                patientController.insert();
-            }
+            case 2 -> patientController.insert();
+            case 3 -> patientController.index();
+
         }
     }
 }

@@ -16,7 +16,7 @@ public class InsertedPatient extends FeedbackView {
 
     public void display(){
         Patient patient = (Patient) displayData.get("element");
-        System.out.println("The patient is " + patient);
+        System.out.println("The inserted patient is " + patient);
     }
 
     public HashMap<String, String> getInputs(){
