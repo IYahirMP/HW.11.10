@@ -1,10 +1,23 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+@XmlRootElement
+@XmlType(propOrder={"patientId", "name", "age", "address", "phone"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Patient {
+    @XmlElement(name = "patientId")
     private int patientId;
+
+    @XmlElement(name = "name")
     private String name;
+
+    @XmlElement(name = "age")
     private int age;
+
+    @XmlElement(name="address")
     private String address;
+
+    @XmlElement(name="phone")
     private String phone;
 
     // Constructors, getters, and setters
@@ -17,6 +30,7 @@ public class Patient {
         this.address = address;
         this.phone = phone;
     }
+
 
     public int getPatientId() {
         return patientId;
@@ -66,17 +80,17 @@ public class Patient {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Patient [patientId=");
-        builder.append(patientId);
-        builder.append(", name=");
-        builder.append(name);
-        builder.append(", age=");
-        builder.append(age);
-        builder.append(", address=");
-        builder.append(address);
-        builder.append(", phone=");
-        builder.append(phone);
-        builder.append("]");
+        builder.append("Patient [patientId=").
+                append(patientId).
+                append(", name=")
+                .append(name)
+                .append(", age=")
+                .append(age)
+                .append(", address=")
+                .append(address)
+                .append(", phone=")
+                .append(phone)
+                .append("]");
         return builder.toString();
     }
 }

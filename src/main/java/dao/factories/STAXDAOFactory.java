@@ -1,8 +1,11 @@
 package dao.factories;
 
 import dao.*;
+import dao.xml.STAXPatientDAO;
 
 public class STAXDAOFactory extends DAOFactory{
+
+    public static String filepath = "";
 
     /**
      * @return
@@ -17,7 +20,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public PatientDAO getPatientDAO() {
-        return null;
+        return new STAXPatientDAO();
     }
 
     /**

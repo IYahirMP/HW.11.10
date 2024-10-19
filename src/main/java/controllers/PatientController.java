@@ -2,27 +2,26 @@ package controllers;
 
 import dao.PatientDAO;
 import models.Patient;
+import models.xml.Patients;
+import views.generic.*;
 import views.patient.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
+
+import static xml.XmlUtils.exportXML;
 
 public class PatientController {
-    private PatientDAO patientDAO;
-
-    //Views
-    private Show showPatient;
-    private RequestData requestPatientData;
-    private Inserted insertedPatient;
-    private Updated updatedPatient;
+    private final PatientDAO patientDAO;
 
     public PatientController(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
 
     public int requestPatientId(){
-        RequestId req = new RequestId();
+        RequestId req = new RequestId("Patient");
         HashMap<String, String> patientOptions = req.getInputs();
         int id = Integer.parseInt(patientOptions.get("id"));
         return id;
@@ -31,11 +30,25 @@ public class PatientController {
     public void show(int id) {
         Optional<Patient> patient = patientDAO.select(id);
         if(patient.isPresent()) {
-            showPatient = new Show();
+            //Views
+            Show<Patient> showPatient = new Show<>();
             HashMap<String, Object> data = new HashMap<>();
             data.put("element", patient.get());
             showPatient.setInputs(data);
             showPatient.display();
+
+            /*System.out.println("Do you want to export it to XML?");
+            Scanner sc = new Scanner(System.in);
+            int answer = sc.nextInt();
+            if(answer == 1) {
+                String patientId = String.valueOf(patient.get().getPatientId());
+                exportXML("Patient" + patientId + ".xml", patient.get());
+            }else{
+                System.out.println("Going back...");
+            }*/
+        }
+        else{
+            System.out.println("Patient not found");
         }
     }
 
@@ -45,6 +58,7 @@ public class PatientController {
         HashMap<String, Object> data = new HashMap<>();
         data.put("deletedRows", deleted);
         data.put("deletedId", id);
+        data.put("deletedType", "Patient");
         del.setInputs(data);
         del.display();
     }
@@ -52,7 +66,7 @@ public class PatientController {
     public void insert(Patient patient) {
         int affectedRows = patientDAO.insert(patient);
         if(affectedRows > 0) {
-            insertedPatient = new Inserted();
+            Inserted<Patient> insertedPatient = new Inserted<>();
             HashMap<String, Object> data = new HashMap<>();
             data.put("element", patient);
             insertedPatient.setInputs(data);
@@ -65,9 +79,9 @@ public class PatientController {
     public void update(int id, Patient patient) {
         int affectedRows = patientDAO.update(id, patient);
         if(affectedRows > 0) {
-            updatedPatient = new Updated();
+            Updated<Patient> updatedPatient = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("patient", patient);
+            data.put("element", patient);
             data.put("updatedRows", affectedRows);
             data.put("updatedId", id);
             updatedPatient.setInputs(data);
@@ -78,7 +92,7 @@ public class PatientController {
     }
 
     public Patient getPatientData(){
-        requestPatientData = new RequestData();
+        RequestData requestPatientData = new RequestData();
         requestPatientData.display();
         HashMap<String, String> pd = requestPatientData.getInputs();
 
@@ -94,9 +108,21 @@ public class PatientController {
         List<Patient> patients = patientDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
         data.put("element", patients);
-        Index index = new Index();
+        Index<Patient> index = new Index<>();
         index.setInputs(data);
 
         index.display();
+
+        /*System.out.println("Do you want to export it to XML?");
+        Scanner sc = new Scanner(System.in);
+        int answer = sc.nextInt();
+        if(answer == 1) {
+            Patients patientList = new Patients();
+            patientList.setPatients(patients);
+            exportXML("PatientList.xml", patientList);
+        }else{
+            System.out.println("Going back...");
+        }*/
     }
+
 }

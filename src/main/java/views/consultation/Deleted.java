@@ -1,7 +1,6 @@
-package views.patient;
+package views.consultation;
 
 import com.solvd.laba.computer_repair_service.views.FeedbackView;
-import models.Patient;
 
 import java.util.HashMap;
 

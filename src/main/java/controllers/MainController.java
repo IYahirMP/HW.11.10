@@ -42,11 +42,11 @@ public class MainController {
         int val = Integer.parseInt(dataSourceOption.get("menuOption"));
 
         switch(val){
-            case 1 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
-            case 2 -> {
+            case 1,2 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
+            /*case 2 -> {
                 System.out.println("Currently not supported.");
                 return false;
-            }
+            }*/
             case 3 -> exit(0);
         }
 
@@ -64,6 +64,7 @@ public class MainController {
                 System.out.println("Not implemented yet.");
                 displayEntitySelection();
             }
+            case 11 -> exportDatabaseToXML();
             default -> exit(0);
         }
     }
@@ -97,9 +98,13 @@ public class MainController {
                 patientController.update(id, patient);
             }
             case 6 -> displayEntitySelection();
-            default -> displayDatabaseSelection();
+            default -> displayEntitySelection();
         }
 
         showPatientMenu();
+    }
+
+    public void exportDatabaseToXML(){
+        return;
     }
 }

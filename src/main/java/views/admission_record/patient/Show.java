@@ -1,22 +1,22 @@
-package views.patient;
+package views.admission_record.patient;
 
 import com.solvd.laba.computer_repair_service.views.FeedbackView;
 import models.Patient;
 
 import java.util.HashMap;
 
-public class Inserted extends FeedbackView {
-    public Inserted(HashMap<String, String> inputs){
+public class Show extends FeedbackView {
+    public Show(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public Inserted(){
+    public Show(){
         super(new HashMap<>());
     }
 
     public void display(){
         Patient patient = (Patient) displayData.get("element");
-        System.out.println("The inserted patient is " + patient);
+        System.out.println("The patient is " + patient);
     }
 
     public HashMap<String, String> getInputs(){

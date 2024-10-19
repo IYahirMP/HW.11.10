@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<patient>
+    <patientId>2</patientId>
+    <name>Jane Smith</name>
+    <age>0</age>
+    <address>456 Oak St</address>
+    <phone>5552345678</phone>
+</patient>

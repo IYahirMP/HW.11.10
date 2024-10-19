@@ -1,11 +1,11 @@
-package views.patient;
+package views.generic;
 
 import com.solvd.laba.computer_repair_service.views.FeedbackView;
 import models.Patient;
 
 import java.util.HashMap;
 
-public class Show extends FeedbackView {
+public class Show<T> extends FeedbackView {
     public Show(HashMap<String, String> inputs){
         super(inputs);
     }
@@ -15,8 +15,8 @@ public class Show extends FeedbackView {
     }
 
     public void display(){
-        Patient patient = (Patient) displayData.get("element");
-        System.out.println("The patient is " + patient);
+        T elem = (T) displayData.get("element");
+        System.out.printf("The %s is %s",elem.getClass().getSimpleName(),elem);
     }
 
     public HashMap<String, String> getInputs(){

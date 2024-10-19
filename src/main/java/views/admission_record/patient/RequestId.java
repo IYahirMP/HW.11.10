@@ -1,4 +1,4 @@
-package views.patient;
+package views.admission_record.patient;
 
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
 import com.solvd.laba.computer_repair_service.views.FeedbackView;

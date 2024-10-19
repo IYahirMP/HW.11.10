@@ -8,18 +8,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySQLDAOFactory extends DAOFactory{
-    public static String url = "localhost:3306/";
-    public static String database = "hospital";
-    public static String user = "root";
-    public static String password = "Halocer123";
+    public static String url = "";
+    public static String database = "";
+    public static String user = "";
+    public static String password = "";
 
-    public static Connection createConnection(){
-        try{
+    public static Connection createConnection() throws SQLException{
             return DriverManager.getConnection("jdbc:mysql://" + url + database, user, password);
-        }catch( SQLException e){
-            e.printStackTrace();
-            return null;
-        }
     }
 
     /**
