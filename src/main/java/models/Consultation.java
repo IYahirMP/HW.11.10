@@ -1,18 +1,20 @@
 package models;
 
+import java.sql.Date;
+
 public class Consultation {
     private int consultationId;
-    private String date;
+    private Date date;
     private int doctorId; // Foreign key from Doctor
     private int patientId; // Foreign key from Patient
     private String diagnose;
     private int prescriptionId; // Foreign key from Prescription
-    private boolean admittedForTreatment;
+    private int admittedForTreatment;
 
     // Constructors, getters, and setters
     public Consultation() {}
 
-    public Consultation(int consultationId, String date, int doctorId, int patientId, String diagnose, int prescriptionId, boolean admittedForTreatment) {
+    public Consultation(int consultationId, Date date, int doctorId, int patientId, String diagnose, int prescriptionId, int admittedForTreatment) {
         this.consultationId = consultationId;
         this.date = date;
         this.doctorId = doctorId;
@@ -31,11 +33,11 @@ public class Consultation {
         return this;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public Consultation setDate(String date) {
+    public Consultation setDate(Date date) {
         this.date = date;
         return this;
     }
@@ -76,11 +78,11 @@ public class Consultation {
         return this;
     }
 
-    public boolean isAdmittedForTreatment() {
+    public int isAdmittedForTreatment() {
         return admittedForTreatment;
     }
 
-    public Consultation setAdmittedForTreatment(boolean admittedForTreatment) {
+    public Consultation setAdmittedForTreatment(int admittedForTreatment) {
         this.admittedForTreatment = admittedForTreatment;
         return this;
     }

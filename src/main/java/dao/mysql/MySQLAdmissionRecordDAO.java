@@ -105,18 +105,9 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                AdmissionRecord admissionRecord = new AdmissionRecord();
-                admissionRecord.setAdmissionId(rs.getInt("admissionId"));
-                admissionRecord.setPatientId(rs.getInt("patientId"));
-                admissionRecord.setConsultationId(rs.getInt("consultationId"));
-                admissionRecord.setAdmissionDate(rs.getDate("admissionDate"));
-                admissionRecord.setDischargeDate(rs.getDate("dischargeDate"));
-                admissionRecord.setRoomNumber(rs.getInt("roomNumber"));
-                admissionRecord.setBedNumber(rs.getInt("bedNumber"));
-                return Optional.of(admissionRecord);
+                return Optional.of(constructObject(rs));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -137,15 +128,7 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
             ResultSet rs = ps.executeQuery();
             List<AdmissionRecord> list = new ArrayList<>();
             while(rs.next()){
-                AdmissionRecord admissionRecord = new AdmissionRecord();
-                admissionRecord.setAdmissionId(rs.getInt("admissionId"));
-                admissionRecord.setPatientId(rs.getInt("patientId"));
-                admissionRecord.setConsultationId(rs.getInt("consultationId"));
-                admissionRecord.setAdmissionDate(rs.getDate("admissionDate"));
-                admissionRecord.setDischargeDate(rs.getDate("dischargeDate"));
-                admissionRecord.setRoomNumber(rs.getInt("roomNumber"));
-                admissionRecord.setBedNumber(rs.getInt("bedNumber"));
-                list.add(admissionRecord);
+                list.add(constructObject(rs));
             }
             return list;
         }catch(SQLException e){
@@ -153,5 +136,16 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
         }
 
         return List.of();
+    }
+
+    public AdmissionRecord constructObject(ResultSet rs) throws SQLException {
+        return new AdmissionRecord()
+                .setAdmissionId(rs.getInt("admissionId"))
+                .setPatientId(rs.getInt("patientId"))
+                .setConsultationId(rs.getInt("consultationId"))
+                .setAdmissionDate(rs.getDate("admissionDate"))
+                .setDischargeDate(rs.getDate("dischargeDate"))
+                .setRoomNumber(rs.getInt("roomNumber"))
+                .setBedNumber(rs.getInt("bedNumber"));
     }
 }

@@ -2,6 +2,7 @@ package dao.factories;
 
 import dao.*;
 import dao.mysql.MySQLAdmissionRecordDAO;
+import dao.mysql.MySQLConsultationDAO;
 import dao.mysql.MySQLPatientDAO;
 
 import java.sql.Connection;
@@ -23,7 +24,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public ConsultationDAO getConsultationDAO() {
-        return null;
+        return new MySQLConsultationDAO();
     }
 
     /**

@@ -1,7 +1,9 @@
 package dao.mysql;
 
-import dao.PatientDAO;
-import models.Patient;
+import dao.ConsultationDAO;
+import dao.ConsultationDAO;
+import models.Consultation;
+import models.Consultation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,13 +15,13 @@ import java.util.Optional;
 
 import static dao.factories.MySQLDAOFactory.createConnection;
 
-public class MySQLConsultationDAO implements PatientDAO {
+public class MySQLConsultationDAO implements ConsultationDAO {
     /**
      * @param obj
      */
     @Override
-    public int insert(Patient obj) {
-        String sql = "insert into Patient (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Consultation obj) {
+        /*String sql = "insert into Consultation (name, age, address, phone) values(?, ?, ?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
@@ -34,7 +36,8 @@ public class MySQLConsultationDAO implements PatientDAO {
             e.printStackTrace();
         }
 
-        return -1;
+        return -1;*/
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -42,8 +45,8 @@ public class MySQLConsultationDAO implements PatientDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Patient obj) {
-        String sql = "update Patient set " +
+    public int update(int id, Consultation obj) {
+        /*String sql = "update Consultation set " +
                 "name = ?," +
                 "age = ?," +
                 "address = ?," +
@@ -65,7 +68,8 @@ public class MySQLConsultationDAO implements PatientDAO {
             e.printStackTrace();
         }
 
-        return -1;
+        return -1;*/
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -73,7 +77,7 @@ public class MySQLConsultationDAO implements PatientDAO {
      */
     @Override
     public int delete(int id) {
-        String sql = "delete from patient where patientId = ?";
+        String sql = "delete from consultation where consultationId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -92,20 +96,15 @@ public class MySQLConsultationDAO implements PatientDAO {
      * @return
      */
     @Override
-    public Optional<Patient> select(int id) {
-        String sql = "select * from patient where patientId = ?";
+    public Optional<Consultation> select(int id) {
+        String sql = "select * from consultation where consultationId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                Patient patient = new Patient();
-                patient.setPatientId(rs.getInt("patientId"));
-                patient.setName(rs.getString("name"));
-                patient.setAddress(rs.getString("address"));
-                patient.setPhone(rs.getString("phone"));
-                return Optional.of(patient);
+                return Optional.of(constructObject(rs));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -118,20 +117,15 @@ public class MySQLConsultationDAO implements PatientDAO {
      * @return
      */
     @Override
-    public List<Patient> selectAll() {
-        String sql = "select * from patient";
+    public List<Consultation> selectAll() {
+        String sql = "select * from consultation";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
-            List<Patient> list = new ArrayList<>();
+            List<Consultation> list = new ArrayList<>();
             while(rs.next()){
-                Patient patient = new Patient();
-                patient.setPatientId(rs.getInt("patientId"));
-                patient.setName(rs.getString("name"));
-                patient.setAddress(rs.getString("address"));
-                patient.setPhone(rs.getString("phone"));
-                list.add(patient);
+                list.add(constructObject(rs));
             }
             return list;
         }catch(SQLException e){
@@ -139,5 +133,16 @@ public class MySQLConsultationDAO implements PatientDAO {
         }
 
         return List.of();
+    }
+
+    public Consultation constructObject(ResultSet rs) throws SQLException {
+        return new Consultation()
+                .setConsultationId(rs.getInt("consultationId"))
+                .setDate(rs.getDate("date"))
+                .setDoctorId(rs.getInt("doctorId"))
+                .setPatientId(rs.getInt("patientId"))
+                .setDiagnose(rs.getString("diagnose"))
+                .setPrescriptionId(rs.getInt("prescriptionId"))
+                .setAdmittedForTreatment(rs.getInt("admittedForTreatment"));
     }
 }

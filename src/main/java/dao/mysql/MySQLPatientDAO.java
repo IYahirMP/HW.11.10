@@ -100,12 +100,7 @@ public class MySQLPatientDAO implements PatientDAO {
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                Patient patient = new Patient();
-                patient.setPatientId(rs.getInt("patientId"));
-                patient.setName(rs.getString("name"));
-                patient.setAddress(rs.getString("address"));
-                patient.setPhone(rs.getString("phone"));
-                return Optional.of(patient);
+                return Optional.of(constructObject(rs));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -126,12 +121,7 @@ public class MySQLPatientDAO implements PatientDAO {
             ResultSet rs = ps.executeQuery();
             List<Patient> list = new ArrayList<>();
             while(rs.next()){
-                Patient patient = new Patient();
-                patient.setPatientId(rs.getInt("patientId"));
-                patient.setName(rs.getString("name"));
-                patient.setAddress(rs.getString("address"));
-                patient.setPhone(rs.getString("phone"));
-                list.add(patient);
+                list.add(constructObject(rs));
             }
             return list;
         }catch(SQLException e){
@@ -139,5 +129,13 @@ public class MySQLPatientDAO implements PatientDAO {
         }
 
         return List.of();
+    }
+
+    public Patient constructObject(ResultSet rs) throws SQLException {
+        return new Patient()
+                .setPatientId(rs.getInt("patientId"))
+                .setName(rs.getString("name"))
+                .setAddress(rs.getString("address"))
+                .setPhone(rs.getString("phone"));
     }
 }
