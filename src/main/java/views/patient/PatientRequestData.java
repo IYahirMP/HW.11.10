@@ -1,16 +1,16 @@
-package views.admission_record.patient;
+package views.patient;
 
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
 import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public class RequestData extends FeedbackView {
-    public RequestData(HashMap<String, String> inputs){
+public class PatientRequestData extends FeedbackView {
+    public PatientRequestData(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public RequestData(){
+    public PatientRequestData(){
         super(new HashMap<>());
     }
 

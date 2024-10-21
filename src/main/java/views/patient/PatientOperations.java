@@ -1,4 +1,4 @@
-package views.admission_record.patient;
+package views.patient;
 
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput.TypeOfString;
@@ -6,13 +6,13 @@ import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public final class Operations extends FeedbackView {
+public final class PatientOperations extends FeedbackView {
 
-    public Operations(HashMap<String, String> inputs){
+    public PatientOperations(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public Operations(){
+    public PatientOperations(){
         super(new HashMap<>());
     }
 

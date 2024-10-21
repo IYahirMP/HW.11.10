@@ -2,16 +2,12 @@ package controllers;
 
 import dao.PatientDAO;
 import models.Patient;
-import models.xml.Patients;
 import views.generic.*;
 import views.patient.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
-
-import static xml.XmlUtils.exportXML;
 
 public class PatientController {
     private final PatientDAO patientDAO;
@@ -92,7 +88,7 @@ public class PatientController {
     }
 
     public Patient getPatientData(){
-        RequestData requestPatientData = new RequestData();
+        PatientRequestData requestPatientData = new PatientRequestData();
         requestPatientData.display();
         HashMap<String, String> pd = requestPatientData.getInputs();
 

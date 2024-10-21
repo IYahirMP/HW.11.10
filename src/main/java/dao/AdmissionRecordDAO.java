@@ -1,5 +1,7 @@
 package dao;
 
-public interface AdmissionRecordDAO {
+import models.AdmissionRecord;
+
+public interface AdmissionRecordDAO extends Crud<AdmissionRecord> {
 
 }

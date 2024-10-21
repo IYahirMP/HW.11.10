@@ -44,3 +44,16 @@ Example: Antonio
 2024-10-19 12:56:34,771 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
 2024-10-19 12:56:49,452 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
 2024-10-19 12:58:06,286 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-19 22:37:39,582 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-19 22:37:53,227 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+Example: Antonio
+2024-10-19 22:40:30,017 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid phone should be a number containing exactly 10 digits
+Example: 123456789
+2024-10-21 00:43:44,479 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:52,047 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 00:43:52,855 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,144 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,388 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,687 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:54,251 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:54,698 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date

@@ -1,4 +1,4 @@
-package views.consultation;
+package views.admission_record;
 
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
 import com.solvd.laba.computer_repair_service.input.single_input.StringInput.TypeOfString;
@@ -6,23 +6,23 @@ import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public final class Operations extends FeedbackView {
+public final class AdmissionRecordOperations extends FeedbackView {
 
-    public Operations(HashMap<String, String> inputs){
+    public AdmissionRecordOperations(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public Operations(){
+    public AdmissionRecordOperations(){
         super(new HashMap<>());
     }
 
     public void display(){
-        System.out.println("Supported operations for Patient entity are:");
-        System.out.println("1 - Show [requires Patient ID]");
+        System.out.println("Supported operations for AdmissionRecord entity are:");
+        System.out.println("1 - Show [requires ID]");
         System.out.println("2 - Insert [requires input]");
         System.out.println("3 - Index");
-        System.out.println("4 - Delete [requires Patient ID]");
-        System.out.println("5 - Update [requires Patient ID and Patient data]");
+        System.out.println("4 - Delete [requires ID]");
+        System.out.println("5 - Update [requires id and data]");
         System.out.println("6 - Exit");
     }
 

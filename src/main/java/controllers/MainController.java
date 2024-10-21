@@ -1,11 +1,14 @@
 package controllers;
 
+import dao.AdmissionRecordDAO;
 import dao.PatientDAO;
 import dao.factories.DAOFactory;
+import models.AdmissionRecord;
 import models.Patient;
 import views.DataSourceSelection;
 import views.EntitySelection;
-import views.patient.Operations;
+import views.admission_record.AdmissionRecordOperations;
+import views.patient.PatientOperations;
 
 import java.util.HashMap;
 
@@ -17,6 +20,7 @@ public class MainController {
 
     //Controllers
     private PatientController patientController;
+    private AdmissionRecordController admissionRecordController;
 
     //Home views
     private DataSourceSelection menuView = new DataSourceSelection();
@@ -60,7 +64,8 @@ public class MainController {
         int value = Integer.parseInt(entityOption.get("menuOption"));
         switch (value){
             case 1 -> showPatientMenu();
-            case 2,3,4,5,6,7,8,9,10 -> {
+            case 2 -> showAdmissionRecordMenu();
+            case 3,4,5,6,7,8,9,10 -> {
                 System.out.println("Not implemented yet.");
                 displayEntitySelection();
             }
@@ -70,7 +75,7 @@ public class MainController {
     }
 
     public void showPatientMenu(){
-        Operations patientOps = new Operations();
+        PatientOperations patientOps = new PatientOperations();
         patientOps.display();
         HashMap<String,String> menuOptions = patientOps.getInputs();
         int val = Integer.parseInt(menuOptions.get("menuOption"));
@@ -102,6 +107,41 @@ public class MainController {
         }
 
         showPatientMenu();
+    }
+
+    public void showAdmissionRecordMenu(){
+        AdmissionRecordOperations ops = new AdmissionRecordOperations();
+        ops.display();
+        HashMap<String,String> menuOptions = ops.getInputs();
+        int val = Integer.parseInt(menuOptions.get("menuOption"));
+
+        AdmissionRecordDAO admissionRecordDAO = currentDataSourceFactory.getAdmissionRecordDAO();
+        admissionRecordController = new AdmissionRecordController(admissionRecordDAO);
+
+        switch(val){
+            case 1 -> {
+                int id = admissionRecordController.requestId();
+                admissionRecordController.show(id);
+            }
+            case 2 -> {
+                AdmissionRecord record = admissionRecordController.getData();
+                admissionRecordController.insert(record);
+            }
+            case 3 -> admissionRecordController.index();
+            case 4 -> {
+                int id = admissionRecordController.requestId();
+                admissionRecordController.delete(id);
+            }
+            case 5 -> {
+                int id = admissionRecordController.requestId();
+                AdmissionRecord record = admissionRecordController.getData();
+                admissionRecordController.update(id, record);
+            }
+            case 6 -> displayEntitySelection();
+            default -> displayEntitySelection();
+        }
+
+        showAdmissionRecordMenu();
     }
 
     public void exportDatabaseToXML(){
