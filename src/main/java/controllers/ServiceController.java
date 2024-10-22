@@ -2,6 +2,7 @@ package controllers;
 
 import dao.ServiceDAO;
 import models.Service;
+import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -93,9 +94,9 @@ public class ServiceController {
     }
 
     public void index(){
-        List<Service> patients = serviceDAO.selectAll();
+        List<Service> services = serviceDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", services);
         Index<Service> index = new Index<>();
         index.setInputs(data);
 
@@ -113,4 +114,7 @@ public class ServiceController {
         }*/
     }
 
+    public List<Service> selectAll(){
+        return serviceDAO.selectAll();
+    }
 }

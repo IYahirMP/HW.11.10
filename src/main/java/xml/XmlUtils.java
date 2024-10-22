@@ -19,7 +19,7 @@ public class XmlUtils {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             // Marshal the object to the specified file
-            jaxbMarshaller.marshal((clazz.cast(object)), new File(filepath));
+            jaxbMarshaller.marshal((clazz.cast(object)), new File(filepath + ".xml"));
         } catch (JAXBException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

@@ -2,6 +2,8 @@ package controllers;
 
 import dao.DoctorDAO;
 import models.Doctor;
+import models.EmergencyContact;
+import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -92,15 +94,15 @@ public class DoctorController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void index(){
-        List<Doctor> patients = doctorDAO.selectAll();
+    public List<Doctor> index(){
+        List<Doctor> doctors = doctorDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", doctors);
         Index<Doctor> index = new Index<>();
         index.setInputs(data);
 
         index.display();
-
+        return doctors;
         /*System.out.println("Do you want to export it to XML?");
         Scanner sc = new Scanner(System.in);
         int answer = sc.nextInt();
@@ -111,6 +113,10 @@ public class DoctorController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<Doctor> selectAll(){
+        return doctorDAO.selectAll();
     }
 
 }

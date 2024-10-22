@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hospital>
+    <Patients>
+        <Patient>
+            <patientId>1</patientId>
+            <name>John Doe</name>
+            <age>0</age>
+            <address>123 Elm St</address>
+            <phone>5557654321</phone>
+        </Patient>
+        <Patient>
+            <patientId>2</patientId>
+            <name>Jane Smith</name>
+            <age>0</age>
+            <address>456 Oak St</address>
+            <phone>5552345678</phone>
+        </Patient>
+        <Patient>
+            <patientId>3</patientId>
+            <name>Alice</name>
+            <age>0</age>
+            <address>7892, Pine Street, Bay City, California</address>
+            <phone>1234123412</phone>
+        </Patient>
+        <Patient>
+            <patientId>4</patientId>
+            <name>John</name>
+            <age>0</age>
+            <address>1234, somestreet, somecity, somestate</address>
+            <phone>1231231231</phone>
+        </Patient>
+        <Patient>
+            <patientId>9</patientId>
+            <name>Gonorrah</name>
+            <age>0</age>
+            <address>0909, sssooo, isisisii, isisdsds</address>
+            <phone>4564564564</phone>
+        </Patient>
+    </Patients>
+    <EmergencyContact>
+        <EmergencyContact>
+            <address>999 New Elm St</address>
+            <emergencyContactId>1</emergencyContactId>
+            <name>Emily Doe</name>
+            <patientId>1</patientId>
+            <phone>5557654321</phone>
+        </EmergencyContact>
+        <EmergencyContact>
+            <address>456 Oak St</address>
+            <emergencyContactId>2</emergencyContactId>
+            <name>Paul Smith</name>
+            <patientId>2</patientId>
+            <phone>5558765432</phone>
+        </EmergencyContact>
+        <EmergencyContact>
+            <address>321 Maple St</address>
+            <emergencyContactId>4</emergencyContactId>
+            <name>Liam Brown</name>
+            <patientId>4</patientId>
+            <phone>5550987654</phone>
+        </EmergencyContact>
+    </EmergencyContact>
+    <Doctor>
+        <Doctor>
+            <doctorId>1</doctorId>
+            <name>Dr. Gregory House</name>
+            <phone>5555678902</phone>
+        </Doctor>
+        <Doctor>
+            <doctorId>2</doctorId>
+            <name>Dr. Meredith Grey</name>
+            <phone>5551122334</phone>
+        </Doctor>
+        <Doctor>
+            <doctorId>3</doctorId>
+            <name>Dr. John Carter</name>
+            <phone>5557890123</phone>
+        </Doctor>
+        <Doctor>
+            <doctorId>4</doctorId>
+            <name>Dr. Dana Scully</name>
+            <phone>5558901234</phone>
+        </Doctor>
+    </Doctor>
+    <Consultation>
+        <Consultation>
+            <admittedForTreatment>0</admittedForTreatment>
+            <consultationId>1</consultationId>
+            <date/>
+            <diagnose>Patient reports headaches, diagnosed with hypertension</diagnose>
+            <doctorId>1</doctorId>
+            <patientId>1</patientId>
+            <prescriptionId>1</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>0</admittedForTreatment>
+            <consultationId>2</consultationId>
+            <date/>
+            <diagnose>Patient has elevated blood sugar levels, diagnosed with type 2 diabetes</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>3</consultationId>
+            <date/>
+            <diagnose>Patient has shortness of breath, diagnosed with asthma</diagnose>
+            <doctorId>3</doctorId>
+            <patientId>3</patientId>
+            <prescriptionId>3</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>10</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>11</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>12</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>13</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>14</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>15</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+        <Consultation>
+            <admittedForTreatment>1</admittedForTreatment>
+            <consultationId>16</consultationId>
+            <date/>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <doctorId>2</doctorId>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Consultation>
+    </Consultation>
+    <AdmissionRecord>
+        <AdmissionRecord>
+            <admissionDate/>
+            <admissionId>1</admissionId>
+            <bedNumber>1</bedNumber>
+            <consultationId>1</consultationId>
+            <dischargeDate/>
+            <patientId>1</patientId>
+            <roomNumber>104</roomNumber>
+        </AdmissionRecord>
+        <AdmissionRecord>
+            <admissionDate/>
+            <admissionId>2</admissionId>
+            <bedNumber>2</bedNumber>
+            <consultationId>3</consultationId>
+            <dischargeDate/>
+            <patientId>3</patientId>
+            <roomNumber>102</roomNumber>
+        </AdmissionRecord>
+        <AdmissionRecord>
+            <admissionDate/>
+            <admissionId>4</admissionId>
+            <bedNumber>2</bedNumber>
+            <consultationId>3</consultationId>
+            <dischargeDate/>
+            <patientId>1</patientId>
+            <roomNumber>2</roomNumber>
+        </AdmissionRecord>
+    </AdmissionRecord>
+    <TreatmentRecord>
+        <TreatmentRecord>
+            <admissionId>2</admissionId>
+            <notes>Patient responded well to treatment.</notes>
+            <recordId>2</recordId>
+            <time/>
+        </TreatmentRecord>
+    </TreatmentRecord>
+    <Invoice>
+        <Invoice>
+            <invoiceId>1</invoiceId>
+            <isPaid>1</isPaid>
+            <patientId>1</patientId>
+            <paymentDate/>
+            <total>150.0</total>
+        </Invoice>
+        <Invoice>
+            <invoiceId>2</invoiceId>
+            <isPaid>1</isPaid>
+            <patientId>2</patientId>
+            <paymentDate/>
+            <total>150.0</total>
+        </Invoice>
+        <Invoice>
+            <invoiceId>3</invoiceId>
+            <isPaid>0</isPaid>
+            <patientId>2</patientId>
+            <total>500.0</total>
+        </Invoice>
+        <Invoice>
+            <invoiceId>4</invoiceId>
+            <isPaid>1</isPaid>
+            <patientId>3</patientId>
+            <paymentDate/>
+            <total>250.0</total>
+        </Invoice>
+    </Invoice>
+    <InvoiceHasServices>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <lineCost>500.0</lineCost>
+            <quantity>2</quantity>
+            <serviceId>1</serviceId>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <lineCost>300.0</lineCost>
+            <quantity>1</quantity>
+            <serviceId>2</serviceId>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <lineCost>700.0</lineCost>
+            <quantity>1</quantity>
+            <serviceId>3</serviceId>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <lineCost>500.0</lineCost>
+            <quantity>1</quantity>
+            <serviceId>4</serviceId>
+        </InvoiceHasService>
+    </InvoiceHasServices>
+    <Services>
+        <Service>
+            <cost>50.0</cost>
+            <description>General Check-up</description>
+            <serviceId>1</serviceId>
+        </Service>
+        <Service>
+            <cost>30.0</cost>
+            <description>Blood Test</description>
+            <serviceId>2</serviceId>
+        </Service>
+        <Service>
+            <cost>120.0</cost>
+            <description>X-ray</description>
+            <serviceId>3</serviceId>
+        </Service>
+        <Service>
+            <cost>500.0</cost>
+            <description>MRI Scan</description>
+            <serviceId>4</serviceId>
+        </Service>
+    </Services>
+    <Prescriptions>
+        <Prescription>
+            <diagnose>Chronic Hypertension</diagnose>
+            <patientId>1</patientId>
+            <prescriptionId>1</prescriptionId>
+        </Prescription>
+        <Prescription>
+            <diagnose>Type 2 Diabetes</diagnose>
+            <patientId>2</patientId>
+            <prescriptionId>2</prescriptionId>
+        </Prescription>
+        <Prescription>
+            <diagnose>Asthma</diagnose>
+            <patientId>3</patientId>
+            <prescriptionId>3</prescriptionId>
+        </Prescription>
+        <Prescription>
+            <diagnose>Chronic Back Pain</diagnose>
+            <patientId>4</patientId>
+            <prescriptionId>4</prescriptionId>
+        </Prescription>
+    </Prescriptions>
+    <PrescriptionHasMedicines>
+        <PrescriptionHasMedicine>
+            <medicineId>1</medicineId>
+            <prescribedDays>30</prescribedDays>
+            <prescribedDose>10 mg</prescribedDose>
+            <prescribedTiming>Once daily</prescribedTiming>
+            <prescriptionId>1</prescriptionId>
+        </PrescriptionHasMedicine>
+        <PrescriptionHasMedicine>
+            <medicineId>2</medicineId>
+            <prescribedDays>60</prescribedDays>
+            <prescribedDose>500 mg</prescribedDose>
+            <prescribedTiming>Twice daily</prescribedTiming>
+            <prescriptionId>2</prescriptionId>
+        </PrescriptionHasMedicine>
+        <PrescriptionHasMedicine>
+            <medicineId>4</medicineId>
+            <prescribedDays>10</prescribedDays>
+            <prescribedDose>400 mg</prescribedDose>
+            <prescribedTiming>Every 4-6 hours as needed</prescribedTiming>
+            <prescriptionId>4</prescriptionId>
+        </PrescriptionHasMedicine>
+    </PrescriptionHasMedicines>
+    <Medicines>
+        <Medicine>
+            <cost>12.5</cost>
+            <doseSize>10</doseSize>
+            <medicineId>1</medicineId>
+            <name>Lisinopril</name>
+        </Medicine>
+        <Medicine>
+            <cost>15.0</cost>
+            <doseSize>500</doseSize>
+            <medicineId>2</medicineId>
+            <name>Metformin</name>
+        </Medicine>
+        <Medicine>
+            <cost>25.0</cost>
+            <doseSize>200</doseSize>
+            <medicineId>3</medicineId>
+            <name>Albuterol Inhaler</name>
+        </Medicine>
+        <Medicine>
+            <cost>5.0</cost>
+            <doseSize>400</doseSize>
+            <medicineId>4</medicineId>
+            <name>Ibuprofen</name>
+        </Medicine>
+    </Medicines>
+</hospital>

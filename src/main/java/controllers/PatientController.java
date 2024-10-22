@@ -2,6 +2,7 @@ package controllers;
 
 import dao.PatientDAO;
 import models.Patient;
+import models.TreatmentRecord;
 import views.generic.*;
 import views.patient.*;
 
@@ -100,7 +101,7 @@ public class PatientController {
         return patient;
     }
 
-    public void index(){
+    public List<Patient> index(){
         List<Patient> patients = patientDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
         data.put("element", patients);
@@ -108,6 +109,7 @@ public class PatientController {
         index.setInputs(data);
 
         index.display();
+        return patients;
 
         /*System.out.println("Do you want to export it to XML?");
         Scanner sc = new Scanner(System.in);
@@ -119,6 +121,10 @@ public class PatientController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<Patient> selectAll(){
+        return patientDAO.selectAll();
     }
 
 }

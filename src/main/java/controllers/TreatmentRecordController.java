@@ -93,9 +93,9 @@ public class TreatmentRecordController {
     }
 
     public void index(){
-        List<TreatmentRecord> patients = treatmentRecordDAO.selectAll();
+        List<TreatmentRecord> treatmentRecords = treatmentRecordDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", treatmentRecords);
         Index<TreatmentRecord> index = new Index<>();
         index.setInputs(data);
 
@@ -111,6 +111,10 @@ public class TreatmentRecordController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<TreatmentRecord> selectAll(){
+        return treatmentRecordDAO.selectAll();
     }
 
 }

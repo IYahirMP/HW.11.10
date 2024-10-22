@@ -3,9 +3,12 @@ package menu;
 import controllers.*;
 import dao.*;
 import dao.factories.DAOFactory;
+import models.*;
+import models.xml.Hospital;
 import views.EntitySelection;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static java.lang.System.exit;
 
@@ -71,10 +74,7 @@ public abstract class MenuHandler {
             case 8 -> new TreatmentRecordMenuHandler(daoFactory).processMenuOption();
             case 9 -> new InvoiceMenuHandler(daoFactory).processMenuOption();
             case 10 -> new ServiceMenuHandler(daoFactory).processMenuOption();
-            case 11 -> {
-                System.out.println("Not supported yet");
-                exit(0);
-            }
+            case 11 -> new ExportXMLMenuHandler(daoFactory).processMenuOption();
             default -> exit(0);
         }
     }

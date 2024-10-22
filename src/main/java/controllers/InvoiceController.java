@@ -2,6 +2,7 @@ package controllers;
 
 import dao.InvoiceDAO;
 import models.Invoice;
+import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -92,14 +93,15 @@ public class InvoiceController {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void index(){
-        List<Invoice> patients = invoiceDAO.selectAll();
+    public List<Invoice> index(){
+        List<Invoice> invoices = invoiceDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", invoices);
         Index<Invoice> index = new Index<>();
         index.setInputs(data);
 
         index.display();
+        return invoices;
 
         /*System.out.println("Do you want to export it to XML?");
         Scanner sc = new Scanner(System.in);
@@ -111,6 +113,10 @@ public class InvoiceController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<Invoice> selectAll(){
+        return invoiceDAO.selectAll();
     }
 
 }

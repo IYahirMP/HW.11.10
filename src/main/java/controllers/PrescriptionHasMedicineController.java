@@ -2,6 +2,7 @@ package controllers;
 
 import dao.PrescriptionHasMedicineDAO;
 import models.PrescriptionHasMedicine;
+import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -93,9 +94,9 @@ public class PrescriptionHasMedicineController {
     }
 
     public void index(){
-        List<PrescriptionHasMedicine> patients = prescriptionHasMedicineDAO.selectAll();
+        List<PrescriptionHasMedicine> prescriptionHasMedicines = prescriptionHasMedicineDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", prescriptionHasMedicines);
         Index<PrescriptionHasMedicine> index = new Index<>();
         index.setInputs(data);
 
@@ -111,6 +112,10 @@ public class PrescriptionHasMedicineController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<PrescriptionHasMedicine> selectAll(){
+        return prescriptionHasMedicineDAO.selectAll();
     }
 
 }

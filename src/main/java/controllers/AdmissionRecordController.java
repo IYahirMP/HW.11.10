@@ -2,6 +2,7 @@ package controllers;
 
 import dao.AdmissionRecordDAO;
 import models.AdmissionRecord;
+import models.TreatmentRecord;
 import views.admission_record.AdmissionRecordRequestData;
 import views.generic.*;
 import views.patient.PatientRequestData;
@@ -104,14 +105,15 @@ public class AdmissionRecordController {
         return admissionRecord;
     }
 
-    public void index(){
-        List<AdmissionRecord> patients = admissionRecordDAO.selectAll();
+    public List<AdmissionRecord> index(){
+        List<AdmissionRecord> admissionRecords = admissionRecordDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
-        data.put("element", patients);
+        data.put("element", admissionRecords);
         Index<AdmissionRecord> index = new Index<>();
         index.setInputs(data);
 
         index.display();
+        return admissionRecords;
 
         /*System.out.println("Do you want to export it to XML?");
         Scanner sc = new Scanner(System.in);
@@ -123,6 +125,10 @@ public class AdmissionRecordController {
         }else{
             System.out.println("Going back...");
         }*/
+    }
+
+    public List<AdmissionRecord> selectAll(){
+        return admissionRecordDAO.selectAll();
     }
 
 }
