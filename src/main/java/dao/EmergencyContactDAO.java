@@ -1,4 +1,6 @@
 package dao;
 
-public interface EmergencyContactDAO {
+import models.EmergencyContact;
+
+public interface EmergencyContactDAO extends Crud<EmergencyContact>{
 }

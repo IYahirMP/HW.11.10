@@ -1,9 +1,7 @@
 package dao.factories;
 
 import dao.*;
-import dao.mysql.MySQLAdmissionRecordDAO;
-import dao.mysql.MySQLConsultationDAO;
-import dao.mysql.MySQLPatientDAO;
+import dao.mysql.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,7 +38,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public DoctorDAO getDoctorDAO() {
-        return null;
+        return new MySQLDoctorDAO();
     }
 
     /**
@@ -56,7 +54,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public EmergencyContactDAO getEmergencyContactDAO() {
-        return null;
+        return new MySQLEmergencyContactDAO();
     }
 
     /**
@@ -64,7 +62,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceDAO getInvoiceDAO() {
-        return null;
+        return new MySQLInvoiceDAO();
     }
 
     /**
@@ -72,7 +70,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceHasServiceDAO getInvoiceHasServiceDAO() {
-        return null;
+        return new MySQLInvoiceHasServiceDAO();
     }
 
     /**
@@ -80,7 +78,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public MedicineDAO getMedicineDAO() {
-        return null;
+        return new MySQLMedicineDAO();
     }
 
     /**
@@ -88,7 +86,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionDAO getPrescriptionDAO() {
-        return null;
+        return new MySQLPrescriptionDAO();
     }
 
     /**
@@ -96,7 +94,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionHasMedicineDAO getPrescriptionHasMedicineDAO() {
-        return null;
+        return new MySQLPrescriptionHasMedicineDAO();
     }
 
     /**
@@ -104,7 +102,7 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public ServiceDAO getServiceDAO() {
-        return null;
+        return new MySQLServiceDAO();
     }
 
     /**
@@ -112,6 +110,6 @@ public class MySQLDAOFactory extends DAOFactory{
      */
     @Override
     public TreatmentRecordDAO getTreatmentRecordDAO() {
-        return null;
+        return new MySQLTreatmentRecordDAO();
     }
 }

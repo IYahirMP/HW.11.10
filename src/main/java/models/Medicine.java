@@ -11,31 +11,35 @@ public class Medicine {
         return medicineId;
     }
 
-    public void setMedicineId(int medicineId) {
+    public Medicine setMedicineId(int medicineId) {
         this.medicineId = medicineId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Medicine setName(String name) {
         this.name = name;
+        return this;
     }
 
     public double getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public Medicine setCost(double cost) {
         this.cost = cost;
+        return this;
     }
 
     public int getDoseSize() {
         return doseSize;
     }
 
-    public void setDoseSize(int doseSize) {
+    public Medicine setDoseSize(int doseSize) {
         this.doseSize = doseSize;
+        return this;
     }
 }

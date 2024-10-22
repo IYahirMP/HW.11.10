@@ -1,10 +1,8 @@
-package controllers.menu;
+package menu;
 
 import dao.factories.DAOFactory;
 import models.Consultation;
-import models.Patient;
 import views.consultation.ConsultationOperations;
-import views.patient.PatientOperations;
 
 import java.util.HashMap;
 

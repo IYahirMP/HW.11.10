@@ -10,23 +10,26 @@ public class Service {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public Service setServiceId(int serviceId) {
         this.serviceId = serviceId;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Service setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public double getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public Service setCost(double cost) {
         this.cost = cost;
+        return this;
     }
 }

@@ -22,39 +22,44 @@ public class EmergencyContact {
         return emergencyContactId;
     }
 
-    public void setEmergencyContactId(int emergencyContactId) {
+    public EmergencyContact setEmergencyContactId(int emergencyContactId) {
         this.emergencyContactId = emergencyContactId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public EmergencyContact setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public EmergencyContact setPhone(String phone) {
         this.phone = phone;
+        return this;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public EmergencyContact setAddress(String address) {
         this.address = address;
+        return this;
     }
 
     public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public EmergencyContact setPatientId(int patientId) {
         this.patientId = patientId;
+        return this;
     }
 }

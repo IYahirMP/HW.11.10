@@ -1,7 +1,7 @@
 package dao;
 
-import java.sql.Timestamp;
+import models.TreatmentRecord;
 
-public interface TreatmentRecordDAO {
+public interface TreatmentRecordDAO extends Crud<TreatmentRecord> {
 
 }

@@ -1,5 +1,7 @@
 package dao;
 
-public interface InvoiceDAO {
+import models.Invoice;
+
+public interface InvoiceDAO extends Crud<Invoice> {
 
 }

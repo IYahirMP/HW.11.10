@@ -1,20 +1,11 @@
 package controllers;
 
-import controllers.menu.AdmissionRecordMenuHandler;
-import controllers.menu.PatientMenuHandler;
-import dao.AdmissionRecordDAO;
-import dao.PatientDAO;
 import dao.factories.DAOFactory;
-import models.AdmissionRecord;
-import models.Patient;
 import views.DataSourceSelection;
-import views.EntitySelection;
-import views.admission_record.AdmissionRecordOperations;
-import views.patient.PatientOperations;
 
 import java.util.HashMap;
 
-import static controllers.menu.MenuHandler.displayEntitySelection;
+import static menu.MenuHandler.displayEntitySelection;
 import static java.lang.System.exit;
 
 public class MainController {

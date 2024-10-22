@@ -12,39 +12,44 @@ public class PrescriptionHasMedicine {
         return prescriptionId;
     }
 
-    public void setPrescriptionId(int prescriptionId) {
+    public PrescriptionHasMedicine setPrescriptionId(int prescriptionId) {
         this.prescriptionId = prescriptionId;
+        return this;
     }
 
     public int getMedicineId() {
         return medicineId;
     }
 
-    public void setMedicineId(int medicineId) {
+    public PrescriptionHasMedicine setMedicineId(int medicineId) {
         this.medicineId = medicineId;
+        return this;
     }
 
     public int getPrescribedDays() {
         return prescribedDays;
     }
 
-    public void setPrescribedDays(int prescribedDays) {
+    public PrescriptionHasMedicine setPrescribedDays(int prescribedDays) {
         this.prescribedDays = prescribedDays;
+        return this;
     }
 
     public String getPrescribedDose() {
         return prescribedDose;
     }
 
-    public void setPrescribedDose(String prescribedDose) {
+    public PrescriptionHasMedicine setPrescribedDose(String prescribedDose) {
         this.prescribedDose = prescribedDose;
+        return this;
     }
 
     public String getPrescribedTiming() {
         return prescribedTiming;
     }
 
-    public void setPrescribedTiming(String prescribedTiming) {
+    public PrescriptionHasMedicine setPrescribedTiming(String prescribedTiming) {
         this.prescribedTiming = prescribedTiming;
+        return this;
     }
 }

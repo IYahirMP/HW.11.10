@@ -18,23 +18,26 @@ public class Doctor {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
+    public Doctor setDoctorId(int doctorId) {
         this.doctorId = doctorId;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Doctor setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public Doctor setPhone(String phone) {
         this.phone = phone;
+        return this;
     }
 }

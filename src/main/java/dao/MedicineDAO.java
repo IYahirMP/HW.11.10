@@ -1,5 +1,7 @@
 package dao;
 
-public interface MedicineDAO {
+import models.Medicine;
+
+public interface MedicineDAO extends Crud<Medicine>{
 
 }

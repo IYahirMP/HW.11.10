@@ -18,23 +18,26 @@ public class Prescription {
         return prescriptionId;
     }
 
-    public void setPrescriptionId(int prescriptionId) {
+   public Prescription setPrescriptionId(int prescriptionId) {
         this.prescriptionId = prescriptionId;
+        return this;
     }
 
     public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+   public Prescription setPatientId(int patientId) {
         this.patientId = patientId;
+        return this;
     }
 
     public String getDiagnose() {
         return diagnose;
     }
 
-    public void setDiagnose(String diagnose) {
+   public Prescription setDiagnose(String diagnose) {
         this.diagnose = diagnose;
+        return this;
     }
 }

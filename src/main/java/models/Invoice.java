@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Invoice {
     private int invoiceId;
     private double total;
-    private boolean isPaid;
+    private int isPaid;
     private int patientId;
     private Date paymentDate;
 
@@ -14,39 +14,44 @@ public class Invoice {
         return invoiceId;
     }
 
-    public void setInvoiceId(int invoiceId) {
+    public Invoice setInvoiceId(int invoiceId) {
         this.invoiceId = invoiceId;
+        return this;
     }
 
     public double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public Invoice setTotal(double total) {
         this.total = total;
+        return this;
     }
 
-    public boolean isPaid() {
+    public int getIsPaid() {
         return isPaid;
     }
 
-    public void setPaid(boolean isPaid) {
+    public Invoice setIsPaid(int isPaid) {
         this.isPaid = isPaid;
+        return this;
     }
 
     public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public Invoice setPatientId(int patientId) {
         this.patientId = patientId;
+        return this;
     }
 
     public Date getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public Invoice setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
+        return this;
     }
 }

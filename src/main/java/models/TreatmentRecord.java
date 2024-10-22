@@ -1,43 +1,47 @@
 package models;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class TreatmentRecord {
     private int recordId;
     private int admissionId;
     private String notes;
-    private Timestamp time;
+    private LocalDateTime time;
 
     // Getters and Setters
     public int getRecordId() {
         return recordId;
     }
 
-    public void setRecordId(int recordId) {
+    public TreatmentRecord setRecordId(int recordId) {
         this.recordId = recordId;
+        return this;
     }
 
     public int getAdmissionId() {
         return admissionId;
     }
 
-    public void setAdmissionId(int admissionId) {
+    public TreatmentRecord setAdmissionId(int admissionId) {
         this.admissionId = admissionId;
+        return this;
     }
 
     public String getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
+    public TreatmentRecord setNotes(String notes) {
         this.notes = notes;
+        return this;
     }
 
-    public Timestamp getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public TreatmentRecord setTime(LocalDateTime time) {
         this.time = time;
+        return this;
     }
 }

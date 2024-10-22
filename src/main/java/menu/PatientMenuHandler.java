@@ -1,4 +1,4 @@
-package controllers.menu;
+package menu;
 
 import dao.factories.DAOFactory;
 import models.Patient;

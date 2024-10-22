@@ -1,5 +1,7 @@
 package dao;
 
-public interface ServiceDAO {
+import models.Service;
+
+public interface ServiceDAO extends Crud<Service> {
 
 }
