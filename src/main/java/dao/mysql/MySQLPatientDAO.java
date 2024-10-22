@@ -136,6 +136,7 @@ public class MySQLPatientDAO implements PatientDAO {
                 .setPatientId(rs.getInt("patientId"))
                 .setName(rs.getString("name"))
                 .setAddress(rs.getString("address"))
-                .setPhone(rs.getString("phone"));
+                .setPhone(rs.getString("phone"))
+                .setAge(Integer.parseInt(rs.getString("age")));
     }
 }

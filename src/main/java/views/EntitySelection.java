@@ -29,7 +29,8 @@ public final class EntitySelection extends FeedbackView {
         System.out.println("9 - Invoice");
         System.out.println("10 - Service");
         System.out.println("11 - Dump database to XML");
-        System.out.println("12 - Exit");
+        System.out.println("12 - Dump database to JSON");
+        System.out.println("13 - Exit");
     }
 
     public HashMap<String, String> getInputs(){
@@ -40,7 +41,7 @@ public final class EntitySelection extends FeedbackView {
         processInputs(stringInputs);
 
         int val = Integer.parseInt(inputs.get("menuOption"));
-        if (val < 1 || val > 12){
+        if (val < 1 || val > 13){
             System.out.println("Option is not valid, please try again.");
             getInputs();
         };
