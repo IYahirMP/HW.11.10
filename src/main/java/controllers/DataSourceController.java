@@ -1,9 +1,6 @@
 package controllers;
 
-import dao.factories.DAOFactory;
-import dao.factories.JAXBDAOFactory;
-import dao.factories.MySQLDAOFactory;
-import dao.factories.StAXDAOFactory;
+import dao.factories.*;
 import views.MySQLConfiguration;
 import views.XMLFileConfiguration;
 
@@ -22,6 +19,7 @@ public class DataSourceController {
             case 1 -> configureMySQLFactory();
             case 2 -> configureStaxFactory();
             case 3 -> configureJAXBFactory();
+            case 4 -> configureJacksonFactory();
             default -> null;
         };
     }
@@ -48,16 +46,21 @@ public class DataSourceController {
     }
 
     private static StAXDAOFactory configureStaxFactory(){
-        StAXDAOFactory.filepath = getXMLFileConfiguration();
+        StAXDAOFactory.filepath = getFileConfiguration();
         return new StAXDAOFactory();
     }
 
     private static JAXBDAOFactory configureJAXBFactory(){
-        JAXBDAOFactory.filepath = getXMLFileConfiguration();
+        JAXBDAOFactory.filepath = getFileConfiguration();
         return new JAXBDAOFactory();
     }
 
-    private static String getXMLFileConfiguration(){
+    private static JacksonDAOFactory configureJacksonFactory(){
+        JacksonDAOFactory.filepath = getFileConfiguration();
+        return new JacksonDAOFactory();
+    }
+
+    private static String getFileConfiguration(){
         XMLFileConfiguration config = new XMLFileConfiguration();
         config.display();
         HashMap<String, String> options = config.getInputs();
