@@ -6,13 +6,13 @@ import com.solvd.laba.computer_repair_service.views.FeedbackView;
 
 import java.util.HashMap;
 
-public final class StaxConfiguration extends FeedbackView {
+public final class XMLFileConfiguration extends FeedbackView {
 
-    public StaxConfiguration(HashMap<String, String> inputs){
+    public XMLFileConfiguration(HashMap<String, String> inputs){
         super(inputs);
     }
 
-    public StaxConfiguration(){
+    public XMLFileConfiguration(){
         super(new HashMap<>());
     }
 

@@ -20,8 +20,9 @@ public final class DataSourceSelection extends FeedbackView {
         System.out.println("Welcome!");
         System.out.println("Please, select one data source:");
         System.out.println("1 - MySQL database");
-        System.out.println("2 - XML file");
-        System.out.println("3 - Exit");
+        System.out.println("2 - XML file (Parse using StAX)");
+        System.out.println("3 - XML file (Parse using JAXB)");
+        System.out.println("4 - Exit");
     }
 
     public HashMap<String, String> getInputs(){
@@ -32,7 +33,7 @@ public final class DataSourceSelection extends FeedbackView {
         processInputs(stringInputs);
 
         int val = Integer.parseInt(inputs.get("menuOption"));
-        if (val < 1 || val > 3){
+        if (val < 1 || val > 4){
             System.out.println("Option is not valid, please try again.");
             getInputs();
         };

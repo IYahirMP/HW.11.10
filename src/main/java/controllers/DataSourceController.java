@@ -1,10 +1,11 @@
 package controllers;
 
 import dao.factories.DAOFactory;
+import dao.factories.JAXBDAOFactory;
 import dao.factories.MySQLDAOFactory;
 import dao.factories.StAXDAOFactory;
 import views.MySQLConfiguration;
-import views.StaxConfiguration;
+import views.XMLFileConfiguration;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ public class DataSourceController {
         return switch(type){
             case 1 -> configureMySQLFactory();
             case 2 -> configureStaxFactory();
+            case 3 -> configureJAXBFactory();
             default -> null;
         };
     }
@@ -46,12 +48,20 @@ public class DataSourceController {
     }
 
     private static StAXDAOFactory configureStaxFactory(){
-        StaxConfiguration config = new StaxConfiguration();
+        StAXDAOFactory.filepath = getXMLFileConfiguration();
+        return new StAXDAOFactory();
+    }
+
+    private static JAXBDAOFactory configureJAXBFactory(){
+        JAXBDAOFactory.filepath = getXMLFileConfiguration();
+        return new JAXBDAOFactory();
+    }
+
+    private static String getXMLFileConfiguration(){
+        XMLFileConfiguration config = new XMLFileConfiguration();
         config.display();
         HashMap<String, String> options = config.getInputs();
 
-        StAXDAOFactory.filepath = options.get("uri");
-
-        return new StAXDAOFactory();
+        return options.get("uri");
     }
 }
