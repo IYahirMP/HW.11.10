@@ -1,8 +1,17 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Doctor {
+    @XmlElement(required = true)
     private int doctorId;
+
+    @XmlElement(required = true)
     private String name;
+
+    @XmlElement(required = true)
     private String phone;
 
     // Constructors, getters, and setters
@@ -39,5 +48,17 @@ public class Doctor {
     public Doctor setPhone(String phone) {
         this.phone = phone;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Doctor [doctorId=")
+                .append(doctorId)
+                .append(", name=")
+                .append(name)
+                .append(", phone=")
+                .append(phone);
+        return builder.toString();
     }
 }

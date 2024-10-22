@@ -22,7 +22,7 @@ public abstract class DAOFactory {
     public static DAOFactory getDAOFactory(int whichFactory){
         DAOFactory factory = switch(whichFactory){
             case MYSQL  -> new MySQLDAOFactory();
-            case STAX   -> new STAXDAOFactory();
+            case STAX   -> new StAXDAOFactory();
             default -> null;
         };
 

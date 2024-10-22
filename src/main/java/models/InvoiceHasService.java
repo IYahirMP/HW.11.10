@@ -1,9 +1,21 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceHasService {
+    @XmlElement(required = true)
     private int invoiceId;
+
+    @XmlElement(required = true)
     private int serviceId;
+
+    @XmlElement(required = true)
     private int quantity;
+
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "decimal")
     private double lineCost;
 
     // Getters and Setters
@@ -41,5 +53,17 @@ public class InvoiceHasService {
     public InvoiceHasService setLineCost(double lineCost) {
         this.lineCost = lineCost;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("InvoiceHasService{")
+                .append("invoiceId=").append(invoiceId)
+                .append(", serviceId=").append(serviceId)
+                .append(", quantity=").append(quantity)
+                .append(", lineCost=").append(lineCost)
+                .append("}");
+        return sb.toString();
     }
 }

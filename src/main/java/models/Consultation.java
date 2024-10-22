@@ -1,20 +1,40 @@
 package models;
 
-import java.sql.Date;
+import models.xml.LocalDateAdapter;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDate;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Consultation {
+    @XmlElement(required = true)
     private int consultationId;
-    private Date date;
-    private int doctorId; // Foreign key from Doctor
-    private int patientId; // Foreign key from Patient
+
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlElement(required = true)
+    private LocalDate date;
+
+    @XmlElement(required = true)
+    private int doctorId;
+
+    @XmlElement(required = true)
+    private int patientId;
+
+    @XmlElement(required = true)
     private String diagnose;
-    private int prescriptionId; // Foreign key from Prescription
+
+    @XmlElement(required = true)
+    private int prescriptionId;
+
+    @XmlElement(required = true)
     private int admittedForTreatment;
 
     // Constructors, getters, and setters
     public Consultation() {}
 
-    public Consultation(int consultationId, Date date, int doctorId, int patientId, String diagnose, int prescriptionId, int admittedForTreatment) {
+    public Consultation(int consultationId, LocalDate date, int doctorId, int patientId, String diagnose, int prescriptionId, int admittedForTreatment) {
         this.consultationId = consultationId;
         this.date = date;
         this.doctorId = doctorId;
@@ -33,11 +53,11 @@ public class Consultation {
         return this;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public Consultation setDate(Date date) {
+    public Consultation setDate(LocalDate date) {
         this.date = date;
         return this;
     }
@@ -85,5 +105,19 @@ public class Consultation {
     public Consultation setAdmittedForTreatment(int admittedForTreatment) {
         this.admittedForTreatment = admittedForTreatment;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Consultation {\n")
+                .append("  consultationId: ").append(consultationId).append("\n")
+                .append("  date: ").append(date).append("\n")
+                .append("  doctorId: ").append(doctorId).append("\n")
+                .append("  patientId: ").append(patientId).append("\n")
+                .append("  diagnose: ").append(diagnose).append("\n")
+                .append("  prescriptionId: ").append(prescriptionId).append("\n")
+                .append("  admittedForTreatment: ").append(admittedForTreatment).append("\n");
+        return sb.toString();
     }
 }

@@ -1,8 +1,17 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Prescription {
+    @XmlElement(required = true)
     private int prescriptionId;
-    private int patientId; // Foreign key from Patient
+
+    @XmlElement(required = true)
+    private int patientId;
+
+    @XmlElement(required = true)
     private String diagnose;
 
     // Constructors, getters, and setters
@@ -39,5 +48,15 @@ public class Prescription {
    public Prescription setDiagnose(String diagnose) {
         this.diagnose = diagnose;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder()
+                .append("Prescription{")
+                .append("prescriptionId=").append(prescriptionId)
+                .append(", patientId=").append(patientId)
+                .append(", diagnose=").append(diagnose);
+        return sb.append("}").toString();
     }
 }

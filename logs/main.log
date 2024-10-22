@@ -57,3 +57,16 @@ Example: 123456789
 2024-10-21 00:43:53,687 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
 2024-10-21 00:43:54,251 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
 2024-10-21 00:43:54,698 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 23:11:18,261 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 23:13:54,119 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 23:14:02,831 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+Example: Antonio
+2024-10-21 23:14:03,163 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+Example: Antonio
+2024-10-21 23:14:04,060 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+Example: Antonio
+2024-10-21 23:42:39,950 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 04:00:31,360 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 05:06:23,209 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 05:09:45,320 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 05:09:45,662 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension

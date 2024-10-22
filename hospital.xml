@@ -39,25 +39,25 @@
     </Patients>
     <EmergencyContact>
         <EmergencyContact>
-            <address>999 New Elm St</address>
             <emergencyContactId>1</emergencyContactId>
             <name>Emily Doe</name>
-            <patientId>1</patientId>
             <phone>5557654321</phone>
+            <address>999 New Elm St</address>
+            <patientId>1</patientId>
         </EmergencyContact>
         <EmergencyContact>
-            <address>456 Oak St</address>
             <emergencyContactId>2</emergencyContactId>
             <name>Paul Smith</name>
-            <patientId>2</patientId>
             <phone>5558765432</phone>
+            <address>456 Oak St</address>
+            <patientId>2</patientId>
         </EmergencyContact>
         <EmergencyContact>
-            <address>321 Maple St</address>
             <emergencyContactId>4</emergencyContactId>
             <name>Liam Brown</name>
-            <patientId>4</patientId>
             <phone>5550987654</phone>
+            <address>321 Maple St</address>
+            <patientId>4</patientId>
         </EmergencyContact>
     </EmergencyContact>
     <Doctor>
@@ -84,279 +84,273 @@
     </Doctor>
     <Consultation>
         <Consultation>
-            <admittedForTreatment>0</admittedForTreatment>
             <consultationId>1</consultationId>
-            <date/>
-            <diagnose>Patient reports headaches, diagnosed with hypertension</diagnose>
+            <date>2024-10-01</date>
             <doctorId>1</doctorId>
             <patientId>1</patientId>
+            <diagnose>Patient reports headaches, diagnosed with hypertension</diagnose>
             <prescriptionId>1</prescriptionId>
+            <admittedForTreatment>0</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>0</admittedForTreatment>
             <consultationId>2</consultationId>
-            <date/>
-            <diagnose>Patient has elevated blood sugar levels, diagnosed with type 2 diabetes</diagnose>
+            <date>2024-10-02</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient has elevated blood sugar levels, diagnosed with type 2 diabetes</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>0</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>3</consultationId>
-            <date/>
-            <diagnose>Patient has shortness of breath, diagnosed with asthma</diagnose>
+            <date>2024-10-03</date>
             <doctorId>3</doctorId>
             <patientId>3</patientId>
+            <diagnose>Patient has shortness of breath, diagnosed with asthma</diagnose>
             <prescriptionId>3</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>10</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>11</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>12</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>13</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>14</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>15</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
         <Consultation>
-            <admittedForTreatment>1</admittedForTreatment>
             <consultationId>16</consultationId>
-            <date/>
-            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
+            <date>2024-10-05</date>
             <doctorId>2</doctorId>
             <patientId>2</patientId>
+            <diagnose>Patient reports frequent migraines, diagnosed with migraine</diagnose>
             <prescriptionId>2</prescriptionId>
+            <admittedForTreatment>1</admittedForTreatment>
         </Consultation>
     </Consultation>
     <AdmissionRecord>
         <AdmissionRecord>
-            <admissionDate/>
             <admissionId>1</admissionId>
-            <bedNumber>1</bedNumber>
+            <patientId>1</patientId>
             <consultationId>1</consultationId>
-            <dischargeDate/>
-            <patientId>1</patientId>
+            <admissionDate>2024-10-01</admissionDate>
+            <dischargeDate>2024-10-03</dischargeDate>
             <roomNumber>104</roomNumber>
+            <bedNumber>1</bedNumber>
         </AdmissionRecord>
         <AdmissionRecord>
-            <admissionDate/>
             <admissionId>2</admissionId>
-            <bedNumber>2</bedNumber>
-            <consultationId>3</consultationId>
-            <dischargeDate/>
             <patientId>3</patientId>
+            <consultationId>3</consultationId>
+            <admissionDate>2024-10-03</admissionDate>
+            <dischargeDate>2024-10-05</dischargeDate>
             <roomNumber>102</roomNumber>
+            <bedNumber>2</bedNumber>
         </AdmissionRecord>
         <AdmissionRecord>
-            <admissionDate/>
             <admissionId>4</admissionId>
-            <bedNumber>2</bedNumber>
-            <consultationId>3</consultationId>
-            <dischargeDate/>
             <patientId>1</patientId>
+            <consultationId>3</consultationId>
+            <admissionDate>2024-04-30</admissionDate>
+            <dischargeDate>2024-05-03</dischargeDate>
             <roomNumber>2</roomNumber>
+            <bedNumber>2</bedNumber>
         </AdmissionRecord>
     </AdmissionRecord>
     <TreatmentRecord>
         <TreatmentRecord>
-            <admissionId>2</admissionId>
-            <notes>Patient responded well to treatment.</notes>
             <recordId>2</recordId>
-            <time/>
+            <admissionId>2</admissionId>
+            <time>2024-10-03T11:00:00</time>
+            <notes>Patient responded well to treatment.</notes>
         </TreatmentRecord>
     </TreatmentRecord>
     <Invoice>
         <Invoice>
             <invoiceId>1</invoiceId>
+            <total>150.0</total>
             <isPaid>1</isPaid>
             <patientId>1</patientId>
-            <paymentDate/>
-            <total>150.0</total>
+            <paymentDate>2024-10-03</paymentDate>
         </Invoice>
         <Invoice>
             <invoiceId>2</invoiceId>
+            <total>150.0</total>
             <isPaid>1</isPaid>
             <patientId>2</patientId>
-            <paymentDate/>
-            <total>150.0</total>
-        </Invoice>
-        <Invoice>
-            <invoiceId>3</invoiceId>
-            <isPaid>0</isPaid>
-            <patientId>2</patientId>
-            <total>500.0</total>
+            <paymentDate>2024-10-08</paymentDate>
         </Invoice>
         <Invoice>
             <invoiceId>4</invoiceId>
+            <total>250.0</total>
             <isPaid>1</isPaid>
             <patientId>3</patientId>
-            <paymentDate/>
-            <total>250.0</total>
+            <paymentDate>2024-10-05</paymentDate>
         </Invoice>
     </Invoice>
     <InvoiceHasServices>
         <InvoiceHasService>
             <invoiceId>1</invoiceId>
-            <lineCost>500.0</lineCost>
-            <quantity>2</quantity>
             <serviceId>1</serviceId>
-        </InvoiceHasService>
-        <InvoiceHasService>
-            <invoiceId>1</invoiceId>
-            <lineCost>300.0</lineCost>
-            <quantity>1</quantity>
-            <serviceId>2</serviceId>
-        </InvoiceHasService>
-        <InvoiceHasService>
-            <invoiceId>1</invoiceId>
-            <lineCost>700.0</lineCost>
-            <quantity>1</quantity>
-            <serviceId>3</serviceId>
-        </InvoiceHasService>
-        <InvoiceHasService>
-            <invoiceId>1</invoiceId>
+            <quantity>2</quantity>
             <lineCost>500.0</lineCost>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <serviceId>2</serviceId>
             <quantity>1</quantity>
+            <lineCost>300.0</lineCost>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
+            <serviceId>3</serviceId>
+            <quantity>1</quantity>
+            <lineCost>700.0</lineCost>
+        </InvoiceHasService>
+        <InvoiceHasService>
+            <invoiceId>1</invoiceId>
             <serviceId>4</serviceId>
+            <quantity>1</quantity>
+            <lineCost>500.0</lineCost>
         </InvoiceHasService>
     </InvoiceHasServices>
     <Services>
         <Service>
-            <cost>50.0</cost>
-            <description>General Check-up</description>
             <serviceId>1</serviceId>
+            <description>General Check-up</description>
+            <cost>50.0</cost>
         </Service>
         <Service>
-            <cost>30.0</cost>
-            <description>Blood Test</description>
             <serviceId>2</serviceId>
+            <description>Blood Test</description>
+            <cost>30.0</cost>
         </Service>
         <Service>
-            <cost>120.0</cost>
-            <description>X-ray</description>
             <serviceId>3</serviceId>
+            <description>X-ray</description>
+            <cost>120.0</cost>
         </Service>
         <Service>
-            <cost>500.0</cost>
-            <description>MRI Scan</description>
             <serviceId>4</serviceId>
+            <description>MRI Scan</description>
+            <cost>500.0</cost>
         </Service>
     </Services>
     <Prescriptions>
         <Prescription>
-            <diagnose>Chronic Hypertension</diagnose>
-            <patientId>1</patientId>
             <prescriptionId>1</prescriptionId>
+            <patientId>1</patientId>
+            <diagnose>Chronic Hypertension</diagnose>
         </Prescription>
         <Prescription>
-            <diagnose>Type 2 Diabetes</diagnose>
-            <patientId>2</patientId>
             <prescriptionId>2</prescriptionId>
+            <patientId>2</patientId>
+            <diagnose>Type 2 Diabetes</diagnose>
         </Prescription>
         <Prescription>
-            <diagnose>Asthma</diagnose>
-            <patientId>3</patientId>
             <prescriptionId>3</prescriptionId>
+            <patientId>3</patientId>
+            <diagnose>Asthma</diagnose>
         </Prescription>
         <Prescription>
-            <diagnose>Chronic Back Pain</diagnose>
-            <patientId>4</patientId>
             <prescriptionId>4</prescriptionId>
+            <patientId>4</patientId>
+            <diagnose>Chronic Back Pain</diagnose>
         </Prescription>
     </Prescriptions>
     <PrescriptionHasMedicines>
         <PrescriptionHasMedicine>
+            <prescriptionId>1</prescriptionId>
             <medicineId>1</medicineId>
             <prescribedDays>30</prescribedDays>
             <prescribedDose>10 mg</prescribedDose>
             <prescribedTiming>Once daily</prescribedTiming>
-            <prescriptionId>1</prescriptionId>
         </PrescriptionHasMedicine>
         <PrescriptionHasMedicine>
+            <prescriptionId>2</prescriptionId>
             <medicineId>2</medicineId>
             <prescribedDays>60</prescribedDays>
             <prescribedDose>500 mg</prescribedDose>
             <prescribedTiming>Twice daily</prescribedTiming>
-            <prescriptionId>2</prescriptionId>
         </PrescriptionHasMedicine>
         <PrescriptionHasMedicine>
+            <prescriptionId>4</prescriptionId>
             <medicineId>4</medicineId>
             <prescribedDays>10</prescribedDays>
             <prescribedDose>400 mg</prescribedDose>
             <prescribedTiming>Every 4-6 hours as needed</prescribedTiming>
-            <prescriptionId>4</prescriptionId>
         </PrescriptionHasMedicine>
     </PrescriptionHasMedicines>
     <Medicines>
         <Medicine>
-            <cost>12.5</cost>
-            <doseSize>10</doseSize>
             <medicineId>1</medicineId>
             <name>Lisinopril</name>
+            <cost>12.5</cost>
+            <doseSize>10</doseSize>
         </Medicine>
         <Medicine>
-            <cost>15.0</cost>
-            <doseSize>500</doseSize>
             <medicineId>2</medicineId>
             <name>Metformin</name>
+            <cost>15.0</cost>
+            <doseSize>500</doseSize>
         </Medicine>
         <Medicine>
-            <cost>25.0</cost>
-            <doseSize>200</doseSize>
             <medicineId>3</medicineId>
             <name>Albuterol Inhaler</name>
+            <cost>25.0</cost>
+            <doseSize>200</doseSize>
         </Medicine>
         <Medicine>
-            <cost>5.0</cost>
-            <doseSize>400</doseSize>
             <medicineId>4</medicineId>
             <name>Ibuprofen</name>
+            <cost>5.0</cost>
+            <doseSize>400</doseSize>
         </Medicine>
     </Medicines>
 </hospital>

@@ -27,8 +27,8 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getPatientId());
             ps.setInt(2, obj.getConsultationId());
-            ps.setDate(3, obj.getAdmissionDate());
-            ps.setDate(4, obj.getDischargeDate());
+            ps.setDate(3, java.sql.Date.valueOf(obj.getAdmissionDate()));
+            ps.setDate(4, java.sql.Date.valueOf(obj.getDischargeDate()));
             ps.setInt(5, obj.getRoomNumber());
             ps.setInt(6, obj.getBedNumber());
 
@@ -60,8 +60,8 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getPatientId());
             ps.setInt(2, obj.getConsultationId());
-            ps.setDate(3, obj.getAdmissionDate());
-            ps.setDate(4, obj.getDischargeDate());
+            ps.setDate(3, java.sql.Date.valueOf(obj.getAdmissionDate()));
+            ps.setDate(4, java.sql.Date.valueOf(obj.getDischargeDate()));
             ps.setInt(5, obj.getRoomNumber());
             ps.setInt(6, obj.getBedNumber());
             ps.setInt(7, id);
@@ -143,8 +143,8 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
                 .setAdmissionId(rs.getInt("admissionId"))
                 .setPatientId(rs.getInt("patientId"))
                 .setConsultationId(rs.getInt("consultationId"))
-                .setAdmissionDate(rs.getDate("admissionDate"))
-                .setDischargeDate(rs.getDate("dischargeDate"))
+                .setAdmissionDate(rs.getDate("admissionDate").toLocalDate())
+                .setDischargeDate(rs.getDate("dischargeDate").toLocalDate())
                 .setRoomNumber(rs.getInt("roomNumber"))
                 .setBedNumber(rs.getInt("bedNumber"));
     }

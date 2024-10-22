@@ -1,8 +1,15 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Service {
+    @XmlElement(required = true)
     private int serviceId;
+    @XmlElement(required = true)
     private String description;
+    @XmlElement(required = true)
     private double cost;
 
     // Getters and Setters
@@ -31,5 +38,16 @@ public class Service {
     public Service setCost(double cost) {
         this.cost = cost;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder()
+                .append("Service[")
+                .append("serviceId=").append(serviceId)
+                .append(", description=").append(description)
+                .append(", cost=").append(cost)
+                .append("]");
+        return builder.toString();
     }
 }

@@ -1,12 +1,24 @@
 package models;
 
-import java.time.LocalDateTime;
+import models.xml.LocalDateTimeAdapter;
 
+import java.time.LocalDateTime;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TreatmentRecord {
+    @XmlElement(required = true)
     private int recordId;
+    @XmlElement(required = true)
     private int admissionId;
-    private String notes;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "dateTime")
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     private LocalDateTime time;
+    @XmlElement(required = true)
+    private String notes;
 
     // Getters and Setters
     public int getRecordId() {
@@ -43,5 +55,17 @@ public class TreatmentRecord {
     public TreatmentRecord setTime(LocalDateTime time) {
         this.time = time;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder()
+                .append("TreatmentRecord[")
+                .append("recordId=").append(recordId)
+                .append(", admissionId=").append(admissionId)
+                .append(", notes=").append(notes)
+                .append(", time=").append(time)
+                .append("]");
+        return sb.toString();
     }
 }

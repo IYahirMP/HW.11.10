@@ -2,7 +2,7 @@ package controllers;
 
 import dao.factories.DAOFactory;
 import dao.factories.MySQLDAOFactory;
-import dao.factories.STAXDAOFactory;
+import dao.factories.StAXDAOFactory;
 import views.MySQLConfiguration;
 import views.StaxConfiguration;
 
@@ -45,13 +45,13 @@ public class DataSourceController {
         return new MySQLDAOFactory();
     }
 
-    private static MySQLDAOFactory configureStaxFactory(){
+    private static StAXDAOFactory configureStaxFactory(){
         StaxConfiguration config = new StaxConfiguration();
         config.display();
         HashMap<String, String> options = config.getInputs();
 
-        STAXDAOFactory.filepath = options.get("uri");
+        StAXDAOFactory.filepath = options.get("uri");
 
-        return new MySQLDAOFactory();
+        return new StAXDAOFactory();
     }
 }

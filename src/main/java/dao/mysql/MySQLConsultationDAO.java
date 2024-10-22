@@ -136,7 +136,7 @@ public class MySQLConsultationDAO implements ConsultationDAO {
     public Consultation constructObject(ResultSet rs) throws SQLException {
         return new Consultation()
                 .setConsultationId(rs.getInt("consultationId"))
-                .setDate(rs.getDate("date"))
+                .setDate(rs.getDate("date").toLocalDate())
                 .setDoctorId(rs.getInt("doctorId"))
                 .setPatientId(rs.getInt("patientId"))
                 .setDiagnose(rs.getString("diagnose"))

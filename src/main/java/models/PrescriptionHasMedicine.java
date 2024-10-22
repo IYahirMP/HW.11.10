@@ -1,10 +1,19 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PrescriptionHasMedicine {
+    @XmlElement(required = true)
     private int prescriptionId;
+    @XmlElement(required = true)
     private int medicineId;
+    @XmlElement(required = true)
     private int prescribedDays;
+    @XmlElement(required = true)
     private String prescribedDose;
+    @XmlElement(required = true)
     private String prescribedTiming;
 
     // Getters and Setters
@@ -51,5 +60,18 @@ public class PrescriptionHasMedicine {
     public PrescriptionHasMedicine setPrescribedTiming(String prescribedTiming) {
         this.prescribedTiming = prescribedTiming;
         return this;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder()
+                .append("PrescriptionHasMedicine: {")
+                .append("prescriptionId : ").append(prescriptionId)
+                .append("\nmedicineId : ").append(medicineId)
+                .append("\nprescribedDays : ").append(prescribedDays)
+                .append("\nprescribedDose : ").append(prescribedDose)
+                .append("\nprescribedTiming : ").append(prescribedTiming)
+                .append("}");
+        return sb.toString();
     }
 }

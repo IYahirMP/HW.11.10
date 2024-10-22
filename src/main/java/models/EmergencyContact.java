@@ -1,11 +1,24 @@
 package models;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EmergencyContact {
+    @XmlElement(required = true)
     private int emergencyContactId;
+
+    @XmlElement(required = true)
     private String name;
+
+    @XmlElement(required = true)
     private String phone;
+
+    @XmlElement(required = true)
     private String address;
-    private int patientId;  // Foreign key from Patient
+
+    @XmlElement(required = true)
+    private int patientId;
 
     // Constructors, getters, and setters
     public EmergencyContact() {}
@@ -61,5 +74,21 @@ public class EmergencyContact {
     public EmergencyContact setPatientId(int patientId) {
         this.patientId = patientId;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("EmergencyContact [emergencyContactId=")
+                .append(emergencyContactId)
+                .append(", name=")
+                .append(name)
+                .append(", phone=")
+                .append(phone)
+                .append(", address=")
+                .append(address)
+                .append(", patientId=")
+                .append(patientId);
+        return builder.toString();
     }
 }

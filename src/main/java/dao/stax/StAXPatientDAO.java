@@ -1,7 +1,7 @@
-package dao.xml;
+package dao.stax;
 
 import dao.PatientDAO;
-import dao.factories.STAXDAOFactory;
+import dao.factories.StAXDAOFactory;
 import models.Patient;
 
 import javax.xml.stream.XMLInputFactory;
@@ -9,13 +9,16 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class STAXPatientDAO implements PatientDAO {
+public class StAXPatientDAO implements PatientDAO {
+    private final String tableName = "Patient";
+    private final String xsdRoot = "src/main/resources/xsd/";
+    private final String xsdFile = "Patient.xsd";
+
 
     @Override
     public int insert(Patient obj) {
@@ -34,14 +37,14 @@ public class STAXPatientDAO implements PatientDAO {
 
     @Override
     public Optional<Patient> select(int id) {
-        try (FileInputStream fis = new FileInputStream(STAXDAOFactory.filepath)) {
+        try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
             while (reader.hasNext()) {
                 int event = reader.next();
 
                 if (event == XMLStreamConstants.START_ELEMENT) {
                     String elementName = reader.getLocalName();
-                    if ("Patient".equals(elementName)) {
+                    if (tableName.equals(elementName)) {
                         Patient patient = parsePatient(reader);
                         if (patient != null && patient.getPatientId() == id) {
                             return Optional.of(patient);
@@ -59,7 +62,7 @@ public class STAXPatientDAO implements PatientDAO {
     @Override
     public List<Patient> selectAll() {
 
-        try (FileInputStream fis = new FileInputStream(STAXDAOFactory.filepath)) {
+        try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
             List<Patient> patients = new ArrayList<>();
 
@@ -68,7 +71,7 @@ public class STAXPatientDAO implements PatientDAO {
 
                 if (event == XMLStreamConstants.START_ELEMENT) {
                     String elementName = reader.getLocalName();
-                    if ("Patient".equals(elementName)) {
+                    if (tableName.equals(elementName)) {
                         Patient patient = parsePatient(reader);
                         if (patient != null) {
                             patients.add(patient);
@@ -83,6 +86,10 @@ public class STAXPatientDAO implements PatientDAO {
         }
 
         return List.of();
+    }
+
+    public void validate(){
+
     }
 
     private Patient parsePatient(XMLStreamReader reader) throws XMLStreamException {
@@ -109,7 +116,7 @@ public class STAXPatientDAO implements PatientDAO {
 
                 case XMLStreamConstants.END_ELEMENT:
                     String endElementName = reader.getLocalName();
-                    if ("Patient".equals(endElementName)) {
+                    if (tableName.equals(endElementName)) {
                         return patient;
                     }
                     break;

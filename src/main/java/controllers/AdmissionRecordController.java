@@ -8,6 +8,7 @@ import views.generic.*;
 import views.patient.PatientRequestData;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -98,8 +99,8 @@ public class AdmissionRecordController {
         AdmissionRecord admissionRecord = new AdmissionRecord()
                 .setPatientId(Integer.parseInt(pd.get("patientId")))
                 .setConsultationId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
+                .setAdmissionDate(LocalDate.parse(pd.get("admissionDate")))
+                .setDischargeDate(LocalDate.parse(pd.get("dischargeDate")))
                 .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
                 .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
         return admissionRecord;

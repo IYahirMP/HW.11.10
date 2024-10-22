@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Consultation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consultationId" type="xs:int"/>
+                <xs:element name="date" type="xs:date"/>
+                <xs:element name="doctorId" type="xs:int"/>
+                <xs:element name="patientId" type="xs:int"/>
+                <xs:element name="diagnose" type="xs:string"/>
+                <xs:element name="prescriptionId" type="xs:int"/>
+                <xs:element name="admittedForTreatment" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

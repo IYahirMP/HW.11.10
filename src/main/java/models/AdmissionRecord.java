@@ -1,20 +1,42 @@
 package models;
 
-import java.sql.Date;
+import models.xml.LocalDateAdapter;
 
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDate;
+
+@XmlRootElement
+@XmlType(propOrder={"admissionId", "patientId", "consultationId", "admissionDate", "dischargeDate", "roomNumber", "bedNumber"})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AdmissionRecord {
+    @XmlElement(name = "admissionId")
     private int admissionId;
+
+    @XmlElement(name = "patientId")
     private int patientId; // Foreign key from Patient
+
+    @XmlElement(name = "consultationId")
     private int consultationId; // Foreign key from BasicConsultation
-    private Date admissionDate;
-    private Date dischargeDate;
+
+    @XmlElement(name = "admissionDate")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate admissionDate;
+
+    @XmlElement(name = "dischargeDate")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private LocalDate dischargeDate;
+
+    @XmlElement(name = "roomNumber")
     private int roomNumber;
+
+    @XmlElement(name = "bedNumber")
     private int bedNumber;
 
     // Constructors, getters, and setters
     public AdmissionRecord() {}
 
-    public AdmissionRecord(int admissionId, int patientId, int consultationId, Date admissionDate, Date dischargeDate, int roomNumber, int bedNumber) {
+    public AdmissionRecord(int admissionId, int patientId, int consultationId, LocalDate admissionDate, LocalDate dischargeDate, int roomNumber, int bedNumber) {
         this.admissionId = admissionId;
         this.patientId = patientId;
         this.consultationId = consultationId;
@@ -51,20 +73,20 @@ public class AdmissionRecord {
         return this;
     }
 
-    public Date getAdmissionDate() {
+    public LocalDate getAdmissionDate() {
         return admissionDate;
     }
 
-    public AdmissionRecord setAdmissionDate(Date admissionDate) {
+    public AdmissionRecord setAdmissionDate(LocalDate admissionDate) {
         this.admissionDate = admissionDate;
         return this;
     }
 
-    public Date getDischargeDate() {
+    public LocalDate getDischargeDate() {
         return dischargeDate;
     }
 
-    public AdmissionRecord setDischargeDate(Date dischargeDate) {
+    public AdmissionRecord setDischargeDate(LocalDate dischargeDate) {
         this.dischargeDate = dischargeDate;
         return this;
     }

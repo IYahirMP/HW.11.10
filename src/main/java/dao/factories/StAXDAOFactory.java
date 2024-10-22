@@ -1,9 +1,9 @@
 package dao.factories;
 
 import dao.*;
-import dao.xml.STAXPatientDAO;
+import dao.stax.*;
 
-public class STAXDAOFactory extends DAOFactory{
+public class StAXDAOFactory extends DAOFactory{
 
     public static String filepath = "";
 
@@ -12,7 +12,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public ConsultationDAO getConsultationDAO() {
-        return null;
+        return new StAXConsultationDAO();
     }
 
     /**
@@ -20,7 +20,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public PatientDAO getPatientDAO() {
-        return new STAXPatientDAO();
+        return new StAXPatientDAO();
     }
 
     /**
@@ -28,7 +28,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public DoctorDAO getDoctorDAO() {
-        return null;
+        return new StAXDoctorDAO();
     }
 
     /**
@@ -36,7 +36,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public AdmissionRecordDAO getAdmissionRecordDAO() {
-        return null;
+        return new StAXAdmissionRecordDAO();
     }
 
     /**
@@ -52,7 +52,7 @@ public class STAXDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceDAO getInvoiceDAO() {
-        return null;
+        return new StAXInvoiceDAO();
     }
 
     /**

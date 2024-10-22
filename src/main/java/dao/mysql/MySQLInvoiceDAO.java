@@ -139,7 +139,7 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
                 .setInvoiceId(rs.getInt("invoiceId"))
                 .setPatientId(rs.getInt("patientId"))
                 .setTotal(rs.getDouble("total"))
-                .setPaymentDate(rs.getDate("paymentDate"))
+                .setPaymentDate(rs.getDate("paymentDate").toLocalDate())
                 .setIsPaid(rs.getInt("isPaid"));
     }
 }
