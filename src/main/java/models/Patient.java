@@ -1,9 +1,12 @@
 package models;
 
 import javax.xml.bind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
 @XmlRootElement
 @XmlType(propOrder={"patientId", "name", "age", "address", "phone"})
 @XmlAccessorType(XmlAccessType.FIELD)
+
+@JsonRootName(value = "PatientList")
 public class Patient {
     @XmlElement(name = "patientId")
     private int patientId;

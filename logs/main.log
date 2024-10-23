@@ -70,3 +70,7 @@ Example: Antonio
 2024-10-22 05:06:23,209 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
 2024-10-22 05:09:45,320 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
 2024-10-22 05:09:45,662 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 10:04:24,675 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 20:53:37,904 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-22 22:18:44,222 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 22:25:34,379 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.

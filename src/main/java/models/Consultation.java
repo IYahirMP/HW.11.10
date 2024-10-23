@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.*;
 import models.xml.LocalDateAdapter;
 
 import javax.xml.bind.annotation.*;
@@ -55,6 +56,16 @@ public class Consultation {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    @JsonGetter("date")
+    public String getJSONDate(){
+        return date.toString();
+    }
+
+    @JsonSetter("date")
+    public void setJSONDate(String date){
+        this.date = LocalDate.parse(date);
     }
 
     public Consultation setDate(LocalDate date) {

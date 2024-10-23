@@ -1,6 +1,7 @@
 package dao.factories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.*;
 import dao.jackson.*;
@@ -119,6 +120,7 @@ public class JacksonDAOFactory extends DAOFactory{
 
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.registerModule(new JavaTimeModule());
+            objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
             return objectMapper.readValue(jsonDB, Hospital.class);
 
         } catch (IOException e) {

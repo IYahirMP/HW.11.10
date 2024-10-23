@@ -18,11 +18,21 @@ public class XmlUtils {
             // Set formatted output property
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
+            // Define file and create dirs
+            File file = new File(filepath);
+            if (!file.getParentFile().exists()){
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
+
             // Marshal the object to the specified file
-            jaxbMarshaller.marshal((clazz.cast(object)), new File(filepath + ".xml"));
+            jaxbMarshaller.marshal((clazz.cast(object)), file);
         } catch (JAXBException e) {
+            System.out.println("Error during JAXB marshalling.");
             System.out.println(e.getMessage());
             e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("Error during JAXB serialization.");
         }
     }
 }

@@ -2,11 +2,14 @@ package menu;
 
 import dao.factories.DAOFactory;
 import models.*;
-import models.xml.Hospital;
+import models.xml.*;
+import views.ExportEntity;
 import views.service.ServiceOperations;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static java.lang.System.exit;
 
 public class ExportXMLMenuHandler extends MenuHandler {
     public ExportXMLMenuHandler(DAOFactory factory) {
@@ -44,11 +47,42 @@ public class ExportXMLMenuHandler extends MenuHandler {
                     .setServices(services)
                     .setTreatmentRecords(treatmentRecords);
 
-            xml.XmlUtils.exportXML("hospital", db);
+            ExportEntity exportView = new ExportEntity();
+            exportView.display();
+            HashMap<String, String> answersMap = exportView.getInputs();
+            int option = Integer.parseInt(answersMap.get("menuOption"));
+
+            Object entity = switch(option){
+                case 1 -> new Patients().setPatients(patients);
+                case 2 -> new EmergencyContacts().setEmergencyContacts(emergencyContacts);
+                case 3 -> new Doctors().setDoctors(doctors);
+                case 4 -> new Consultations().setConsultations(consultations);
+                case 5 -> new Prescriptions().setPrescriptions(prescriptions);
+                case 6 -> new Medicines().setMedicines(medicines);
+                case 7 -> new AdmissionRecords().setAdmissionRecords(admissionRecords);
+                case 8 -> new TreatmentRecords().setTreatmentRecords(treatmentRecords);
+                case 9 -> new Invoices().setInvoices(invoices);
+                case 10 -> new Services().setServices(services);
+                case 11 -> new InvoiceHasServices().setInvoiceHasServices(invoiceHasServices);
+                case 12 -> new PrescriptionHasMedicines().setPrescriptionHasMedicines(prescriptionHasMedicines);
+                case 13 -> db;
+                case 14 -> "Exit";
+                default -> "Restart";
+            };
+
+            if ((entity.toString()).equals("Exit")){
+                exit(0);
+            } else if ((entity.toString()).equals("Restart")){
+                processMenuOption();
+            }
+
+            xml.XmlUtils.exportXML("target/database/xml/" + entity.getClass().getSimpleName() + ".xml", entity);
         }catch (Exception e){
             System.out.println("Some error occurred while exporting the database to XML");
             e.printStackTrace();
         }
+
+        processMenuOption();
     }
 }
 
