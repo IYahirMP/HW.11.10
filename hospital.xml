@@ -4,35 +4,35 @@
         <Patient>
             <patientId>1</patientId>
             <name>John Doe</name>
-            <age>0</age>
+            <age>30</age>
             <address>123 Elm St</address>
             <phone>5557654321</phone>
         </Patient>
         <Patient>
             <patientId>2</patientId>
             <name>Jane Smith</name>
-            <age>0</age>
+            <age>25</age>
             <address>456 Oak St</address>
             <phone>5552345678</phone>
         </Patient>
         <Patient>
             <patientId>3</patientId>
             <name>Alice</name>
-            <age>0</age>
+            <age>30</age>
             <address>7892, Pine Street, Bay City, California</address>
             <phone>1234123412</phone>
         </Patient>
         <Patient>
             <patientId>4</patientId>
             <name>John</name>
-            <age>0</age>
+            <age>21</age>
             <address>1234, somestreet, somecity, somestate</address>
             <phone>1231231231</phone>
         </Patient>
         <Patient>
             <patientId>9</patientId>
             <name>Gonorrah</name>
-            <age>0</age>
+            <age>19</age>
             <address>0909, sssooo, isisisii, isisdsds</address>
             <phone>4564564564</phone>
         </Patient>
