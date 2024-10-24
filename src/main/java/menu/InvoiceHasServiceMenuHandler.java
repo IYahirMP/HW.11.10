@@ -18,10 +18,13 @@ public class InvoiceHasServiceMenuHandler extends MenuHandler {
         HashMap<String,String> menuOptions = ops.getInputs();
         int val = Integer.parseInt(menuOptions.get("menuOption"));
 
+        int id1 = 0, id2 = 0;
+
         switch (val) {
             case 1:
-                int id = invoiceHasServiceController.requestId();
-                invoiceHasServiceController.show(id);
+                id1 = invoiceHasServiceController.requestId();
+                id2 = invoiceHasServiceController.requestId();
+                invoiceHasServiceController.show(id1, id2);
                 break;
             case 2:
                 InvoiceHasService record = invoiceHasServiceController.getData();
@@ -31,13 +34,13 @@ public class InvoiceHasServiceMenuHandler extends MenuHandler {
                 invoiceHasServiceController.index();
                 break;
             case 4:
-                id = invoiceHasServiceController.requestId();
-                invoiceHasServiceController.delete(id);
+                id1 = invoiceHasServiceController.requestId();
+                id2 = invoiceHasServiceController.requestId();
+                invoiceHasServiceController.delete(id1, id2);
                 break;
             case 5:
-                id = invoiceHasServiceController.requestId();
                 InvoiceHasService newRecord = invoiceHasServiceController.getData();
-                invoiceHasServiceController.update(id, newRecord);
+                invoiceHasServiceController.update(newRecord);
                 break;
             case 6:
                 displayEntitySelection(currentDataSourceFactory); // Navigate back to entity selection

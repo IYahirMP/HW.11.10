@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.MedicineDAO">
+    <select id="select" resultType="models.Medicine">
+        select * from Medicine where medicineId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.Medicine">
+        select * from Medicine
+    </select>
+    <insert id="insert" parameterType="models.Medicine">
+        insert into Medicine (name, cost, doseSize) values(#{name}, #{cost}, #{doseSize})
+    </insert>
+    <update id="update">
+        update Medicine set
+            name = #{obj.name},
+            cost = #{obj.cost},
+            doseSize = #{obj.doseSize}
+            where medicineId = #{id}
+    </update>
+    <delete id="delete">
+        delete from Medicine where medicineId = #{id}
+    </delete>
+</mapper>

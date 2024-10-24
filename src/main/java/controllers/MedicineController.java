@@ -1,9 +1,9 @@
 package controllers;
 
-import dao.MedicineDAO;
+import dao.interfaces.MedicineDAO;
 import models.Medicine;
-import models.TreatmentRecord;
 import views.generic.*;
+import views.medicine.MedicineRequestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,12 +62,12 @@ public class MedicineController {
         }
     }
 
-    public void update(int id, Medicine consultation) {
-        int affectedRows = medicineDAO.update(id, consultation);
+    public void update(int id, Medicine medicine) {
+        int affectedRows = medicineDAO.update(id, medicine);
         if(affectedRows > 0) {
             Updated<Medicine> updatedMedicine = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", medicine);
             data.put("updatedRows", affectedRows);
             data.put("updatedId", id);
             updatedMedicine.setInputs(data);
@@ -77,20 +77,16 @@ public class MedicineController {
         }
     }
 
-    public Medicine getData(){/*
+    public Medicine getData(){
         MedicineRequestData requestMedicineData = new MedicineRequestData();
         requestMedicineData.display();
         HashMap<String, String> pd = requestMedicineData.getInputs();
 
-        Medicine consultation = new Medicine()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setMedicineId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        Medicine medicine = new Medicine()
+                .setCost(Double.parseDouble(pd.get("cost")))
+                .setName(pd.get("name"))
+                .setDoseSize(Integer.parseInt(pd.get("doseSize")));
+        return medicine;
     }
 
     public List<Medicine> index(){
@@ -102,17 +98,7 @@ public class MedicineController {
 
         index.display();
         return medicines;
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            Medicines patientList = new Medicines();
-            patientList.setMedicines(patients);
-            exportXML("MedicineList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
+        
     }
 
     public List<Medicine> selectAll(){

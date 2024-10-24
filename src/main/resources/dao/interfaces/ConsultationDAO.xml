@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.ConsultationDAO">
+    <select id="select" resultType="models.Consultation">
+        select * from Consultation where consultationId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.Consultation">
+        select * from Consultation
+    </select>
+    <insert id="insert" parameterType="models.Consultation">
+        insert into Consultation (date, doctorId, patientId, diagnose, prescriptionId, admittedForTreatment)
+            values(#{date}, #{doctorId}, #{patientId}, #{diagnose}, #{prescriptionId}, #{admittedForTreatment})
+    </insert>
+    <update id="update">
+        update Consultation set
+            date = #{obj.date},
+            doctorId = #{obj.doctorId},
+            patientId = #{obj.patientId},
+            diagnose = #{obj.diagnose},
+            prescriptionId = #{obj.prescriptionId},
+            admittedForTreatment = #{obj.admittedForTreatment}
+            WHERE consultationId = #{id}
+    </update>
+    <delete id="delete">
+        delete from Consultation where consultationId = #{id}
+    </delete>
+</mapper>

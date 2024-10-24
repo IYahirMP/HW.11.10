@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.EmergencyContactDAO">
+    <select id="select" resultType="models.EmergencyContact">
+        select * from EmergencyContact where emergencyContactId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.EmergencyContact">
+        select * from EmergencyContact
+    </select>
+    <insert id="insert" parameterType="models.EmergencyContact">
+        insert into EmergencyContact (name, address, phone, patientId) values(#{name}, #{address}, #{phone}, #{patientId})
+    </insert>
+    <update id="update">
+        update EmergencyContact set name = #{obj.name}, address = #{obj.address}, phone = #{obj.phone}, patientId = #{obj.patientId} where emergencyContactId = #{id}
+    </update>
+    <delete id="delete">
+        delete from EmergencyContact where emergencyContactId = #{id}
+    </delete>
+</mapper>

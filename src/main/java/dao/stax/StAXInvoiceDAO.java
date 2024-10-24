@@ -1,6 +1,6 @@
 package dao.stax;
 
-import dao.InvoiceDAO;
+import dao.interfaces.InvoiceDAO;
 import dao.factories.StAXDAOFactory;
 import models.Invoice;
 

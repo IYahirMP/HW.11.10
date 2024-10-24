@@ -1,8 +1,8 @@
 package controllers;
 
-import dao.EmergencyContactDAO;
+import dao.interfaces.EmergencyContactDAO;
 import models.EmergencyContact;
-import models.TreatmentRecord;
+import views.emergency_contact.EmergencyContactRequestData;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -62,12 +62,12 @@ public class EmergencyContactController {
         }
     }
 
-    public void update(int id, EmergencyContact consultation) {
-        int affectedRows = emergencyContactDAO.update(id, consultation);
+    public void update(int id, EmergencyContact emergencyContact) {
+        int affectedRows = emergencyContactDAO.update(id, emergencyContact);
         if(affectedRows > 0) {
             Updated<EmergencyContact> updatedEmergencyContact = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", emergencyContact);
             data.put("updatedRows", affectedRows);
             data.put("updatedId", id);
             updatedEmergencyContact.setInputs(data);
@@ -77,20 +77,17 @@ public class EmergencyContactController {
         }
     }
 
-    public EmergencyContact getData(){/*
+    public EmergencyContact getData(){
         EmergencyContactRequestData requestEmergencyContactData = new EmergencyContactRequestData();
         requestEmergencyContactData.display();
         HashMap<String, String> pd = requestEmergencyContactData.getInputs();
 
-        EmergencyContact consultation = new EmergencyContact()
+        EmergencyContact emergencyContact = new EmergencyContact()
                 .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setEmergencyContactId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+                .setAddress(pd.get("address"))
+                .setPhone(pd.get("phone"))
+                .setName(pd.get("name"));
+        return emergencyContact;
     }
 
     public List<EmergencyContact> index(){
@@ -103,16 +100,6 @@ public class EmergencyContactController {
         index.display();
         return emergencyContacts;
 
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            EmergencyContacts patientList = new EmergencyContacts();
-            patientList.setEmergencyContacts(patients);
-            exportXML("EmergencyContactList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<EmergencyContact> selectAll(){

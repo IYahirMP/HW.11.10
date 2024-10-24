@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.InvoiceHasServiceDAO">
+    <select id="select" resultType="models.InvoiceHasService">
+        select * from InvoiceHasService where invoiceId = #{invoiceId} and serviceId = #{serviceId}
+    </select>
+    <select id="selectByInvoice" resultType="models.InvoiceHasService">
+        select * from InvoiceHasService where invoiceId = #{invoiceId}
+    </select>
+    <select id="selectByService" resultType="models.InvoiceHasService">
+        select * from InvoiceHasService where serviceId = #{serviceId}
+    </select>
+    <select id="selectAll" resultType="models.InvoiceHasService">
+        select * from InvoiceHasService
+    </select>
+    <insert id="insert" parameterType="models.InvoiceHasService">
+        insert into InvoiceHasService (invoiceId, serviceId, quantity, lineCost) values(#{invoiceId}, #{serviceId}, #{quantity}, #{lineCost})
+    </insert>
+    <update id="update">
+        update InvoiceHasService set quantity=#{quantity}, lineCost=#{lineCost}
+            where invoiceId = #{invoiceId} and serviceId = #{serviceId}
+    </update>
+    <delete id="delete">
+        delete from InvoiceHasService where invoiceId = #{invoiceId} and serviceId = #{serviceId}
+    </delete>
+</mapper>

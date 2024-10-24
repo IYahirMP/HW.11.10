@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<patient>
-    <patientId>3</patientId>
-    <name>Alice Johnson</name>
-    <age>0</age>
-    <address>789 Pine St</address>
-    <phone>5553456789</phone>
-</patient>

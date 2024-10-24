@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.*;
 import models.xml.LocalDateAdapter;
 
 import javax.xml.bind.annotation.*;
@@ -57,6 +58,16 @@ public class Consultation {
         return date;
     }
 
+    @JsonGetter("date")
+    public String getJSONDate(){
+        return date.toString();
+    }
+
+    @JsonSetter("date")
+    public void setJSONDate(String date){
+        this.date = LocalDate.parse(date);
+    }
+
     public Consultation setDate(LocalDate date) {
         this.date = date;
         return this;
@@ -109,15 +120,14 @@ public class Consultation {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class Consultation {\n")
-                .append("  consultationId: ").append(consultationId).append("\n")
-                .append("  date: ").append(date).append("\n")
-                .append("  doctorId: ").append(doctorId).append("\n")
-                .append("  patientId: ").append(patientId).append("\n")
-                .append("  diagnose: ").append(diagnose).append("\n")
-                .append("  prescriptionId: ").append(prescriptionId).append("\n")
-                .append("  admittedForTreatment: ").append(admittedForTreatment).append("\n");
-        return sb.toString();
+        String sb = "class Consultation {\n" +
+                "  consultationId: " + consultationId + "\n" +
+                "  date: " + date + "\n" +
+                "  doctorId: " + doctorId + "\n" +
+                "  patientId: " + patientId + "\n" +
+                "  diagnose: " + diagnose + "\n" +
+                "  prescriptionId: " + prescriptionId + "\n" +
+                "  admittedForTreatment: " + admittedForTreatment + "\n";
+        return sb;
     }
 }

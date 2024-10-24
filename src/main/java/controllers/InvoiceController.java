@@ -1,10 +1,11 @@
 package controllers;
 
-import dao.InvoiceDAO;
+import dao.interfaces.InvoiceDAO;
 import models.Invoice;
-import models.TreatmentRecord;
 import views.generic.*;
+import views.invoice.InvoiceRequestData;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -62,12 +63,12 @@ public class InvoiceController {
         }
     }
 
-    public void update(int id, Invoice consultation) {
-        int affectedRows = invoiceDAO.update(id, consultation);
+    public void update(int id, Invoice invoice) {
+        int affectedRows = invoiceDAO.update(id, invoice);
         if(affectedRows > 0) {
             Updated<Invoice> updatedInvoice = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", invoice);
             data.put("updatedRows", affectedRows);
             data.put("updatedId", id);
             updatedInvoice.setInputs(data);
@@ -77,20 +78,17 @@ public class InvoiceController {
         }
     }
 
-    public Invoice getData(){/*
+    public Invoice getData(){
         InvoiceRequestData requestInvoiceData = new InvoiceRequestData();
         requestInvoiceData.display();
         HashMap<String, String> pd = requestInvoiceData.getInputs();
 
-        Invoice consultation = new Invoice()
+        Invoice invoice = new Invoice()
                 .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setInvoiceId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+                .setIsPaid(Integer.parseInt(pd.get("isPaid")))
+                .setTotal(Double.parseDouble(pd.get("total")))
+                .setPaymentDate(LocalDate.parse(pd.get("paymentDate")));
+        return invoice;
     }
 
     public List<Invoice> index(){
@@ -102,17 +100,6 @@ public class InvoiceController {
 
         index.display();
         return invoices;
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            Invoices patientList = new Invoices();
-            patientList.setInvoices(patients);
-            exportXML("InvoiceList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<Invoice> selectAll(){

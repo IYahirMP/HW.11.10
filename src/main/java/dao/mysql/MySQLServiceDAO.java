@@ -1,6 +1,6 @@
 package dao.mysql;
 
-import dao.ServiceDAO;
+import dao.interfaces.ServiceDAO;
 import models.Service;
 
 import java.sql.Connection;

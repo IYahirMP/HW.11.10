@@ -1,9 +1,11 @@
 package controllers;
 
-import dao.TreatmentRecordDAO;
+import dao.interfaces.TreatmentRecordDAO;
 import models.TreatmentRecord;
 import views.generic.*;
+import views.treatment_record.TreatmentRecordRequestData;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -76,20 +78,16 @@ public class TreatmentRecordController {
         }
     }
 
-    public TreatmentRecord getData(){/*
+    public TreatmentRecord getData(){
         TreatmentRecordRequestData requestTreatmentRecordData = new TreatmentRecordRequestData();
         requestTreatmentRecordData.display();
         HashMap<String, String> pd = requestTreatmentRecordData.getInputs();
 
         TreatmentRecord consultation = new TreatmentRecord()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setTreatmentRecordId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+                .setAdmissionId(Integer.parseInt(pd.get("admissionId")))
+                .setNotes(pd.get("notes"))
+                .setTime(LocalDateTime.parse(pd.get("time")));
+        return consultation;
     }
 
     public void index(){
@@ -100,17 +98,6 @@ public class TreatmentRecordController {
         index.setInputs(data);
 
         index.display();
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            TreatmentRecords patientList = new TreatmentRecords();
-            patientList.setTreatmentRecords(patients);
-            exportXML("TreatmentRecordList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<TreatmentRecord> selectAll(){

@@ -74,17 +74,16 @@ public class Invoice {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Invoice [invoiceId=")
-                .append(invoiceId)
-                .append(", total=")
-                .append(total)
-                .append(", isPaid=")
-                .append(isPaid)
-                .append(", patientId=")
-                .append(patientId)
-                .append(", paymentDate=")
-                .append(paymentDate);
-        return builder.toString();
+        String builder = "Invoice [invoiceId=" +
+                invoiceId +
+                ", total=" +
+                total +
+                ", isPaid=" +
+                isPaid +
+                ", patientId=" +
+                patientId +
+                ", paymentDate=" +
+                paymentDate;
+        return builder;
     }
 }

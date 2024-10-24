@@ -1,9 +1,9 @@
 package controllers;
 
-import dao.PrescriptionHasMedicineDAO;
+import dao.interfaces.PrescriptionHasMedicineDAO;
 import models.PrescriptionHasMedicine;
-import models.TreatmentRecord;
 import views.generic.*;
+import views.prescription_has_medicine.PrescriptionHasMedicineRequestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +23,36 @@ public class PrescriptionHasMedicineController {
         return id;
     }
 
-    public void show(int id) {
-        Optional<PrescriptionHasMedicine> record = prescriptionHasMedicineDAO.select(id);
+    public void showByPrescription(int prescriptionId) {
+        List<PrescriptionHasMedicine> record = prescriptionHasMedicineDAO.selectByPrescription(prescriptionId);
+        if(!record.isEmpty()) {
+            Index<PrescriptionHasMedicine> showPrescriptionHasMedicine = new Index<>();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("element", record);
+            showPrescriptionHasMedicine.setInputs(data);
+            showPrescriptionHasMedicine.display();
+        }
+        else{
+            System.out.println("PrescriptionHasMedicine not found");
+        }
+    }
+
+    public void showByMedicine(int medicineId) {
+        List<PrescriptionHasMedicine> record = prescriptionHasMedicineDAO.selectByMedicine(medicineId);
+        if(!record.isEmpty()) {
+            Index<PrescriptionHasMedicine> showPrescriptionHasMedicine = new Index<>();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("element", record);
+            showPrescriptionHasMedicine.setInputs(data);
+            showPrescriptionHasMedicine.display();
+        }
+        else{
+            System.out.println("PrescriptionHasMedicine not found");
+        }
+    }
+
+    public void show(int prescriptionId, int medicineId) {
+        Optional<PrescriptionHasMedicine> record = prescriptionHasMedicineDAO.select(prescriptionId, medicineId);
         if(record.isPresent()) {
             //Views
             Show<PrescriptionHasMedicine> showPrescriptionHasMedicine = new Show<>();
@@ -38,12 +66,13 @@ public class PrescriptionHasMedicineController {
         }
     }
 
-    public void delete(int id) {
-        int deleted = prescriptionHasMedicineDAO.delete(id);
+    public void delete(int prescriptionId, int medicineId) {
+        int deleted = prescriptionHasMedicineDAO.delete(prescriptionId, medicineId);
         Deleted del = new Deleted();
         HashMap<String, Object> data = new HashMap<>();
         data.put("deletedRows", deleted);
-        data.put("deletedId", id);
+        data.put("deletedId1", prescriptionId);
+        data.put("deletedId2", medicineId);
         data.put("deletedType", "PrescriptionHasMedicine");
         del.setInputs(data);
         del.display();
@@ -62,14 +91,15 @@ public class PrescriptionHasMedicineController {
         }
     }
 
-    public void update(int id, PrescriptionHasMedicine consultation) {
-        int affectedRows = prescriptionHasMedicineDAO.update(id, consultation);
+    public void update(PrescriptionHasMedicine prescriptionHasMedicine) {
+        int affectedRows = prescriptionHasMedicineDAO.update(prescriptionHasMedicine);
         if(affectedRows > 0) {
             Updated<PrescriptionHasMedicine> updatedPrescriptionHasMedicine = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", prescriptionHasMedicine);
             data.put("updatedRows", affectedRows);
-            data.put("updatedId", id);
+            data.put("updatedId1", prescriptionHasMedicine.getPrescriptionId());
+            data.put("updatedId2", prescriptionHasMedicine.getMedicineId());
             updatedPrescriptionHasMedicine.setInputs(data);
             updatedPrescriptionHasMedicine.display();
         }else{
@@ -77,23 +107,22 @@ public class PrescriptionHasMedicineController {
         }
     }
 
-    public PrescriptionHasMedicine getData(){/*
+    public PrescriptionHasMedicine getData(){
         PrescriptionHasMedicineRequestData requestPrescriptionHasMedicineData = new PrescriptionHasMedicineRequestData();
         requestPrescriptionHasMedicineData.display();
         HashMap<String, String> pd = requestPrescriptionHasMedicineData.getInputs();
 
-        PrescriptionHasMedicine consultation = new PrescriptionHasMedicine()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setPrescriptionHasMedicineId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        PrescriptionHasMedicine prescriptionHasMedicine = new PrescriptionHasMedicine()
+                .setMedicineId(Integer.parseInt(pd.get("medicineId")))
+                .setPrescriptionId(Integer.parseInt(pd.get("prescriptionId")))
+                .setPrescribedDays(Integer.parseInt(pd.get("prescribedDays")))
+                .setPrescribedDose(pd.get("prescribedDose"))
+                .setPrescribedTiming(pd.get("prescribedTiming"));
+
+        return prescriptionHasMedicine;
     }
 
-    public void index(){
+    public List<PrescriptionHasMedicine> index(){
         List<PrescriptionHasMedicine> prescriptionHasMedicines = prescriptionHasMedicineDAO.selectAll();
         HashMap<String, Object> data = new HashMap<>();
         data.put("element", prescriptionHasMedicines);
@@ -101,17 +130,7 @@ public class PrescriptionHasMedicineController {
         index.setInputs(data);
 
         index.display();
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            PrescriptionHasMedicines patientList = new PrescriptionHasMedicines();
-            patientList.setPrescriptionHasMedicines(patients);
-            exportXML("PrescriptionHasMedicineList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
+        return prescriptionHasMedicines;
     }
 
     public List<PrescriptionHasMedicine> selectAll(){

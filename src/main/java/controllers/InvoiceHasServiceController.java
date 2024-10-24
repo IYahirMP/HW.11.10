@@ -1,9 +1,9 @@
 package controllers;
 
-import dao.InvoiceHasServiceDAO;
+import dao.interfaces.InvoiceHasServiceDAO;
 import models.InvoiceHasService;
-import models.TreatmentRecord;
 import views.generic.*;
+import views.invoice_has_service.InvoiceHasServiceRequestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +23,36 @@ public class InvoiceHasServiceController {
         return id;
     }
 
-    public void show(int id) {
-        Optional<InvoiceHasService> record = invoiceHasServiceDAO.select(id);
+    public void showByInvoiceId(int invoiceId) {
+        List<InvoiceHasService> record = invoiceHasServiceDAO.selectByInvoice(invoiceId);
+        if(!record.isEmpty()) {
+            Index<InvoiceHasService> showInvoiceHasService = new Index<>();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("element", record);
+            showInvoiceHasService.setInputs(data);
+            showInvoiceHasService.display();
+        }
+        else{
+            System.out.println("InvoiceHasService not found");
+        }
+    }
+
+    public void showByServiceId(int serviceId) {
+        List<InvoiceHasService> record = invoiceHasServiceDAO.selectByService(serviceId);
+        if(!record.isEmpty()) {
+            Index<InvoiceHasService> showInvoiceHasService = new Index<>();
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("element", record);
+            showInvoiceHasService.setInputs(data);
+            showInvoiceHasService.display();
+        }
+        else{
+            System.out.println("InvoiceHasService not found");
+        }
+    }
+
+    public void show(int invoiceId, int serviceId) {
+        Optional<InvoiceHasService> record = invoiceHasServiceDAO.select(invoiceId, serviceId);
         if(record.isPresent()) {
             //Views
             Show<InvoiceHasService> showInvoiceHasService = new Show<>();
@@ -38,12 +66,13 @@ public class InvoiceHasServiceController {
         }
     }
 
-    public void delete(int id) {
-        int deleted = invoiceHasServiceDAO.delete(id);
+    public void delete(int invoiceId, int serviceId) {
+        int deleted = invoiceHasServiceDAO.delete(invoiceId, serviceId);
         Deleted del = new Deleted();
         HashMap<String, Object> data = new HashMap<>();
         data.put("deletedRows", deleted);
-        data.put("deletedId", id);
+        data.put("deletedId1", invoiceId);
+        data.put("deletedId2", serviceId);
         data.put("deletedType", "InvoiceHasService");
         del.setInputs(data);
         del.display();
@@ -62,14 +91,15 @@ public class InvoiceHasServiceController {
         }
     }
 
-    public void update(int id, InvoiceHasService consultation) {
-        int affectedRows = invoiceHasServiceDAO.update(id, consultation);
+    public void update(InvoiceHasService invoiceHasService) {
+        int affectedRows = invoiceHasServiceDAO.update(invoiceHasService);
         if(affectedRows > 0) {
             Updated<InvoiceHasService> updatedInvoiceHasService = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", invoiceHasService);
             data.put("updatedRows", affectedRows);
-            data.put("updatedId", id);
+            data.put("updatedId1", invoiceHasService.getInvoiceId());
+            data.put("updatedId2", invoiceHasService.getServiceId());
             updatedInvoiceHasService.setInputs(data);
             updatedInvoiceHasService.display();
         }else{
@@ -77,20 +107,17 @@ public class InvoiceHasServiceController {
         }
     }
 
-    public InvoiceHasService getData(){/*
+    public InvoiceHasService getData(){
         InvoiceHasServiceRequestData requestInvoiceHasServiceData = new InvoiceHasServiceRequestData();
         requestInvoiceHasServiceData.display();
         HashMap<String, String> pd = requestInvoiceHasServiceData.getInputs();
 
-        InvoiceHasService consultation = new InvoiceHasService()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setInvoiceHasServiceId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        InvoiceHasService invoiceHasService = new InvoiceHasService()
+                .setInvoiceId(Integer.parseInt(pd.get("invoiceId")))
+                .setServiceId(Integer.parseInt(pd.get("serviceId")))
+                .setLineCost(Double.parseDouble(pd.get("lineCost")))
+                .setQuantity(Integer.parseInt(pd.get("quantity")));
+        return invoiceHasService;
     }
 
     public List<InvoiceHasService> index(){
@@ -102,17 +129,6 @@ public class InvoiceHasServiceController {
 
         index.display();
         return invoiceHasServices;
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            InvoiceHasServices patientList = new InvoiceHasServices();
-            patientList.setInvoiceHasServices(patients);
-            exportXML("InvoiceHasServiceList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<InvoiceHasService> selectAll(){

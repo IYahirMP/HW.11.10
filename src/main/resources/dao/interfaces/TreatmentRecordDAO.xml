@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.TreatmentRecordDAO">
+    <select id="select" resultType="models.TreatmentRecord">
+        select * from TreatmentRecord where treatmentRecordId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.TreatmentRecord">
+        select * from TreatmentRecord
+    </select>
+    <insert id="insert" parameterType="models.TreatmentRecord">
+        insert into TreatmentRecord (admissionId, time, notes) values(#{admissionId}, #{time}, #{notes})
+    </insert>
+    <update id="update">
+        update TreatmentRecord set admissionId = #{obj.admissionId}, time = #{obj.time}, #{obj.notes} where treatmentRecordId = #{id}
+    </update>
+    <delete id="delete">
+        delete from TreatmentRecord where treatmentRecordId = #{id}
+    </delete>
+</mapper>

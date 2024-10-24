@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.InvoiceDAO">
+    <select id="select" resultType="models.Invoice">
+        select * from Invoice where invoiceId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.Invoice">
+        select * from Invoice
+    </select>
+    <insert id="insert" parameterType="models.Invoice">
+        insert into Invoice (total, isPaid, patientId, paymentDate) values(#{total}, #{isPaid}, #{patientId}, #{paymentDate})
+    </insert>
+    <update id="update">
+        update Invoice set
+            total = #{obj.total},
+            isPaid = #{obj.isPaid},
+            patientId = #{obj.patientId},
+            paymentDate = #{obj.paymentDate}
+            where invoiceId = #{id}
+    </update>
+    <delete id="delete">
+        delete from Invoice where invoiceId = #{id}
+    </delete>
+</mapper>

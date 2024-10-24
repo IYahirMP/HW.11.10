@@ -1,7 +1,7 @@
 package views.generic;
 
-import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
+import com.solvd.laba.input.single_input.StringInput;
+import com.solvd.laba.view.FeedbackView;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

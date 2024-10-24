@@ -1,8 +1,7 @@
 package dao.factories;
 
-import dao.*;
+import dao.interfaces.*;
 import dao.jaxb.*;
-import dao.stax.*;
 
 public class JAXBDAOFactory extends DAOFactory{
 

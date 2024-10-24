@@ -18,10 +18,13 @@ public class PrescriptionHasMedicineMenuHandler extends MenuHandler {
         HashMap<String,String> menuOptions = ops.getInputs();
         int val = Integer.parseInt(menuOptions.get("menuOption"));
 
+
+        int id1 = 0, id2 = 0;
         switch (val) {
             case 1:
-                int id = prescriptionHasMedicineController.requestId();
-                prescriptionHasMedicineController.show(id);
+                id1 = invoiceHasServiceController.requestId();
+                id2 = invoiceHasServiceController.requestId();
+                prescriptionHasMedicineController.show(id1, id2);
                 break;
             case 2:
                 PrescriptionHasMedicine record = prescriptionHasMedicineController.getData();
@@ -31,13 +34,13 @@ public class PrescriptionHasMedicineMenuHandler extends MenuHandler {
                 prescriptionHasMedicineController.index();
                 break;
             case 4:
-                id = prescriptionHasMedicineController.requestId();
-                prescriptionHasMedicineController.delete(id);
+                id1 = invoiceHasServiceController.requestId();
+                id2 = invoiceHasServiceController.requestId();
+                prescriptionHasMedicineController.delete(id1, id2);
                 break;
             case 5:
-                id = prescriptionHasMedicineController.requestId();
                 PrescriptionHasMedicine newRecord = prescriptionHasMedicineController.getData();
-                prescriptionHasMedicineController.update(id, newRecord);
+                prescriptionHasMedicineController.update(newRecord);
                 break;
             case 6:
                 displayEntitySelection(currentDataSourceFactory); // Navigate back to entity selection

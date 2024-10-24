@@ -1,7 +1,6 @@
 package dao.mysql;
 
-import dao.ConsultationDAO;
-import dao.EmergencyContactDAO;
+import dao.interfaces.EmergencyContactDAO;
 import models.EmergencyContact;
 
 import java.sql.Connection;

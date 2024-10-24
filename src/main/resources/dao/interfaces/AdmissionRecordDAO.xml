@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.AdmissionRecordDAO">
+    <select id="select" resultType="models.AdmissionRecord">
+        select * from AdmissionRecord where admissionId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.AdmissionRecord">
+        select * from AdmissionRecord
+    </select>
+    <insert id="insert" parameterType="models.AdmissionRecord">
+        insert into AdmissionRecord (patientId, consultationId, admissionDate, dischargeDate, roomNumber, bedNumber)
+            values(#{patientId}, #{consultationId}, #{admissionDate}, #{dischargeDate}, #{roomNumber}, #{bedNumber})
+    </insert>
+    <update id="update">
+        UPDATE AdmissionRecord SET
+            patientId = #{obj.patientId}, consultationId = #{obj.consultationId},
+            admissionDate = #{obj.admissionDate}, dischargeDate = #{obj.dischargeDate},
+            roomNumber = #{obj.roomNumber}, bedNumber = #{obj.bedNumber}
+            WHERE admissionId = #{id}
+    </update>
+    <delete id="delete">
+        delete from AdmissionRecord where admissionId = #{id}
+    </delete>
+</mapper>

@@ -1,6 +1,6 @@
 package dao.mysql.generic;
 
-import dao.Crud;
+import dao.interfaces.Crud;
 
 import java.sql.*;
 import java.util.*;

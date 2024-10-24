@@ -111,22 +111,21 @@ public class AdmissionRecord {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("AdmissionRecord [admissionId=");
-        builder.append(admissionId);
-        builder.append(", patientId=");
-        builder.append(patientId);
-        builder.append(", consultationId=");
-        builder.append(consultationId);
-        builder.append(", admissionDate=");
-        builder.append(admissionDate);
-        builder.append(", dischargeDate=");
-        builder.append(dischargeDate);
-        builder.append(", roomNumber=");
-        builder.append(roomNumber);
-        builder.append(", bedNumber=");
-        builder.append(bedNumber);
-        builder.append("]");
-        return builder.toString();
+        String builder = "AdmissionRecord [admissionId=" +
+                admissionId +
+                ", patientId=" +
+                patientId +
+                ", consultationId=" +
+                consultationId +
+                ", admissionDate=" +
+                admissionDate +
+                ", dischargeDate=" +
+                dischargeDate +
+                ", roomNumber=" +
+                roomNumber +
+                ", bedNumber=" +
+                bedNumber +
+                "]";
+        return builder;
     }
 }
