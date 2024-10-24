@@ -1,7 +1,7 @@
 package views.prescription;
 
-import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
+import com.solvd.laba.input.single_input.StringInput;
+import com.solvd.laba.view.FeedbackView;
 
 import java.util.HashMap;
 
@@ -21,7 +21,7 @@ public class PrescriptionRequestData extends FeedbackView {
     public HashMap<String, String> getInputs(){
         StringInput[] stringInputs = {
                 new StringInput("patientId",   "Patient's id", StringInput.TypeOfString.NUMBER),
-                new StringInput("diagnose", "Diagnose", StringInput.TypeOfString.NUMBER),
+                new StringInput("diagnose", "Diagnose", StringInput.TypeOfString.LARGE_INPUT),
         };
 
         processInputs(stringInputs);

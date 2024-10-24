@@ -1,78 +1,85 @@
-2024-10-15 07:33:02,925 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 07:33:12,352 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 07:34:31,035 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 07:38:11,967 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 07:38:21,368 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid word should only contain alphabetic characters.
-2024-10-15 08:57:56,165 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 10:35:48,385 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 10:36:53,645 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 10:50:31,155 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 10:51:45,246 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 11:17:39,238 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-15 07:33:02,925 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:33:12,352 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:34:31,035 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:38:11,967 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 07:38:21,368 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid word should only contain alphabetic characters.
+2024-10-15 08:57:56,165 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 10:35:48,385 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 10:36:53,645 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 10:50:31,155 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 10:51:45,246 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 11:17:39,238 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-15 11:17:44,291 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-15 11:17:44,291 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-15 11:17:45,429 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-15 11:17:45,429 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-15 11:17:45,940 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-15 11:17:45,940 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-15 11:30:07,142 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 11:34:51,811 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 11:34:55,317 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-15 11:35:03,319 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
-2024-10-15 11:35:08,271 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Passwords may contain alphabetic characters and special characters *_+-=()
-2024-10-15 12:55:06,681 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-18 10:43:27,026 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
-2024-10-18 10:43:28,507 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
-2024-10-18 11:01:49,106 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-18 11:34:29,270 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-18 11:34:42,989 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-18 11:34:44,352 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-18 11:54:39,364 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,004 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,006 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,133 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,607 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,791 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:32,919 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:33,079 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:33,221 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:33,395 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:33,600 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:34,045 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:34,218 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:34,771 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-19 12:56:49,452 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
-2024-10-19 12:58:06,286 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-19 22:37:39,582 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-19 22:37:53,227 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-15 11:30:07,142 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 11:34:51,811 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 11:34:55,317 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-15 11:35:03,319 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
+2024-10-15 11:35:08,271 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Passwords may contain alphabetic characters and special characters *_+-=()
+2024-10-15 12:55:06,681 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-18 10:43:27,026 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
+2024-10-18 10:43:28,507 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
+2024-10-18 11:01:49,106 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-18 11:34:29,270 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-18 11:34:42,989 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-18 11:34:44,352 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-18 11:54:39,364 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,004 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,006 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,133 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,607 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,791 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:32,919 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:33,079 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:33,221 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:33,395 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:33,600 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:34,045 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:34,218 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:34,771 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-19 12:56:49,452 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
+2024-10-19 12:58:06,286 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-19 22:37:39,582 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-19 22:37:53,227 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-19 22:40:30,017 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid phone should be a number containing exactly 10 digits
+2024-10-19 22:40:30,017 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid phone should be a number containing exactly 10 digits
 Example: 123456789
-2024-10-21 00:43:44,479 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:52,047 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-21 00:43:52,855 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:53,144 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:53,388 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:53,687 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:54,251 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 00:43:54,698 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Date is not a valid date
-2024-10-21 23:11:18,261 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-21 23:13:54,119 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-21 23:14:02,831 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-21 00:43:44,479 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:52,047 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 00:43:52,855 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,144 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,388 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:53,687 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:54,251 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 00:43:54,698 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Date is not a valid date
+2024-10-21 23:11:18,261 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 23:13:54,119 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 23:14:02,831 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-21 23:14:03,163 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-21 23:14:03,163 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-21 23:14:04,060 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
+2024-10-21 23:14:04,060 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid name should begin with uppercase letter (A-Z), be at least 3 letters and a maximum of 16.
 Example: Antonio
-2024-10-21 23:42:39,950 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-22 04:00:31,360 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-22 05:06:23,209 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-22 05:09:45,320 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-22 05:09:45,662 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
-2024-10-22 10:04:24,675 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-22 20:53:37,904 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
-2024-10-22 22:18:44,222 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-22 22:25:34,379 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
-2024-10-24 00:01:51,279 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
-2024-10-24 00:02:09,928 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.computer_repair_service.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-21 23:42:39,950 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 04:00:31,360 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 05:06:23,209 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 05:09:45,320 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 05:09:45,662 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A path should follow the next format: <Letter>:/folder1/folder2/<more folders>/file.extension
+2024-10-22 10:04:24,675 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 20:53:37,904 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-22 22:18:44,222 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-22 22:25:34,379 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-24 00:01:51,279 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: Usernames may contain alphabetic characters, numbers, hyphens and underscores (-_)
+2024-10-24 00:02:09,928 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid number should only contain characters ranging from 0 to 9.
+2024-10-24 06:13:50,261 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:13:57,771 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:13:58,648 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:13:59,058 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:13:59,327 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:13:59,528 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/
+2024-10-24 06:14:00,646 ERROR c.s.l.c.v.FeedbackView [main] com.solvd.laba.input.exception.InvalidWordException: A valid URL may follow the format http[s]://route.to.resource:[port]/

@@ -18,10 +18,12 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public int insert(PrescriptionHasMedicine obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
-            return mapper.insert(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.insert(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -34,10 +36,12 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public int update(PrescriptionHasMedicine obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
-            return mapper.update(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.update(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -51,10 +55,12 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public int delete(int prescriptionId, int medicineId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
-            return mapper.delete(prescriptionId, medicineId);
-        }catch(SQLException e){
+            int deletedRows = mapper.delete(prescriptionId, medicineId);
+            con.commit();
+            return deletedRows;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -68,10 +74,10 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public Optional<PrescriptionHasMedicine> select(int prescriptionId, int medicineId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
             return mapper.select(prescriptionId, medicineId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -83,10 +89,10 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public List<PrescriptionHasMedicine> selectAll() {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
             return mapper.selectAll();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();
@@ -98,10 +104,10 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public List<PrescriptionHasMedicine> selectByPrescription(int prescriptionId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
             return mapper.selectByPrescription(prescriptionId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();
@@ -113,10 +119,10 @@ public class MyBatisPrescriptionHasMedicineDAO implements PrescriptionHasMedicin
      */
     @Override
     public List<PrescriptionHasMedicine> selectByMedicine(int medicineId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             PrescriptionHasMedicineDAO mapper = con.getMapper(PrescriptionHasMedicineDAO.class);
             return mapper.selectByMedicine(medicineId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();

@@ -2,6 +2,7 @@ package controllers;
 
 import dao.interfaces.DoctorDAO;
 import models.Doctor;
+import views.doctor.DoctorRequestData;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -76,20 +77,15 @@ public class DoctorController {
         }
     }
 
-    public Doctor getData(){/*
+    public Doctor getData(){
         DoctorRequestData requestDoctorData = new DoctorRequestData();
         requestDoctorData.display();
         HashMap<String, String> pd = requestDoctorData.getInputs();
 
         Doctor consultation = new Doctor()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setDoctorId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+                .setName(pd.get("name"))
+                .setPhone(pd.get("phone"));
+        return consultation;
     }
 
     public List<Doctor> index(){

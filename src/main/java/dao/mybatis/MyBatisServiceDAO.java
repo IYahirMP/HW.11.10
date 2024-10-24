@@ -17,10 +17,12 @@ public class MyBatisServiceDAO implements ServiceDAO {
      */
     @Override
     public int insert(Service obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             ServiceDAO mapper = con.getMapper(ServiceDAO.class);
-            return mapper.insert(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.insert(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -33,10 +35,12 @@ public class MyBatisServiceDAO implements ServiceDAO {
      */
     @Override
     public int update(int id, Service obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             ServiceDAO mapper = con.getMapper(ServiceDAO.class);
-            return mapper.update(id, obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.update(id, obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -48,10 +52,12 @@ public class MyBatisServiceDAO implements ServiceDAO {
      */
     @Override
     public int delete(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             ServiceDAO mapper = con.getMapper(ServiceDAO.class);
-            return mapper.delete(id);
-        }catch(SQLException e){
+            int rowsAffected = mapper.delete(id);
+            con.commit();
+            return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -64,10 +70,10 @@ public class MyBatisServiceDAO implements ServiceDAO {
      */
     @Override
     public Optional<Service> select(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             ServiceDAO mapper = con.getMapper(ServiceDAO.class);
-             return mapper.select(id);
-        }catch(SQLException e){
+            return mapper.select(id);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -79,10 +85,10 @@ public class MyBatisServiceDAO implements ServiceDAO {
      */
     @Override
     public List<Service> selectAll() {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             ServiceDAO mapper = con.getMapper(ServiceDAO.class);
             return mapper.selectAll();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

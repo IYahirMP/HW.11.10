@@ -17,7 +17,7 @@ public class MainController {
     private AdmissionRecordController admissionRecordController;
 
     //Home views
-    private DataSourceSelection menuView = new DataSourceSelection();
+    private final DataSourceSelection menuView = new DataSourceSelection();
     public MainController() {}
 
     public void start(){

@@ -1,7 +1,7 @@
 package views.invoice_has_service;
 
-import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
+import com.solvd.laba.input.single_input.StringInput;
+import com.solvd.laba.view.FeedbackView;
 
 import java.util.HashMap;
 
@@ -20,7 +20,7 @@ public class InvoiceHasServiceRequestData extends FeedbackView {
 
     public HashMap<String, String> getInputs(){
         StringInput[] stringInputs = {
-                new StringInput("invoiceId",   "Total", StringInput.TypeOfString.NAME),
+                new StringInput("invoiceId",   "Total", StringInput.TypeOfString.NUMBER),
                 new StringInput("serviceId", "Is paid (yes = 1 or higher, no = 0 or lower)", StringInput.TypeOfString.NUMBER),
                 new StringInput("quantity", "Quantity of items", StringInput.TypeOfString.NUMBER),
                 new StringInput("lineCost", "Line cost", StringInput.TypeOfString.DECIMAL),

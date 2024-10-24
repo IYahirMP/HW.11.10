@@ -13,7 +13,7 @@
         insert into Patient (name, age, address, phone) values(#{name}, #{age}, #{address}, #{phone})
     </insert>
     <update id="update">
-        update Patient set name = #{obj.name}, age = #{obj.name}, address = #{obj.address}, phone = #{obj.phone} where patientId = #{id}
+        update Patient set name = #{obj.name}, age = #{obj.age}, address = #{obj.address}, phone = #{obj.phone} where patientId = #{id}
     </update>
     <delete id="delete">
         delete from Patient where patientId = #{id}

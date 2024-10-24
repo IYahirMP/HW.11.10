@@ -57,13 +57,12 @@ public class InvoiceHasService {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("InvoiceHasService{")
-                .append("invoiceId=").append(invoiceId)
-                .append(", serviceId=").append(serviceId)
-                .append(", quantity=").append(quantity)
-                .append(", lineCost=").append(lineCost)
-                .append("}");
-        return sb.toString();
+        String sb = "InvoiceHasService{" +
+                "invoiceId=" + invoiceId +
+                ", serviceId=" + serviceId +
+                ", quantity=" + quantity +
+                ", lineCost=" + lineCost +
+                "}";
+        return sb;
     }
 }

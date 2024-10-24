@@ -56,16 +56,15 @@ public class Medicine {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Medicine [medicineId=")
-                .append(medicineId)
-                .append(", name=")
-                .append(name)
-                .append(", cost=")
-                .append(cost)
-                .append(", doseSize=")
-                .append(doseSize)
-                .append("]");
-        return builder.toString();
+        String builder = "Medicine [medicineId=" +
+                medicineId +
+                ", name=" +
+                name +
+                ", cost=" +
+                cost +
+                ", doseSize=" +
+                doseSize +
+                "]";
+        return builder;
     }
 }

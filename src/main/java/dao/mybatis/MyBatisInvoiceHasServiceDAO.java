@@ -2,7 +2,6 @@ package dao.mybatis;
 
 import dao.interfaces.InvoiceHasServiceDAO;
 import models.InvoiceHasService;
-import models.Patient;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.SQLException;
@@ -19,10 +18,12 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public int update(InvoiceHasService obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
-            return mapper.update(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.update(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
@@ -34,10 +35,12 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public int insert(InvoiceHasService obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
-            return mapper.insert(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.insert(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
@@ -50,10 +53,12 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public int delete(int invoiceId, int serviceId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
-            return mapper.delete(invoiceId, serviceId);
-        }catch(SQLException e){
+            int deletedRows = mapper.delete(invoiceId, serviceId);
+            con.commit();
+            return deletedRows;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
@@ -66,10 +71,10 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public Optional<InvoiceHasService> select(int invoiceId, int serviceId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
             return mapper.select(invoiceId, serviceId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return Optional.empty();
@@ -80,10 +85,10 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public List<InvoiceHasService> selectAll() {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
             return mapper.selectAll();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();
@@ -95,10 +100,10 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public List<InvoiceHasService> selectByInvoice(int invoiceId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
             return mapper.selectByInvoice(invoiceId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();
@@ -110,10 +115,10 @@ public class MyBatisInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
      */
     @Override
     public List<InvoiceHasService> selectByService(int serviceId) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceHasServiceDAO mapper = con.getMapper(InvoiceHasServiceDAO.class);
             return mapper.selectByService(serviceId);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return List.of();

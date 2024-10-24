@@ -64,14 +64,13 @@ public class PrescriptionHasMedicine {
 
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder()
-                .append("PrescriptionHasMedicine: {")
-                .append("prescriptionId : ").append(prescriptionId)
-                .append("\nmedicineId : ").append(medicineId)
-                .append("\nprescribedDays : ").append(prescribedDays)
-                .append("\nprescribedDose : ").append(prescribedDose)
-                .append("\nprescribedTiming : ").append(prescribedTiming)
-                .append("}");
-        return sb.toString();
+        String sb = "PrescriptionHasMedicine: {" +
+                "prescriptionId : " + prescriptionId +
+                "\nmedicineId : " + medicineId +
+                "\nprescribedDays : " + prescribedDays +
+                "\nprescribedDose : " + prescribedDose +
+                "\nprescribedTiming : " + prescribedTiming +
+                "}";
+        return sb;
     }
 }

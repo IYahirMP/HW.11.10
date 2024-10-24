@@ -1,7 +1,7 @@
 package views.treatment_record;
 
-import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
+import com.solvd.laba.input.single_input.StringInput;
+import com.solvd.laba.view.FeedbackView;
 
 import java.util.HashMap;
 
@@ -20,7 +20,7 @@ public class TreatmentRecordRequestData extends FeedbackView {
 
     public HashMap<String, String> getInputs(){
         StringInput[] stringInputs = {
-                new StringInput("admissionId",   "Associated admission Id", StringInput.TypeOfString.LARGE_INPUT),
+                new StringInput("admissionId",   "Associated admission Id", StringInput.TypeOfString.NUMBER),
                 new StringInput("time", "Time of capture", StringInput.TypeOfString.DATETIME),
                 new StringInput("notes", "Notes", StringInput.TypeOfString.LARGE_INPUT),
         };

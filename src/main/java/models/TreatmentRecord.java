@@ -59,13 +59,12 @@ public class TreatmentRecord {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder()
-                .append("TreatmentRecord[")
-                .append("recordId=").append(recordId)
-                .append(", admissionId=").append(admissionId)
-                .append(", notes=").append(notes)
-                .append(", time=").append(time)
-                .append("]");
-        return sb.toString();
+        String sb = "TreatmentRecord[" +
+                "recordId=" + recordId +
+                ", admissionId=" + admissionId +
+                ", notes=" + notes +
+                ", time=" + time +
+                "]";
+        return sb;
     }
 }

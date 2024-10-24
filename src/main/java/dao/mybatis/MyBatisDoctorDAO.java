@@ -17,10 +17,12 @@ public class MyBatisDoctorDAO implements DoctorDAO {
      */
     @Override
     public int insert(Doctor obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             DoctorDAO mapper = con.getMapper(DoctorDAO.class);
-            return mapper.insert(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.insert(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -33,10 +35,12 @@ public class MyBatisDoctorDAO implements DoctorDAO {
      */
     @Override
     public int update(int id, Doctor obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             DoctorDAO mapper = con.getMapper(DoctorDAO.class);
-            return mapper.update(id, obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.update(id, obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -48,10 +52,12 @@ public class MyBatisDoctorDAO implements DoctorDAO {
      */
     @Override
     public int delete(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             DoctorDAO mapper = con.getMapper(DoctorDAO.class);
-            return mapper.delete(id);
-        }catch(SQLException e){
+            int rowsAffected = mapper.delete(id);
+            con.commit();
+            return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -64,10 +70,10 @@ public class MyBatisDoctorDAO implements DoctorDAO {
      */
     @Override
     public Optional<Doctor> select(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             DoctorDAO mapper = con.getMapper(DoctorDAO.class);
-             return mapper.select(id);
-        }catch(SQLException e){
+            return mapper.select(id);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -80,10 +86,10 @@ public class MyBatisDoctorDAO implements DoctorDAO {
     @Override
     public List<Doctor> selectAll() {
 
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             DoctorDAO mapper = con.getMapper(DoctorDAO.class);
             return mapper.selectAll();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

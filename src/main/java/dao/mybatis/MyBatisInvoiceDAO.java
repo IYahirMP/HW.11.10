@@ -17,10 +17,12 @@ public class MyBatisInvoiceDAO implements InvoiceDAO {
      */
     @Override
     public int insert(Invoice obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceDAO mapper = con.getMapper(InvoiceDAO.class);
-            return mapper.insert(obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.insert(obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -33,10 +35,12 @@ public class MyBatisInvoiceDAO implements InvoiceDAO {
      */
     @Override
     public int update(int id, Invoice obj) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceDAO mapper = con.getMapper(InvoiceDAO.class);
-            return mapper.update(id, obj);
-        }catch(SQLException e){
+            int rowsAffected = mapper.update(id, obj);
+con.commit();
+return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -48,10 +52,12 @@ public class MyBatisInvoiceDAO implements InvoiceDAO {
      */
     @Override
     public int delete(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceDAO mapper = con.getMapper(InvoiceDAO.class);
-            return mapper.delete(id);
-        }catch(SQLException e){
+            int rowsAffected = mapper.delete(id);
+            con.commit();
+            return rowsAffected;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -64,10 +70,10 @@ public class MyBatisInvoiceDAO implements InvoiceDAO {
      */
     @Override
     public Optional<Invoice> select(int id) {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceDAO mapper = con.getMapper(InvoiceDAO.class);
-             return mapper.select(id);
-        }catch(SQLException e){
+            return mapper.select(id);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -79,10 +85,10 @@ public class MyBatisInvoiceDAO implements InvoiceDAO {
      */
     @Override
     public List<Invoice> selectAll() {
-        try(SqlSession con = createConnection()){
+        try (SqlSession con = createConnection()) {
             InvoiceDAO mapper = con.getMapper(InvoiceDAO.class);
             return mapper.selectAll();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

@@ -7,9 +7,9 @@ import java.util.Optional;
 
 @Mapper
 public interface Crud<T> {
-    public int insert(T obj);
-    public int update(@Param("id") int id, @Param("obj") T obj);
-    public int delete(int id);
-    public Optional<T> select(int id);
-    public List<T> selectAll();
+    int insert(T obj);
+    int update(@Param("id") int id, @Param("obj") T obj);
+    int delete(int id);
+    Optional<T> select(int id);
+    List<T> selectAll();
 }

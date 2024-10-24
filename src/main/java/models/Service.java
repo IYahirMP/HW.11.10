@@ -42,12 +42,11 @@ public class Service {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder()
-                .append("Service[")
-                .append("serviceId=").append(serviceId)
-                .append(", description=").append(description)
-                .append(", cost=").append(cost)
-                .append("]");
-        return builder.toString();
+        String builder = "Service[" +
+                "serviceId=" + serviceId +
+                ", description=" + description +
+                ", cost=" + cost +
+                "]";
+        return builder;
     }
 }
