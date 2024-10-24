@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.DoctorDAO">
+    <select id="select" resultType="models.Doctor">
+        select * from Doctor where doctorId = #{id}
+    </select>
+    <select id="selectAll" resultType="models.Doctor">
+        select * from Doctor
+    </select>
+    <insert id="insert" parameterType="models.Doctor">
+        insert into Doctor (name, phone) values(#{name}, #{phone})
+    </insert>
+    <update id="update">
+        update Doctor set name = #{obj.name}, phone = #{obj.phone} where doctorId = #{id}
+    </update>
+    <delete id="delete">
+        delete from Doctor where doctorId = #{id}
+    </delete>
+</mapper>

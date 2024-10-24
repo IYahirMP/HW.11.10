@@ -1,9 +1,7 @@
 package controllers;
 
-import dao.DoctorDAO;
+import dao.interfaces.DoctorDAO;
 import models.Doctor;
-import models.EmergencyContact;
-import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;

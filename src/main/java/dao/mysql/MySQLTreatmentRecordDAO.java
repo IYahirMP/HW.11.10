@@ -1,7 +1,6 @@
 package dao.mysql;
 
-import dao.TreatmentRecordDAO;
-import dao.TreatmentRecordDAO;
+import dao.interfaces.TreatmentRecordDAO;
 import models.TreatmentRecord;
 
 import java.sql.Connection;

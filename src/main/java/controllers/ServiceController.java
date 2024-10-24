@@ -1,9 +1,9 @@
 package controllers;
 
-import dao.ServiceDAO;
+import dao.interfaces.ServiceDAO;
 import models.Service;
-import models.TreatmentRecord;
 import views.generic.*;
+import views.service.ServiceRequestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,12 +62,12 @@ public class ServiceController {
         }
     }
 
-    public void update(int id, Service consultation) {
-        int affectedRows = serviceDAO.update(id, consultation);
+    public void update(int id, Service service) {
+        int affectedRows = serviceDAO.update(id, service);
         if(affectedRows > 0) {
             Updated<Service> updatedService = new Updated<>();
             HashMap<String, Object> data = new HashMap<>();
-            data.put("element", consultation);
+            data.put("element", service);
             data.put("updatedRows", affectedRows);
             data.put("updatedId", id);
             updatedService.setInputs(data);
@@ -77,20 +77,15 @@ public class ServiceController {
         }
     }
 
-    public Service getData(){/*
+    public Service getData(){
         ServiceRequestData requestServiceData = new ServiceRequestData();
         requestServiceData.display();
         HashMap<String, String> pd = requestServiceData.getInputs();
 
-        Service consultation = new Service()
-                .setPatientId(Integer.parseInt(pd.get("patientId")))
-                .setServiceId(Integer.parseInt(pd.get("consultationId")))
-                .setAdmissionDate(Date.valueOf(pd.get("admissionDate")))
-                .setDischargeDate(Date.valueOf(pd.get("dischargeDate")))
-                .setRoomNumber(Integer.parseInt(pd.get("roomNumber")))
-                .setBedNumber(Integer.parseInt(pd.get("bedNumber")));
-        return consultation;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        Service service = new Service()
+                .setCost(Double.parseDouble(pd.get("cost")))
+                .setDescription(pd.get("description"));
+        return service;
     }
 
     public void index(){
@@ -102,16 +97,6 @@ public class ServiceController {
 
         index.display();
 
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            Services patientList = new Services();
-            patientList.setServices(patients);
-            exportXML("ServiceList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<Service> selectAll(){

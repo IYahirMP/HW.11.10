@@ -1,7 +1,7 @@
 package dao.jackson;
 
 
-import dao.PatientDAO;
+import dao.interfaces.PatientDAO;
 import models.Patient;
 import java.util.List;
 import java.util.Optional;

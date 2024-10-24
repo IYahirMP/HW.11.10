@@ -49,6 +49,13 @@
             <version>2.18.0</version>
         </dependency>
 
+        <!--MyBatis framework-->
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.16</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,6 +1,6 @@
 package dao.factories;
 
-import dao.*;
+import dao.interfaces.*;
 
 public abstract class DAOFactory {
     public static final int MYSQL = 1;

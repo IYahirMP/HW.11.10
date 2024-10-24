@@ -38,8 +38,8 @@ public class MainController {
         int val = Integer.parseInt(dataSourceOption.get("menuOption"));
 
         switch(val){
-            case 1,2,3,4 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
-            case 5 -> exit(0);
+            case 1,2,3,4,5 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
+            case 6 -> exit(0);
         }
 
         System.out.println("Current database has been set to option " + val + ".");

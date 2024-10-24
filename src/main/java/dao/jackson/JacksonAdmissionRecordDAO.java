@@ -1,6 +1,6 @@
 package dao.jackson;
 
-import dao.AdmissionRecordDAO;
+import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
 
 import java.util.List;

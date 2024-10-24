@@ -1,7 +1,6 @@
 package dao.mysql;
 
-import dao.MedicineDAO;
-import dao.MedicineDAO;
+import dao.interfaces.MedicineDAO;
 import models.Medicine;
 
 import java.sql.Connection;

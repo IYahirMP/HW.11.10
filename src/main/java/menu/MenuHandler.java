@@ -1,14 +1,11 @@
 package menu;
 
 import controllers.*;
-import dao.*;
 import dao.factories.DAOFactory;
-import models.*;
-import models.xml.Hospital;
+import dao.interfaces.*;
 import views.EntitySelection;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static java.lang.System.exit;
 

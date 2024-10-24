@@ -1,6 +1,6 @@
 package dao.stax;
 
-import dao.ConsultationDAO;
+import dao.interfaces.ConsultationDAO;
 import dao.factories.StAXDAOFactory;
 import models.Consultation;
 

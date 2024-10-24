@@ -1,9 +1,8 @@
 package controllers;
 
-import dao.ConsultationDAO;
+import dao.interfaces.ConsultationDAO;
 
 import models.Consultation;
-import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;
@@ -103,17 +102,6 @@ public class ConsultationController {
 
         index.display();
         return consultations;
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            Consultations patientList = new Consultations();
-            patientList.setConsultations(patients);
-            exportXML("ConsultationList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<Consultation> selectAll(){

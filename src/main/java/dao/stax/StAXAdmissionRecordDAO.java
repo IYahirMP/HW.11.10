@@ -1,6 +1,6 @@
 package dao.stax;
 
-import dao.AdmissionRecordDAO;
+import dao.interfaces.AdmissionRecordDAO;
 import dao.factories.StAXDAOFactory;
 import models.AdmissionRecord;
 

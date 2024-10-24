@@ -1,8 +1,7 @@
 package controllers;
 
-import dao.PatientDAO;
+import dao.interfaces.PatientDAO;
 import models.Patient;
-import models.TreatmentRecord;
 import views.generic.*;
 import views.patient.*;
 

@@ -1,6 +1,6 @@
 package dao.jackson;
 
-import dao.InvoiceDAO;
+import dao.interfaces.InvoiceDAO;
 import models.Invoice;
 
 import java.util.List;

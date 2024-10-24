@@ -1,8 +1,7 @@
 package controllers;
 
-import dao.InvoiceDAO;
+import dao.interfaces.InvoiceDAO;
 import models.Invoice;
-import models.TreatmentRecord;
 import views.generic.*;
 
 import java.util.HashMap;

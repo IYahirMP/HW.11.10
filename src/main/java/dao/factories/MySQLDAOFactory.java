@@ -1,6 +1,6 @@
 package dao.factories;
 
-import dao.*;
+import dao.interfaces.*;
 import dao.mysql.*;
 
 import java.sql.Connection;

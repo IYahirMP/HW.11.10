@@ -1,6 +1,6 @@
 package dao.factories;
 
-import dao.*;
+import dao.interfaces.*;
 import dao.stax.*;
 
 public class StAXDAOFactory extends DAOFactory{

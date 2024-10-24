@@ -3,9 +3,8 @@ package dao.factories;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import dao.*;
+import dao.interfaces.*;
 import dao.jackson.*;
-import dao.jaxb.*;
 import models.xml.Hospital;
 
 import java.io.File;

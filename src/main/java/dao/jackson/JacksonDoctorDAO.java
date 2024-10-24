@@ -1,6 +1,6 @@
 package dao.jackson;
 
-import dao.DoctorDAO;
+import dao.interfaces.DoctorDAO;
 import models.Doctor;
 
 import java.util.List;

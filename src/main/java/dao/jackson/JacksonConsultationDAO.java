@@ -1,6 +1,6 @@
 package dao.jackson;
 
-import dao.ConsultationDAO;
+import dao.interfaces.ConsultationDAO;
 import models.Consultation;
 
 import java.util.List;
