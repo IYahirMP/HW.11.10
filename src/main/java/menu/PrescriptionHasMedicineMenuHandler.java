@@ -13,43 +13,61 @@ public class PrescriptionHasMedicineMenuHandler extends MenuHandler {
 
     @Override
     public void processMenuOption() {
+        logger.trace("Entering processMenuOption");
+
         PrescriptionHasMedicineOperations ops = new PrescriptionHasMedicineOperations();
         ops.display();
-        HashMap<String,String> menuOptions = ops.getInputs();
-        int val = Integer.parseInt(menuOptions.get("menuOption"));
+        HashMap<String, String> menuOptions = ops.getInputs();
 
+        try {
+            int val = Integer.parseInt(menuOptions.get("menuOption"));
+            logger.debug("Menu option selected: {}", val);
 
-        int id1 = 0, id2 = 0;
-        switch (val) {
-            case 1:
-                id1 = invoiceHasServiceController.requestId();
-                id2 = invoiceHasServiceController.requestId();
-                prescriptionHasMedicineController.show(id1, id2);
-                break;
-            case 2:
-                PrescriptionHasMedicine record = prescriptionHasMedicineController.getData();
-                prescriptionHasMedicineController.insert(record);
-                break;
-            case 3:
-                prescriptionHasMedicineController.index();
-                break;
-            case 4:
-                id1 = invoiceHasServiceController.requestId();
-                id2 = invoiceHasServiceController.requestId();
-                prescriptionHasMedicineController.delete(id1, id2);
-                break;
-            case 5:
-                PrescriptionHasMedicine newRecord = prescriptionHasMedicineController.getData();
-                prescriptionHasMedicineController.update(newRecord);
-                break;
-            case 6:
-                displayEntitySelection(currentDataSourceFactory); // Navigate back to entity selection
-                break;
-            default:
-                displayEntitySelection(currentDataSourceFactory);
-                break;
+            int prescriptionId, medicineId;
+
+            switch (val) {
+                case 1:
+                    prescriptionId = prescriptionHasMedicineController.requestId();
+                    medicineId = prescriptionHasMedicineController.requestId();
+                    logger.info("Fetching prescriptionHasMedicine prescriptionId: {} and medicineId: {}", prescriptionId, medicineId);
+                    prescriptionHasMedicineController.show(prescriptionId, medicineId);
+                    break;
+                case 2:
+                    PrescriptionHasMedicine record = prescriptionHasMedicineController.getData();
+                    logger.info("Inserting new prescriptionHasMedicine record.");
+                    prescriptionHasMedicineController.insert(record);
+                    break;
+                case 3:
+                    logger.info("Listing all prescriptionHasMedicines.");
+                    prescriptionHasMedicineController.index();
+                    break;
+                case 4:
+                    prescriptionId = prescriptionHasMedicineController.requestId();
+                    medicineId = prescriptionHasMedicineController.requestId();
+                    logger.info("Deleting prescriptionHasMedicine with prescriptionId: {} and medicineId: {}", prescriptionId, medicineId);
+                    break;
+                case 5:
+                    PrescriptionHasMedicine newRecord = prescriptionHasMedicineController.getData();
+                    logger.info("Updating prescriptionHasMedicine with ID: ({},{})", newRecord.getPrescriptionId(), newRecord.getMedicineId());
+                    prescriptionHasMedicineController.update(newRecord);
+                    break;
+                case 6:
+                    logger.info("Navigating back to entity selection.");
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+                default:
+                    logger.warn("Invalid menu option selected: {}", val);
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+            }
+
+        } catch (NumberFormatException e) {
+            logger.error("Invalid input format for menu option selection: {}", e.getMessage());
+        } catch (Exception e) {
+            logger.error("An unexpected error occurred: {}", e.getMessage(), e);
         }
 
+        logger.trace("Exiting processMenuOption");
         processMenuOption();
     }
 }

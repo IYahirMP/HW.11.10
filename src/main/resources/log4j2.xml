@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" strict="true" name="XMLConfigTest">
+
+<Appenders>
+    <Appender type="File" name="General" fileName="target/logs/root.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
+    <Appender type="File" name="MenuHandler" fileName="target/logs/menu/MenuHandler.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
+    <Appender type="File" name="JAXB" fileName="target/logs/dao/JAXB.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
+    <Appender type="File" name="Factories" fileName="target/logs/dao/Factories.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
+</Appenders>
+
+<Loggers>
+    <Root level="error">
+        <AppenderRef ref="General"/>
+    </Root>
+
+    <Logger name="menu.MenuHandler" level="trace" additivity="true">
+        <AppenderRef ref="MenuHandler"/>
+    </Logger>
+    <Logger name="dao.jaxb.JAXBWrapper" level="trace" additivity="true">
+        <AppenderRef ref="JAXB"/>
+    </Logger>
+    <Logger name="dao.factories.DAOFactory" level="trace" additivity="true">
+        <AppenderRef ref="Factories"/>
+    </Logger>
+</Loggers>
+
+</Configuration>
+

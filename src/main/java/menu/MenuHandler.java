@@ -3,6 +3,8 @@ package menu;
 import controllers.*;
 import dao.factories.DAOFactory;
 import dao.interfaces.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import views.EntitySelection;
 
 import java.util.HashMap;
@@ -11,6 +13,8 @@ import static java.lang.System.exit;
 
 // Abstract Menu Handler Class
 public abstract class MenuHandler {
+    protected static final Logger logger = LogManager.getLogger(MenuHandler.class);
+
     protected DAOFactory currentDataSourceFactory;
     protected AdmissionRecordController admissionRecordController;
     protected ConsultationController consultationController;

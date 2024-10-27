@@ -13,40 +13,59 @@ public class ConsultationMenuHandler extends MenuHandler {
 
     @Override
     public void processMenuOption() {
-        ConsultationOperations consultationOps = new ConsultationOperations();
-        consultationOps.display();
-        HashMap<String,String> menuOptions = consultationOps.getInputs();
-        int val = Integer.parseInt(menuOptions.get("menuOption"));
+        logger.trace("Entering processMenuOption");
 
-        switch (val) {
-            case 1:
-                int id = consultationController.requestId();
-                consultationController.show(id);
-                break;
-            case 2:
-                Consultation patient = consultationController.getData();
-                consultationController.insert(patient);
-                break;
-            case 3:
-                consultationController.index();
-                break;
-            case 4:
-                id = consultationController.requestId();
-                consultationController.delete(id);
-                break;
-            case 5:
-                id = consultationController.requestId();
-                Consultation newPatient = consultationController.getData();
-                consultationController.update(id, newPatient);
-                break;
-            case 6:
-                displayEntitySelection(currentDataSourceFactory); // Navigate back to entity selection
-                break;
-            default:
-                displayEntitySelection(currentDataSourceFactory);
-                break;
+        ConsultationOperations ops = new ConsultationOperations();
+        ops.display();
+        HashMap<String, String> menuOptions = ops.getInputs();
+
+        try {
+            int val = Integer.parseInt(menuOptions.get("menuOption"));
+            logger.debug("Menu option selected: {}", val);
+
+            switch (val) {
+                case 1:
+                    int id = consultationController.requestId();
+                    logger.info("Fetching consultation with ID: {}", id);
+                    consultationController.show(id);
+                    break;
+                case 2:
+                    Consultation record = consultationController.getData();
+                    logger.info("Inserting new consultation record.");
+                    consultationController.insert(record);
+                    break;
+                case 3:
+                    logger.info("Listing all consultations.");
+                    consultationController.index();
+                    break;
+                case 4:
+                    id = consultationController.requestId();
+                    logger.info("Deleting consultation with ID: {}", id);
+                    consultationController.delete(id);
+                    break;
+                case 5:
+                    id = consultationController.requestId();
+                    Consultation newRecord = consultationController.getData();
+                    logger.info("Updating consultation with ID: {}", id);
+                    consultationController.update(id, newRecord);
+                    break;
+                case 6:
+                    logger.info("Navigating back to entity selection.");
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+                default:
+                    logger.warn("Invalid menu option selected: {}", val);
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+            }
+
+        } catch (NumberFormatException e) {
+            logger.error("Invalid input format for menu option selection: {}", e.getMessage());
+        } catch (Exception e) {
+            logger.error("An unexpected error occurred: {}", e.getMessage(), e);
         }
 
+        logger.trace("Exiting processMenuOption");
         processMenuOption();
     }
 }
