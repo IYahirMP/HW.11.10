@@ -6,6 +6,7 @@ import dao.jaxb.*;
 public class JAXBDAOFactory extends DAOFactory{
 
     public static String filepath = "";
+    public final static String schemaRoot = "src/main/resources/xsd/";
 
     /**
      * @return

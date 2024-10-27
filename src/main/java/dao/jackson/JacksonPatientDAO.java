@@ -3,12 +3,11 @@ package dao.jackson;
 
 import dao.interfaces.PatientDAO;
 import models.Patient;
+import models.xml.Hospital;
+
 import java.util.List;
 import java.util.Optional;
-
-import static dao.factories.JacksonDAOFactory.getDB;
-
-public class JacksonPatientDAO implements PatientDAO {
+public class JacksonPatientDAO extends JacksonWrapper implements PatientDAO {
 
     @Override
     public int insert(Patient obj) {
@@ -22,7 +21,25 @@ public class JacksonPatientDAO implements PatientDAO {
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXPatientDAO does not support delete operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of patients.");
+        List<Patient> records = db.getPatients();
+        logger.debug("List of patients retrieved");;
+
+        logger.debug("Searching for patient with id: {}", id);
+        for (Patient record : records) {
+            if (record.getPatientId() == id) {
+                logger.debug("Deleting object's id");
+                records.remove(record);
+                db.setPatients(records);
+                logger.trace("Entering WriteDB");
+                writeDB(db);
+                return logger.traceExit(1);
+            }
+        }
+        return 0;
     }
 
     @Override

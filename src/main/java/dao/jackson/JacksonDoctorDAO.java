@@ -5,10 +5,8 @@ import models.Doctor;
 
 import java.util.List;
 import java.util.Optional;
-import static dao.factories.JacksonDAOFactory.getDB;
 
-
-public class JacksonDoctorDAO implements DoctorDAO {
+public class JacksonDoctorDAO extends JacksonWrapper implements DoctorDAO {
 
     @Override
     public int insert(Doctor obj) {

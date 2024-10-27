@@ -5,9 +5,8 @@ import models.Consultation;
 
 import java.util.List;
 import java.util.Optional;
-import static dao.factories.JacksonDAOFactory.getDB;
 
-public class JacksonConsultationDAO implements ConsultationDAO {
+public class JacksonConsultationDAO extends JacksonWrapper implements ConsultationDAO {
 
     @Override
     public int insert(Consultation obj) {

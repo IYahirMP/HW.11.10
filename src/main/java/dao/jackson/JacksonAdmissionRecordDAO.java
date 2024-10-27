@@ -5,9 +5,8 @@ import models.AdmissionRecord;
 
 import java.util.List;
 import java.util.Optional;
-import static dao.factories.JacksonDAOFactory.getDB;
 
-public class JacksonAdmissionRecordDAO implements AdmissionRecordDAO {
+public class JacksonAdmissionRecordDAO extends JacksonWrapper implements AdmissionRecordDAO {
 
     @Override
     public int insert(AdmissionRecord obj) {

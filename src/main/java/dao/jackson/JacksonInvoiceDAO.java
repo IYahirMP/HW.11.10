@@ -5,10 +5,8 @@ import models.Invoice;
 
 import java.util.List;
 import java.util.Optional;
-import static dao.factories.JacksonDAOFactory.getDB;
 
-
-public class JacksonInvoiceDAO implements InvoiceDAO {
+public class JacksonInvoiceDAO extends JacksonWrapper implements InvoiceDAO {
 
     @Override
     public int insert(Invoice obj) {

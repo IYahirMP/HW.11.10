@@ -1,15 +1,19 @@
 package dao.factories;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.interfaces.*;
 import dao.jackson.*;
+import models.*;
 import models.xml.Hospital;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class JacksonDAOFactory extends DAOFactory{
 
@@ -111,21 +115,4 @@ public class JacksonDAOFactory extends DAOFactory{
         return null;
     }
 
-    public static Hospital getDB(){
-        try {
-            File file = new File(JacksonDAOFactory.filepath);
-            FileInputStream fis = new FileInputStream(file);
-            String jsonDB = new String(fis.readAllBytes());
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.registerModule(new JavaTimeModule());
-            objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            return objectMapper.readValue(jsonDB, Hospital.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

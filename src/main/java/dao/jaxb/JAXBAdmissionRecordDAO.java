@@ -1,36 +1,64 @@
 package dao.jaxb;
 
 import dao.interfaces.AdmissionRecordDAO;
-import dao.factories.JAXBDAOFactory;
 import models.AdmissionRecord;
 import models.xml.Hospital;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
-public class JAXBAdmissionRecordDAO implements AdmissionRecordDAO {
-    private final String tableName = "AdmissionRecord";
-    private final String xsdRoot = "src/main/resources/xsd/";
-    private final String xsdFile = "AdmissionRecord.xsd";
-
+public class JAXBAdmissionRecordDAO extends JAXBWrapper implements AdmissionRecordDAO {
 
     @Override
     public int insert(AdmissionRecord obj) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support insert operations.");
+	logger.trace("AccessingDataBase");
+        Hospital db = getDB();
+        List<AdmissionRecord> records;
+        try {
+            records = db.getAdmissionRecords();
+        }catch(NullPointerException e) {
+            logger.warn("Retrieved a null record from the database", e);
+            return 0;
+        }
+        //It is important to check latest id
+        int latestId = records.getLast().getAdmissionId();
+        obj.setAdmissionId(latestId+1);
+        records.add(obj);
+        db.setAdmissionRecords(records);
+        writeDB(db);
+        return 1;
     }
 
     @Override
     public int update(int id, AdmissionRecord obj) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support update operations.");
-    }
+        Hospital db = getDB();
+        List<AdmissionRecord> records = db.getAdmissionRecords();
+
+        if (obj != null) {
+            records.forEach((p)-> {
+                if (p.getAdmissionId() == obj.getAdmissionId()) {
+                    records.set(records.indexOf(p), obj);
+                }
+            });
+            db.setAdmissionRecords(records);
+            writeDB(db);
+            return 1;
+        }
+        return 0;    }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support delete operations.");
+        Hospital db = getDB();
+        List<AdmissionRecord> records = db.getAdmissionRecords();
+        for (AdmissionRecord record : records) {
+            if (record.getAdmissionId() == id) {
+                records.remove(record);
+                db.setAdmissionRecords(records);
+                writeDB(db);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     @Override
@@ -43,17 +71,4 @@ public class JAXBAdmissionRecordDAO implements AdmissionRecordDAO {
         return getDB().getAdmissionRecords();
     }
 
-    public Hospital getDB(){
-        try {
-            JAXBContext jaxbcontext = JAXBContext.newInstance(Hospital.class);
-            Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
-
-            File file = new File(JAXBDAOFactory.filepath);
-            return (Hospital) unmarshaller.unmarshal(file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

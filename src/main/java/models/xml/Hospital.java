@@ -1,13 +1,31 @@
 package models.xml;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import models.*;
+
 import javax.xml.bind.annotation.*;
 import java.util.List;
-import com.fasterxml.jackson.annotation.*;
 
 
 @XmlRootElement(name = "hospital")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {
+        "patients",
+        "emergencyContacts",
+        "doctors",
+        "consultations",
+        "admissionRecords",
+        "treatmentRecords",
+        "invoices",
+        "invoiceHasServices",
+        "services",
+        "prescriptions",
+        "prescriptionHasMedicines",
+        "medicines"
+})
 
 @JsonPropertyOrder(
         {
