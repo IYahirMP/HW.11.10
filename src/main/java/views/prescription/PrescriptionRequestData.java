@@ -15,7 +15,7 @@ public class PrescriptionRequestData extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please, introduce the patient's data.");
+        System.out.println("Please, introduce the prescription's data.");
     }
 
     public HashMap<String, String> getInputs(){

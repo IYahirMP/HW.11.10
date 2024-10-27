@@ -1,7 +1,7 @@
 package dao.stax;
 
-import dao.interfaces.ConsultationDAO;
 import dao.factories.StAXDAOFactory;
+import dao.interfaces.ConsultationDAO;
 import models.Consultation;
 
 import javax.xml.stream.XMLInputFactory;

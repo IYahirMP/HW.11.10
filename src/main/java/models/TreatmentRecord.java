@@ -2,9 +2,9 @@ package models;
 
 import models.xml.LocalDateTimeAdapter;
 
-import java.time.LocalDateTime;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDateTime;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

@@ -15,7 +15,7 @@ public class PrescriptionHasMedicineRequestData extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please introduce data to associate an invoice with a service.");
+        System.out.println("Please introduce data to associate a prescription with a medicine.");
     }
 
     public HashMap<String, String> getInputs(){

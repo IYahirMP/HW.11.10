@@ -1,7 +1,6 @@
 package views.generic;
 
 import com.solvd.laba.view.FeedbackView;
-import models.Patient;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

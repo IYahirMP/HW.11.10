@@ -1,7 +1,6 @@
 package dao.interfaces;
 
 import models.PrescriptionHasMedicine;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;

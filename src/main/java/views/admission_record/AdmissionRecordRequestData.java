@@ -15,7 +15,7 @@ public class AdmissionRecordRequestData extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please, introduce the patient's data.");
+        System.out.println("Please, introduce the admission record's data.");
     }
 
     public HashMap<String, String> getInputs(){

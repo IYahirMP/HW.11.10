@@ -3,15 +3,10 @@ package dao.mysql;
 import dao.interfaces.InvoiceHasServiceDAO;
 import models.InvoiceHasService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static dao.factories.MySQLDAOFactory.createConnection;
 
 public class MySQLInvoiceHasServiceDAO implements InvoiceHasServiceDAO {
 

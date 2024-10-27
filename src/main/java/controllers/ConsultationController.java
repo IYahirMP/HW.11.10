@@ -1,7 +1,6 @@
 package controllers;
 
 import dao.interfaces.ConsultationDAO;
-
 import models.Consultation;
 import views.consultation.ConsultationRequestData;
 import views.generic.*;

@@ -3,7 +3,7 @@ package controllers;
 import dao.interfaces.PatientDAO;
 import models.Patient;
 import views.generic.*;
-import views.patient.*;
+import views.patient.PatientRequestData;
 
 import java.util.HashMap;
 import java.util.List;

@@ -20,8 +20,8 @@ public class MyBatisPatientDAO implements PatientDAO {
         try (SqlSession con = createConnection()) {
             PatientDAO mapper = con.getMapper(PatientDAO.class);
             int rowsAffected = mapper.insert(obj);
-con.commit();
-return rowsAffected;
+            con.commit();
+            return rowsAffected;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -38,8 +38,8 @@ return rowsAffected;
         try (SqlSession con = createConnection()) {
             PatientDAO mapper = con.getMapper(PatientDAO.class);
             int rowsAffected = mapper.update(id, obj);
-con.commit();
-return rowsAffected;
+            con.commit();
+            return rowsAffected;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -4,7 +4,6 @@ import com.solvd.laba.input.single_input.StringInput;
 import com.solvd.laba.view.FeedbackView;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class RequestId extends FeedbackView {

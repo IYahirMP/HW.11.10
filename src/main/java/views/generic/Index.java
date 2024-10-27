@@ -1,7 +1,6 @@
 package views.generic;
 
 import com.solvd.laba.view.FeedbackView;
-import models.Patient;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,7 @@ public class Index<T> extends FeedbackView {
             return;
         }
 
-        System.out.println("List of elementsÑ");
+        System.out.println("List of elements");
         for(T p: elems){
             System.out.println(p.toString());
         }

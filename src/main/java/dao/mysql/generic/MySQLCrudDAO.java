@@ -2,8 +2,12 @@ package dao.mysql.generic;
 
 import dao.interfaces.Crud;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
 import static dao.factories.MySQLDAOFactory.createConnection;
 import static dao.mysql.generic.SQLCreator.*;

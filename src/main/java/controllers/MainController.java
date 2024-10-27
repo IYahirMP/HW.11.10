@@ -5,8 +5,8 @@ import views.DataSourceSelection;
 
 import java.util.HashMap;
 
-import static menu.MenuHandler.displayEntitySelection;
 import static java.lang.System.exit;
+import static menu.MenuHandler.displayEntitySelection;
 
 public class MainController {
     //Factories

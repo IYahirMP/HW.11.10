@@ -15,7 +15,7 @@ public class EmergencyContactRequestData extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please, introduce the patient's data.");
+        System.out.println("Please, introduce the emergency contact's data.");
     }
 
     public HashMap<String, String> getInputs(){
