@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.interfaces.PrescriptionHasMedicineDAO">
+    <select id="select" resultType="models.PrescriptionHasMedicine">
+        select * from PrescriptionHasMedicine where prescriptionId = #{prescriptionId} and medicineId = #{medicineId}
+    </select>
+    <select id="selectByPrescription" resultType="models.PrescriptionHasMedicine">
+        select * from PrescriptionHasMedicine where prescriptionId = #{prescriptionId}
+    </select>
+    <select id="selectByMedicine" resultType="models.PrescriptionHasMedicine">
+        select * from PrescriptionHasMedicine where medicineId = #{medicineId}
+    </select>
+    <select id="selectAll" resultType="models.PrescriptionHasMedicine">
+        select * from PrescriptionHasMedicine
+    </select>
+    <insert id="insert" parameterType="models.PrescriptionHasMedicine">
+        insert into PrescriptionHasMedicine
+            (prescriptionId, medicineId, prescribedDays, prescribedDose, prescribedTiming)
+            values(#{prescriptionId}, #{medicineId}, #{prescribedDays}, #{prescribedDose}, #{prescribedTiming})
+    </insert>
+    <update id="update">
+        update PrescriptionHasMedicine set
+            prescribedDays=#{prescribedDays},
+            prescribedDose=#{prescribedDose},
+            prescribedTiming=#{prescribedTiming}
+            where prescriptionId = #{prescriptionId} and medicineId = #{medicineId}
+    </update>
+    <delete id="delete">
+        delete from PrescriptionHasMedicine where prescriptionId = #{prescriptionId} and medicineId = #{medicineId}
+    </delete>
+</mapper>

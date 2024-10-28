@@ -1,6 +1,6 @@
 package dao.mysql;
 
-import dao.ConsultationDAO;
+import dao.interfaces.ConsultationDAO;
 import models.Consultation;
 
 import java.sql.Connection;

@@ -1,9 +1,13 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.xml.bind.annotation.*;
 @XmlRootElement
 @XmlType(propOrder={"patientId", "name", "age", "address", "phone"})
 @XmlAccessorType(XmlAccessType.FIELD)
+
+@JsonRootName(value = "PatientList")
 public class Patient {
     @XmlElement(name = "patientId")
     private int patientId;
@@ -79,18 +83,17 @@ public class Patient {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Patient [patientId=").
-                append(patientId).
-                append(", name=")
-                .append(name)
-                .append(", age=")
-                .append(age)
-                .append(", address=")
-                .append(address)
-                .append(", phone=")
-                .append(phone)
-                .append("]");
-        return builder.toString();
+        String builder = "Patient [patientId=" +
+                patientId +
+                ", name=" +
+                name +
+                ", age=" +
+                age +
+                ", address=" +
+                address +
+                ", phone=" +
+                phone +
+                "]";
+        return builder;
     }
 }

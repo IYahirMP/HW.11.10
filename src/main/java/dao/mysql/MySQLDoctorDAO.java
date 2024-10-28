@@ -1,6 +1,6 @@
 package dao.mysql;
 
-import dao.DoctorDAO;
+import dao.interfaces.DoctorDAO;
 import models.Doctor;
 
 import java.sql.Connection;

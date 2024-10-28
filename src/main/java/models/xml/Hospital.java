@@ -1,29 +1,56 @@
 package models.xml;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import models.*;
+
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
 
 @XmlRootElement(name = "hospital")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {
+        "patients",
+        "emergencyContacts",
+        "doctors",
+        "consultations",
+        "admissionRecords",
+        "treatmentRecords",
+        "invoices",
+        "invoiceHasServices",
+        "services",
+        "prescriptions",
+        "prescriptionHasMedicines",
+        "medicines"
+})
+
+@JsonPropertyOrder(
+        {
+                "patients",
+                "emergencyContacts",
+                "doctors",
+                "consultations",
+                "admissionRecords",
+                "treatmentRecords",
+                "invoices",
+                "invoiceHasServices",
+                "services",
+                "prescriptions",
+                "prescriptionHasMedicines",
+                "medicines"
+        }
+)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonFilter("HospitalFilter")
+@JsonRootName(value = "Database")
 public class Hospital {
 
     @XmlElementWrapper(name = "Patients")
     @XmlElement(name = "Patient")
     private List<Patient> patients;
-
-    @XmlElementWrapper(name = "EmergencyContact")
-    @XmlElement(name = "EmergencyContact")
-    private List<EmergencyContact> emergencyContacts;
-
-    @XmlElementWrapper(name = "Doctor")
-    @XmlElement(name = "Doctor")
-    private List<Doctor> doctors;
-
-    @XmlElementWrapper(name = "Consultation")
-    @XmlElement(name = "Consultation")
-    private List<Consultation> consultations;
 
     @XmlElementWrapper(name = "AdmissionRecord")
     @XmlElement(name = "AdmissionRecord")
@@ -33,9 +60,13 @@ public class Hospital {
     @XmlElement(name = "TreatmentRecord")
     private List<TreatmentRecord> treatmentRecords;
 
-    @XmlElementWrapper(name = "Invoice")
-    @XmlElement(name = "Invoice")
-    private List<Invoice> invoices;
+    @XmlElementWrapper(name = "Doctor")
+    @XmlElement(name = "Doctor")
+    private List<Doctor> doctors;
+
+    @XmlElementWrapper(name = "Consultation")
+    @XmlElement(name = "Consultation")
+    private List<Consultation> consultations;
 
     @XmlElementWrapper(name = "InvoiceHasServices")
     @XmlElement(name = "InvoiceHasService")
@@ -44,6 +75,15 @@ public class Hospital {
     @XmlElementWrapper(name = "Services")
     @XmlElement(name = "Service")
     private List<Service> services;
+
+    @XmlElementWrapper(name = "Invoice")
+    @XmlElement(name = "Invoice")
+    private List<Invoice> invoices;
+
+    @XmlElementWrapper(name = "EmergencyContact")
+    @XmlElement(name = "EmergencyContact")
+    private List<EmergencyContact> emergencyContacts;
+
 
     @XmlElementWrapper(name = "Prescriptions")
     @XmlElement(name = "Prescription")

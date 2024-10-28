@@ -13,40 +13,61 @@ public class InvoiceHasServiceMenuHandler extends MenuHandler {
 
     @Override
     public void processMenuOption() {
+        logger.trace("Entering processMenuOption");
+
         InvoiceHasServiceOperations ops = new InvoiceHasServiceOperations();
         ops.display();
-        HashMap<String,String> menuOptions = ops.getInputs();
-        int val = Integer.parseInt(menuOptions.get("menuOption"));
+        HashMap<String, String> menuOptions = ops.getInputs();
 
-        switch (val) {
-            case 1:
-                int id = invoiceHasServiceController.requestId();
-                invoiceHasServiceController.show(id);
-                break;
-            case 2:
-                InvoiceHasService record = invoiceHasServiceController.getData();
-                invoiceHasServiceController.insert(record);
-                break;
-            case 3:
-                invoiceHasServiceController.index();
-                break;
-            case 4:
-                id = invoiceHasServiceController.requestId();
-                invoiceHasServiceController.delete(id);
-                break;
-            case 5:
-                id = invoiceHasServiceController.requestId();
-                InvoiceHasService newRecord = invoiceHasServiceController.getData();
-                invoiceHasServiceController.update(id, newRecord);
-                break;
-            case 6:
-                displayEntitySelection(currentDataSourceFactory); // Navigate back to entity selection
-                break;
-            default:
-                displayEntitySelection(currentDataSourceFactory);
-                break;
+        try {
+            int val = Integer.parseInt(menuOptions.get("menuOption"));
+            logger.debug("Menu option selected: {}", val);
+
+            int invoiceId, serviceId;
+
+            switch (val) {
+                case 1:
+                    invoiceId = invoiceHasServiceController.requestId();
+                    serviceId = invoiceHasServiceController.requestId();
+                    logger.info("Fetching invoiceHasService invoiceId: {} and serviceId: {}", invoiceId, serviceId);
+                    invoiceHasServiceController.show(invoiceId, serviceId);
+                    break;
+                case 2:
+                    InvoiceHasService record = invoiceHasServiceController.getData();
+                    logger.info("Inserting new invoiceHasService record.");
+                    invoiceHasServiceController.insert(record);
+                    break;
+                case 3:
+                    logger.info("Listing all invoiceHasServices.");
+                    invoiceHasServiceController.index();
+                    break;
+                case 4:
+                    invoiceId = invoiceHasServiceController.requestId();
+                    serviceId = invoiceHasServiceController.requestId();
+                    logger.info("Deleting invoiceHasService with invoiceId: {} and serviceId: {}", invoiceId, serviceId);
+                    break;
+                case 5:
+                    InvoiceHasService newRecord = invoiceHasServiceController.getData();
+                    logger.info("Updating invoiceHasService with ID: ({},{})", newRecord.getInvoiceId(), newRecord.getServiceId());
+                    invoiceHasServiceController.update(newRecord);
+                    break;
+                case 6:
+                    logger.info("Navigating back to entity selection.");
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+                default:
+                    logger.warn("Invalid menu option selected: {}", val);
+                    displayEntitySelection(currentDataSourceFactory);
+                    break;
+            }
+
+        } catch (NumberFormatException e) {
+            logger.error("Invalid input format for menu option selection: {}", e.getMessage());
+        } catch (Exception e) {
+            logger.error("An unexpected error occurred: {}", e.getMessage(), e);
         }
 
+        logger.trace("Exiting processMenuOption");
         processMenuOption();
     }
 }

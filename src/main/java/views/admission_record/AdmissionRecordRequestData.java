@@ -1,7 +1,7 @@
 package views.admission_record;
 
-import com.solvd.laba.computer_repair_service.input.single_input.StringInput;
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
+import com.solvd.laba.input.single_input.StringInput;
+import com.solvd.laba.view.FeedbackView;
 
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ public class AdmissionRecordRequestData extends FeedbackView {
     }
 
     public void display(){
-        System.out.println("Please, introduce the patient's data.");
+        System.out.println("Please, introduce the admission record's data.");
     }
 
     public HashMap<String, String> getInputs(){

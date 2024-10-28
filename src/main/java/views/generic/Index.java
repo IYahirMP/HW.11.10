@@ -1,7 +1,6 @@
 package views.generic;
 
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
-import models.Patient;
+import com.solvd.laba.view.FeedbackView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,11 +18,11 @@ public class Index<T> extends FeedbackView {
         List<T> elems = (List<T>) displayData.get("element");
 
         if(elems.isEmpty()){
-            System.out.println("No patients found");
+            System.out.println("No elements found");
             return;
         }
 
-        System.out.println("Index of patients");
+        System.out.println("List of elements");
         for(T p: elems){
             System.out.println(p.toString());
         }

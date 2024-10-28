@@ -1,7 +1,7 @@
 package dao.stax;
 
-import dao.InvoiceDAO;
 import dao.factories.StAXDAOFactory;
+import dao.interfaces.InvoiceDAO;
 import models.Invoice;
 
 import javax.xml.stream.XMLInputFactory;

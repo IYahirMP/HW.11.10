@@ -1,6 +1,9 @@
 package models;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -78,17 +81,16 @@ public class EmergencyContact {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("EmergencyContact [emergencyContactId=")
-                .append(emergencyContactId)
-                .append(", name=")
-                .append(name)
-                .append(", phone=")
-                .append(phone)
-                .append(", address=")
-                .append(address)
-                .append(", patientId=")
-                .append(patientId);
-        return builder.toString();
+        String builder = "EmergencyContact [emergencyContactId=" +
+                emergencyContactId +
+                ", name=" +
+                name +
+                ", phone=" +
+                phone +
+                ", address=" +
+                address +
+                ", patientId=" +
+                patientId;
+        return builder;
     }
 }

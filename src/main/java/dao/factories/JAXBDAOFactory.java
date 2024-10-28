@@ -1,12 +1,12 @@
 package dao.factories;
 
-import dao.*;
+import dao.interfaces.*;
 import dao.jaxb.*;
-import dao.stax.*;
 
 public class JAXBDAOFactory extends DAOFactory{
 
     public static String filepath = "";
+    public final static String schemaRoot = "src/main/resources/xsd/";
 
     /**
      * @return

@@ -1,7 +1,7 @@
 package dao.stax;
 
-import dao.AdmissionRecordDAO;
 import dao.factories.StAXDAOFactory;
+import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
 
 import javax.xml.stream.XMLInputFactory;

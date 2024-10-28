@@ -1,6 +1,9 @@
 package models;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -42,12 +45,11 @@ public class Service {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder()
-                .append("Service[")
-                .append("serviceId=").append(serviceId)
-                .append(", description=").append(description)
-                .append(", cost=").append(cost)
-                .append("]");
-        return builder.toString();
+        String builder = "Service[" +
+                "serviceId=" + serviceId +
+                ", description=" + description +
+                ", cost=" + cost +
+                "]";
+        return builder;
     }
 }

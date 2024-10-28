@@ -1,7 +1,7 @@
 package dao.stax;
 
-import dao.PatientDAO;
 import dao.factories.StAXDAOFactory;
+import dao.interfaces.PatientDAO;
 import models.Patient;
 
 import javax.xml.stream.XMLInputFactory;

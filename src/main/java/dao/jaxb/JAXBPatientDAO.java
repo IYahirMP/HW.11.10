@@ -1,49 +1,89 @@
 package dao.jaxb;
 
-import dao.PatientDAO;
-import dao.factories.JAXBDAOFactory;
-import dao.factories.StAXDAOFactory;
+import dao.interfaces.PatientDAO;
 import models.Patient;
 import models.xml.Hospital;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JAXBPatientDAO implements PatientDAO {
-    private final String tableName = "Patient";
-    private final String xsdRoot = "src/main/resources/xsd/";
-    private final String xsdFile = "Patient.xsd";
-
-
+public class JAXBPatientDAO extends JAXBWrapper implements PatientDAO {
+    
     @Override
     public int insert(Patient obj) {
-        throw new UnsupportedOperationException("STAXPatientDAO does not support insert operations.");
+	logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of patients.");
+        List<Patient> records = db.getPatients();
+        logger.debug("List of patients retrieved");
+
+        //It is important to check latest id
+        logger.debug("Retrieving last register's id");
+        int latestId = records.getLast().getPatientId();
+        logger.debug("Setting new object's id");
+        obj.setPatientId(latestId+1);
+
+        logger.trace("Adding object to list");
+        records.add(obj);
+        logger.debug("Replacing database list of patients");
+        db.setPatients(records);
+        logger.trace("Entering WriteDB");
+        writeDB(db);
+        return logger.traceExit(1);
     }
 
     @Override
     public int update(int id, Patient obj) {
-        throw new UnsupportedOperationException("STAXPatientDAO does not support update operations.");
-    }
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of patients.");
+        List<Patient> records = db.getPatients();
+        logger.debug("List of patients retrieved");;
+
+        logger.debug("Searching for patient with id: {}", id);
+        if (obj != null) {
+            records.forEach((p)-> {
+                if (p.getPatientId() == obj.getPatientId()) {
+                    logger.debug("Updating object's id");
+                    records.set(records.indexOf(p), obj);
+                }
+            });
+
+            db.setPatients(records);
+            logger.trace("Entering WriteDB");
+            writeDB(db);
+            return logger.traceExit(1);
+        }
+        return logger.traceExit(0);    }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXPatientDAO does not support delete operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of patients.");
+        List<Patient> records = db.getPatients();
+        logger.debug("List of patients retrieved");;
+
+        logger.debug("Searching for patient with id: {}", id);
+        for (Patient record : records) {
+            if (record.getPatientId() == id) {
+                logger.debug("Deleting object's id");
+                records.remove(record);
+                db.setPatients(records);
+                logger.trace("Entering WriteDB");
+                writeDB(db);
+                return logger.traceExit(1);
+            }
+        }
+        return 0;
     }
 
     @Override
     public Optional<Patient> select(int id) {
-        return getDB().getPatients().stream().filter((p) -> p.getPatientId()==id).findFirst();
+        return getDB().getPatients().stream().filter((a) -> a.getPatientId() == id).findFirst();
     }
 
     @Override
@@ -51,17 +91,5 @@ public class JAXBPatientDAO implements PatientDAO {
         return getDB().getPatients();
     }
 
-    public Hospital getDB(){
-        try {
-            JAXBContext jaxbcontext = JAXBContext.newInstance(Hospital.class);
-            Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
 
-            File file = new File(JAXBDAOFactory.filepath);
-            return (Hospital) unmarshaller.unmarshal(file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

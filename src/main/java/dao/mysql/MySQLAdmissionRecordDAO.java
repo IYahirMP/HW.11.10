@@ -1,9 +1,7 @@
 package dao.mysql;
 
-import dao.AdmissionRecordDAO;
-import dao.PatientDAO;
+import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
-import models.Patient;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

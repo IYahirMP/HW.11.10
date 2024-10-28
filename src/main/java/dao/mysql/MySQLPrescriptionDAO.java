@@ -1,7 +1,6 @@
 package dao.mysql;
 
-import dao.PrescriptionDAO;
-import dao.PrescriptionDAO;
+import dao.interfaces.PrescriptionDAO;
 import models.Prescription;
 
 import java.sql.Connection;

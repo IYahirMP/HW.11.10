@@ -1,13 +1,10 @@
 package controllers;
 
-import dao.AdmissionRecordDAO;
+import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
-import models.TreatmentRecord;
 import views.admission_record.AdmissionRecordRequestData;
 import views.generic.*;
-import views.patient.PatientRequestData;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -36,16 +33,6 @@ public class AdmissionRecordController {
             data.put("element", record.get());
             showAdmissionRecord.setInputs(data);
             showAdmissionRecord.display();
-
-            /*System.out.println("Do you want to export it to XML?");
-            Scanner sc = new Scanner(System.in);
-            int answer = sc.nextInt();
-            if(answer == 1) {
-                String patientId = String.valueOf(patient.get().getAdmissionRecordId());
-                exportXML("AdmissionRecord" + patientId + ".xml", patient.get());
-            }else{
-                System.out.println("Going back...");
-            }*/
         }
         else{
             System.out.println("AdmissionRecord not found");
@@ -116,16 +103,6 @@ public class AdmissionRecordController {
         index.display();
         return admissionRecords;
 
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            AdmissionRecords patientList = new AdmissionRecords();
-            patientList.setAdmissionRecords(patients);
-            exportXML("AdmissionRecordList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<AdmissionRecord> selectAll(){

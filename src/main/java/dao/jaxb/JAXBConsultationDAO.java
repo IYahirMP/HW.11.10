@@ -1,51 +1,68 @@
 package dao.jaxb;
 
-import dao.ConsultationDAO;
-import dao.factories.JAXBDAOFactory;
-import dao.factories.StAXDAOFactory;
+import dao.interfaces.ConsultationDAO;
 import models.Consultation;
-import models.Patient;
 import models.xml.Hospital;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JAXBConsultationDAO implements ConsultationDAO {
-    private final String tableName = "Consultation";
-    private final String xsdRoot = "src/main/resources/xsd/";
-    private final String xsdFile = "Consultation.xsd";
-
+public class JAXBConsultationDAO extends JAXBWrapper implements ConsultationDAO {
 
     @Override
     public int insert(Consultation obj) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support insert operations.");
+	logger.trace("AccessingDataBase");
+        Hospital db = getDB();
+        List<Consultation> records = db.getConsultations();
+
+        //It is important to check latest id
+        int latestId = records.getLast().getConsultationId();
+        obj.setConsultationId(latestId+1);
+
+        if (obj != null) {
+            records.add(obj);
+            db.setConsultations(records);
+            writeDB(db);
+            return 1;
+        }
+        return 0;
     }
 
     @Override
     public int update(int id, Consultation obj) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support update operations.");
-    }
+        Hospital db = getDB();
+        List<Consultation> records = db.getConsultations();
+
+        if (obj != null) {
+            records.forEach((p)-> {
+                if (p.getConsultationId() == obj.getConsultationId()) {
+                    records.set(records.indexOf(p), obj);
+                }
+            });
+            db.setConsultations(records);
+            writeDB(db);
+            return 1;
+        }
+        return 0;    }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support delete operations.");
+        Hospital db = getDB();
+        List<Consultation> records = db.getConsultations();
+        for (Consultation record : records) {
+            if (record.getConsultationId() == id) {
+                records.remove(record);
+                db.setConsultations(records);
+                writeDB(db);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     @Override
     public Optional<Consultation> select(int id) {
-        return getDB().getConsultations().stream().filter((c) -> c.getConsultationId() == id).findFirst();
+        return getDB().getConsultations().stream().filter((a) -> a.getConsultationId() == id).findFirst();
     }
 
     @Override
@@ -53,17 +70,4 @@ public class JAXBConsultationDAO implements ConsultationDAO {
         return getDB().getConsultations();
     }
 
-    public Hospital getDB(){
-        try {
-            JAXBContext jaxbcontext = JAXBContext.newInstance(Hospital.class);
-            Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
-
-            File file = new File(JAXBDAOFactory.filepath);
-            return (Hospital) unmarshaller.unmarshal(file);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

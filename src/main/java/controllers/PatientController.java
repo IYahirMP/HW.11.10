@@ -1,10 +1,9 @@
 package controllers;
 
-import dao.PatientDAO;
+import dao.interfaces.PatientDAO;
 import models.Patient;
-import models.TreatmentRecord;
 import views.generic.*;
-import views.patient.*;
+import views.patient.PatientRequestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -33,16 +32,6 @@ public class PatientController {
             data.put("element", patient.get());
             showPatient.setInputs(data);
             showPatient.display();
-
-            /*System.out.println("Do you want to export it to XML?");
-            Scanner sc = new Scanner(System.in);
-            int answer = sc.nextInt();
-            if(answer == 1) {
-                String patientId = String.valueOf(patient.get().getPatientId());
-                exportXML("Patient" + patientId + ".xml", patient.get());
-            }else{
-                System.out.println("Going back...");
-            }*/
         }
         else{
             System.out.println("Patient not found");
@@ -110,17 +99,6 @@ public class PatientController {
 
         index.display();
         return patients;
-
-        /*System.out.println("Do you want to export it to XML?");
-        Scanner sc = new Scanner(System.in);
-        int answer = sc.nextInt();
-        if(answer == 1) {
-            Patients patientList = new Patients();
-            patientList.setPatients(patients);
-            exportXML("PatientList.xml", patientList);
-        }else{
-            System.out.println("Going back...");
-        }*/
     }
 
     public List<Patient> selectAll(){

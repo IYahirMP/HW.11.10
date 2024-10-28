@@ -5,8 +5,8 @@ import views.DataSourceSelection;
 
 import java.util.HashMap;
 
-import static menu.MenuHandler.displayEntitySelection;
 import static java.lang.System.exit;
+import static menu.MenuHandler.displayEntitySelection;
 
 public class MainController {
     //Factories
@@ -17,7 +17,7 @@ public class MainController {
     private AdmissionRecordController admissionRecordController;
 
     //Home views
-    private DataSourceSelection menuView = new DataSourceSelection();
+    private final DataSourceSelection menuView = new DataSourceSelection();
     public MainController() {}
 
     public void start(){
@@ -38,8 +38,8 @@ public class MainController {
         int val = Integer.parseInt(dataSourceOption.get("menuOption"));
 
         switch(val){
-            case 1,2,3 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
-            case 4 -> exit(0);
+            case 1,2,3,4,5 -> currentDataSourceFactory = DataSourceController.getDataSourceFactory(val);
+            case 6 -> exit(0);
         }
 
         System.out.println("Current database has been set to option " + val + ".");

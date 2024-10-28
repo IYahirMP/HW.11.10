@@ -100,7 +100,7 @@ public class SQLCreator {
                 case "Long", "long": ps.setLong(i+1, (Long) val); break;
                 case "Boolean", "boolean": ps.setBoolean(i+1, (Boolean) val); break;
                 case "Date", "DateTime": ps.setDate(i+1, (Date) val); break;
-                case "Object": ps.setObject(i+1, (Object) val); break;
+                case "Object": ps.setObject(i+1, val); break;
             }
             field.setAccessible(false);
         }

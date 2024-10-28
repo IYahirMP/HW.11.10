@@ -1,9 +1,13 @@
 package controllers;
 
-import dao.factories.DAOFactory;
-import dao.factories.JAXBDAOFactory;
-import dao.factories.MySQLDAOFactory;
-import dao.factories.StAXDAOFactory;
+import com.mysql.cj.jdbc.MysqlDataSource;
+import dao.factories.*;
+import dao.interfaces.*;
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.transaction.TransactionFactory;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import views.MySQLConfiguration;
 import views.XMLFileConfiguration;
 
@@ -20,8 +24,10 @@ public class DataSourceController {
     public static DAOFactory getDataSourceFactory(int type){
         return switch(type){
             case 1 -> configureMySQLFactory();
-            case 2 -> configureStaxFactory();
-            case 3 -> configureJAXBFactory();
+            case 2 -> configureMyBatisFactory();
+            case 3 -> configureStaxFactory();
+            case 4 -> configureJAXBFactory();
+            case 5 -> configureJacksonFactory();
             default -> null;
         };
     }
@@ -47,17 +53,57 @@ public class DataSourceController {
         return new MySQLDAOFactory();
     }
 
+    private static MyBatisDAOFactory configureMyBatisFactory(){
+        MySQLConfiguration config = new MySQLConfiguration();
+        config.display();
+        HashMap<String, String> options = config.getInputs();
+
+        MysqlDataSource dataSource = new MysqlDataSource();
+        String databaseName = (options.get("database"));
+        String user = (options.get("username"));
+        String password = (options.get("password"));
+        String url = (options.get("url"));
+        dataSource.setURL("jdbc:mysql://" + url + databaseName);
+        dataSource.setUser(user);
+        dataSource.setPassword(password);
+
+        TransactionFactory transactionFactory = new JdbcTransactionFactory();
+        Environment environment = new Environment("development", transactionFactory, dataSource);
+        Configuration configuration = new Configuration(environment);
+        configuration.addMapper(AdmissionRecordDAO.class);
+        configuration.addMapper(ConsultationDAO.class);
+        configuration.addMapper(DoctorDAO.class);
+        configuration.addMapper(EmergencyContactDAO.class);
+        configuration.addMapper(InvoiceDAO.class);
+        configuration.addMapper(InvoiceHasServiceDAO.class);
+        configuration.addMapper(MedicineDAO.class);
+        configuration.addMapper(PatientDAO.class);
+        configuration.addMapper(PrescriptionDAO.class);
+        configuration.addMapper(PrescriptionHasMedicineDAO.class);
+        configuration.addMapper(ServiceDAO.class);
+        configuration.addMapper(TreatmentRecordDAO.class);
+
+        MyBatisDAOFactory.sessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
+        return new MyBatisDAOFactory();
+    }
+
     private static StAXDAOFactory configureStaxFactory(){
-        StAXDAOFactory.filepath = getXMLFileConfiguration();
+        StAXDAOFactory.filepath = getFileConfiguration();
         return new StAXDAOFactory();
     }
 
     private static JAXBDAOFactory configureJAXBFactory(){
-        JAXBDAOFactory.filepath = getXMLFileConfiguration();
+        JAXBDAOFactory.filepath = getFileConfiguration();
         return new JAXBDAOFactory();
     }
 
-    private static String getXMLFileConfiguration(){
+    private static JacksonDAOFactory configureJacksonFactory(){
+        JacksonDAOFactory.filepath = getFileConfiguration();
+        return new JacksonDAOFactory();
+    }
+
+    private static String getFileConfiguration(){
         XMLFileConfiguration config = new XMLFileConfiguration();
         config.display();
         HashMap<String, String> options = config.getInputs();

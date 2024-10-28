@@ -1,6 +1,9 @@
 package models;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -56,16 +59,15 @@ public class Medicine {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Medicine [medicineId=")
-                .append(medicineId)
-                .append(", name=")
-                .append(name)
-                .append(", cost=")
-                .append(cost)
-                .append(", doseSize=")
-                .append(doseSize)
-                .append("]");
-        return builder.toString();
+        String builder = "Medicine [medicineId=" +
+                medicineId +
+                ", name=" +
+                name +
+                ", cost=" +
+                cost +
+                ", doseSize=" +
+                doseSize +
+                "]";
+        return builder;
     }
 }

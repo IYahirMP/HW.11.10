@@ -1,7 +1,6 @@
 package views.generic;
 
-import com.solvd.laba.computer_repair_service.views.FeedbackView;
-import models.Patient;
+import com.solvd.laba.view.FeedbackView;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

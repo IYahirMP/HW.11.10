@@ -1,7 +1,6 @@
 package dao.mysql;
 
-import dao.InvoiceDAO;
-import dao.InvoiceDAO;
+import dao.interfaces.InvoiceDAO;
 import models.Invoice;
 
 import java.sql.Connection;

@@ -16,7 +16,8 @@ public class Patients {
         return patients;
     }
 
-    public void setPatients(List<Patient> patients) {
+    public Patients setPatients(List<Patient> patients) {
         this.patients = patients;
+        return this;
     }
 }
