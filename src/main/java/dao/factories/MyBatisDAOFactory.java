@@ -2,6 +2,7 @@ package dao.factories;
 
 import dao.interfaces.*;
 import dao.mybatis.*;
+import dao.mybatis.proxy.MyBatisInvoiceHasServiceDAOProxy;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -67,7 +68,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceHasServiceDAO getInvoiceHasServiceDAO() {
-        return new MyBatisInvoiceHasServiceDAO();
+        return new MyBatisInvoiceHasServiceDAOProxy();
     }
 
     /**

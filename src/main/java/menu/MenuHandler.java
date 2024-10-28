@@ -77,6 +77,8 @@ public abstract class MenuHandler {
             case 10 -> new ServiceMenuHandler(daoFactory).processMenuOption();
             case 11 -> new ExportXMLMenuHandler(daoFactory).processMenuOption();
             case 12 -> new ExportJSONMenuHandler(daoFactory).processMenuOption();
+            case 13 -> new InvoiceHasServiceMenuHandler(daoFactory).processMenuOption();
+            case 14 -> new PrescriptionHasMedicineMenuHandler(daoFactory).processMenuOption();
             default -> exit(0);
         }
     }
