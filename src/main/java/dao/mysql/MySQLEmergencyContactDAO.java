@@ -18,15 +18,15 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
      * @param obj
      */
     @Override
-    public int insert(EmergencyContact obj) {/*
-        String sql = "insert into EmergencyContact (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(EmergencyContact obj) {
+        String sql = "insert into emergencyContact (name, phone, address, patientId) values(?, ?, ?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
+            ps.setString(2, obj.getPhone());
             ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setInt(4, obj.getPatientId());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +34,7 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,20 +42,20 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
      * @param obj
      */
     @Override
-    public int update(int id, EmergencyContact obj) {/*
-        String sql = "update EmergencyContact set " +
+    public int update(int id, EmergencyContact obj) {
+        String sql = "update emergencyContact set " +
                 "name = ?," +
-                "age = ?," +
+                "phone = ?," +
                 "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+                "patientId = ? " +
+                "where emergencyContactId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
+            ps.setString(2, obj.getPhone());
             ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setInt(4, obj.getPatientId());
             ps.setInt(5, id);
 
             int affectedRows = ps.executeUpdate();
@@ -66,8 +65,7 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -75,7 +73,7 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
      */
     @Override
     public int delete(int id) {
-        String sql = "delete from EmergencyContact where emergencyContactId = ?";
+        String sql = "delete from emergencyContact where emergencyContactId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -95,7 +93,7 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
      */
     @Override
     public Optional<EmergencyContact> select(int id) {
-        String sql = "select * from EmergencyContact where emergencyContactId = ?";
+        String sql = "select * from emergencyContact where emergencyContactId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -116,7 +114,7 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
      */
     @Override
     public List<EmergencyContact> selectAll() {
-        String sql = "select * from EmergencyContact";
+        String sql = "select * from emergencyContact";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -136,8 +134,8 @@ public class MySQLEmergencyContactDAO implements EmergencyContactDAO {
     public EmergencyContact constructObject(ResultSet rs) throws SQLException {
         return new EmergencyContact()
                 .setEmergencyContactId(rs.getInt("emergencyContactId"))
-                .setPhone(rs.getString("phone"))
                 .setName(rs.getString("name"))
+                .setPhone(rs.getString("phone"))
                 .setAddress(rs.getString("address"))
                 .setPatientId(rs.getInt("patientId"));
     }

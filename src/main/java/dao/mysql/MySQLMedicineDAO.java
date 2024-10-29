@@ -18,15 +18,14 @@ public class MySQLMedicineDAO implements MedicineDAO {
      * @param obj
      */
     @Override
-    public int insert(Medicine obj) {/*
-        String sql = "insert into Medicine (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Medicine obj) {
+        String sql = "insert into medicine (name, cost, doseSize) values(?, ?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setDouble(2, obj.getCost());
+            ps.setInt(3, obj.getDoseSize());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +33,7 @@ public class MySQLMedicineDAO implements MedicineDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,21 +41,19 @@ public class MySQLMedicineDAO implements MedicineDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Medicine obj) {/*
-        String sql = "update Medicine set " +
+    public int update(int id, Medicine obj) {
+        String sql = "update medicine set " +
                 "name = ?," +
-                "age = ?," +
-                "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+                "cost = ?," +
+                "doseSize = ?" +
+                "where medicineId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
-            ps.setInt(5, id);
+            ps.setDouble(2, obj.getCost());
+            ps.setInt(3, obj.getDoseSize());
+            ps.setInt(4, id);
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -66,8 +62,7 @@ public class MySQLMedicineDAO implements MedicineDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -133,11 +128,11 @@ public class MySQLMedicineDAO implements MedicineDAO {
         return List.of();
     }
 
-    public Medicine constructObject(ResultSet rs) throws SQLException{
+    public Medicine constructObject(ResultSet rs) throws SQLException {
         return new Medicine()
                 .setMedicineId(rs.getInt("medicineId"))
-                .setCost(rs.getDouble("cost"))
                 .setName(rs.getString("name"))
+                .setCost(rs.getDouble("cost"))
                 .setDoseSize(rs.getInt("doseSize"));
     }
 }

@@ -3,17 +3,14 @@ package dao.mysql;
 import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static dao.factories.MySQLDAOFactory.createConnection;
 
-public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
+public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO {
     /**
      * @param obj
      */
@@ -25,8 +22,8 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getPatientId());
             ps.setInt(2, obj.getConsultationId());
-            ps.setDate(3, java.sql.Date.valueOf(obj.getAdmissionDate()));
-            ps.setDate(4, java.sql.Date.valueOf(obj.getDischargeDate()));
+            ps.setDate(3, Date.valueOf(obj.getAdmissionDate()));
+            ps.setDate(4, Date.valueOf(obj.getDischargeDate()));
             ps.setInt(5, obj.getRoomNumber());
             ps.setInt(6, obj.getBedNumber());
 
@@ -45,21 +42,21 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
      */
     @Override
     public int update(int id, AdmissionRecord obj) {
-        String sql = "update Patient set " +
+        String sql = "update AdmissionRecord set " +
                 "patientId = ?," +
                 "consultationId = ?," +
                 "admissionDate = ?," +
                 "dischargeDate = ?," +
                 "roomNumber = ?," +
-                "bedNumber = ?" +
-                "where patientId = ?";
+                "bedNumber = ? " +
+                "where admissionId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getPatientId());
             ps.setInt(2, obj.getConsultationId());
-            ps.setDate(3, java.sql.Date.valueOf(obj.getAdmissionDate()));
-            ps.setDate(4, java.sql.Date.valueOf(obj.getDischargeDate()));
+            ps.setDate(3, Date.valueOf(obj.getAdmissionDate()));
+            ps.setDate(4, Date.valueOf(obj.getDischargeDate()));
             ps.setInt(5, obj.getRoomNumber());
             ps.setInt(6, obj.getBedNumber());
             ps.setInt(7, id);
@@ -79,7 +76,7 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
      */
     @Override
     public int delete(int id) {
-        String sql = "delete from AdmissionRecord where admissionId = ?";
+        String sql = "delete from admissionRecord where admissionId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -99,10 +96,11 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
      */
     @Override
     public Optional<AdmissionRecord> select(int id) {
-        String sql = "select * from AdmissionRecord where admissionId = ?";
+        String sql = "select * from admissionRecord where admissionId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
+
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 return Optional.of(constructObject(rs));
@@ -119,7 +117,7 @@ public class MySQLAdmissionRecordDAO implements AdmissionRecordDAO{
      */
     @Override
     public List<AdmissionRecord> selectAll() {
-        String sql = "select * from AdmissionRecord";
+        String sql = "select * from admissionRecord";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
 

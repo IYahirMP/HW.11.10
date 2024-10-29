@@ -18,15 +18,13 @@ public class MySQLServiceDAO implements ServiceDAO {
      * @param obj
      */
     @Override
-    public int insert(Service obj) {/*
-        String sql = "insert into Service (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Service obj) {
+        String sql = "insert into service (description, cost) values(?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setString(1, obj.getDescription());
+            ps.setDouble(2, obj.getCost());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +32,7 @@ public class MySQLServiceDAO implements ServiceDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,21 +40,17 @@ public class MySQLServiceDAO implements ServiceDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Service obj) {/*
-        String sql = "update Service set " +
-                "name = ?," +
-                "age = ?," +
-                "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+    public int update(int id, Service obj) {
+        String sql = "update service set " +
+                "description = ?," +
+                "cost = ?" +
+                "where serviceId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
-            ps.setInt(5, id);
+            ps.setString(1, obj.getDescription());
+            ps.setDouble(2, obj.getCost());
+            ps.setInt(3, id);
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -66,8 +59,7 @@ public class MySQLServiceDAO implements ServiceDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -75,7 +67,7 @@ public class MySQLServiceDAO implements ServiceDAO {
      */
     @Override
     public int delete(int id) {
-        String sql = "delete from Service where serviceId = ?";
+        String sql = "delete from service where serviceId = ?";
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -133,10 +125,10 @@ public class MySQLServiceDAO implements ServiceDAO {
         return List.of();
     }
 
-    public Service constructObject(ResultSet rs) throws SQLException{
+    public Service constructObject(ResultSet rs) throws SQLException {
         return new Service()
                 .setServiceId(rs.getInt("serviceId"))
-                .setCost(rs.getInt("cost"))
-                .setDescription(rs.getString("description"));
+                .setDescription(rs.getString("description"))
+                .setCost(rs.getDouble("cost"));
     }
 }

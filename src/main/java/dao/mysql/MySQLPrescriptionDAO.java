@@ -18,15 +18,13 @@ public class MySQLPrescriptionDAO implements PrescriptionDAO {
      * @param obj
      */
     @Override
-    public int insert(Prescription obj) {/*
-        String sql = "insert into Prescription (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Prescription obj) {
+        String sql = "insert into Prescription (patientId, diagnose) values(?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setInt(1, obj.getPatientId());
+            ps.setString(2, obj.getDiagnose());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +32,7 @@ public class MySQLPrescriptionDAO implements PrescriptionDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,21 +40,17 @@ public class MySQLPrescriptionDAO implements PrescriptionDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Prescription obj) {/*
+    public int update(int id, Prescription obj) {
         String sql = "update Prescription set " +
-                "name = ?," +
-                "age = ?," +
-                "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+                "patientId = ?," +
+                "diagnose = ? " +
+                "where prescriptionId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
-            ps.setInt(5, id);
+            ps.setInt(1, obj.getPatientId());
+            ps.setString(2, obj.getDiagnose());
+            ps.setInt(3, id);
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -66,8 +59,7 @@ public class MySQLPrescriptionDAO implements PrescriptionDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -133,7 +125,7 @@ public class MySQLPrescriptionDAO implements PrescriptionDAO {
         return List.of();
     }
 
-    public Prescription constructObject(ResultSet rs) throws SQLException{
+    public Prescription constructObject(ResultSet rs) throws SQLException {
         return new Prescription()
                 .setPrescriptionId(rs.getInt("prescriptionId"))
                 .setPatientId(rs.getInt("patientId"))

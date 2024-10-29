@@ -18,15 +18,13 @@ public class MySQLDoctorDAO implements DoctorDAO {
      * @param obj
      */
     @Override
-    public int insert(Doctor obj) {/*
-        String sql = "insert into Doctor (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Doctor obj) {
+        String sql = "insert into doctor (name, phone) values(?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setString(2, obj.getPhone());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +32,7 @@ public class MySQLDoctorDAO implements DoctorDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,21 +40,17 @@ public class MySQLDoctorDAO implements DoctorDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Doctor obj) {/*
-        String sql = "update Doctor set " +
+    public int update(int id, Doctor obj) {
+        String sql = "update doctor set " +
                 "name = ?," +
-                "age = ?," +
-                "address = ?," +
                 "phone = ? " +
-                "where patientId = ?";
+                "where doctorId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
-            ps.setInt(5, id);
+            ps.setString(2, obj.getPhone());
+            ps.setInt(3, id);
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -66,8 +59,7 @@ public class MySQLDoctorDAO implements DoctorDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -136,7 +128,7 @@ public class MySQLDoctorDAO implements DoctorDAO {
     public Doctor constructObject(ResultSet rs) throws SQLException {
         return new Doctor()
                 .setDoctorId(rs.getInt("doctorId"))
-                .setPhone(rs.getString("phone"))
-                .setName(rs.getString("name"));
+                .setName(rs.getString("name"))
+                .setPhone(rs.getString("phone"));
     }
 }
