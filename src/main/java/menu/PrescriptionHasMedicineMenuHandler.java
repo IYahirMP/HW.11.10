@@ -45,6 +45,7 @@ public class PrescriptionHasMedicineMenuHandler extends MenuHandler {
                     prescriptionId = prescriptionHasMedicineController.requestId();
                     medicineId = prescriptionHasMedicineController.requestId();
                     logger.info("Deleting prescriptionHasMedicine with prescriptionId: {} and medicineId: {}", prescriptionId, medicineId);
+                    prescriptionHasMedicineController.delete(prescriptionId, medicineId);
                     break;
                 case 5:
                     PrescriptionHasMedicine newRecord = prescriptionHasMedicineController.getData();

@@ -12,10 +12,6 @@ public class MainController {
     //Factories
     private DAOFactory currentDataSourceFactory;
 
-    //Controllers
-    private PatientController patientController;
-    private AdmissionRecordController admissionRecordController;
-
     //Home views
     private final DataSourceSelection menuView = new DataSourceSelection();
     public MainController() {}

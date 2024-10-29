@@ -45,6 +45,7 @@ public class InvoiceHasServiceMenuHandler extends MenuHandler {
                     invoiceId = invoiceHasServiceController.requestId();
                     serviceId = invoiceHasServiceController.requestId();
                     logger.info("Deleting invoiceHasService with invoiceId: {} and serviceId: {}", invoiceId, serviceId);
+                    invoiceHasServiceController.delete(invoiceId, serviceId);
                     break;
                 case 5:
                     InvoiceHasService newRecord = invoiceHasServiceController.getData();

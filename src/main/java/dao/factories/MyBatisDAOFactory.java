@@ -1,7 +1,9 @@
 package dao.factories;
 
 import dao.interfaces.*;
-import dao.mybatis.*;
+import dao.mybatis.proxy.*;
+import dao.mybatis.proxy.MyBatisInvoiceHasServiceDAOProxy;
+import dao.mybatis.proxy.MyBatisPrescriptionHasMedicineDAOProxy;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -19,7 +21,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public ConsultationDAO getConsultationDAO() {
-        return new MyBatisConsultationDAO();
+        return new MyBatisConsultationDAOProxy();
     }
 
     /**
@@ -27,7 +29,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public PatientDAO getPatientDAO() {
-        return new MyBatisPatientDAO();
+        return new MyBatisPatientDAOProxy();
     }
 
     /**
@@ -35,7 +37,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public DoctorDAO getDoctorDAO() {
-        return new MyBatisDoctorDAO();
+        return new MyBatisDoctorDAOProxy();
     }
 
     /**
@@ -43,7 +45,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public AdmissionRecordDAO getAdmissionRecordDAO() {
-        return new MyBatisAdmissionRecordDAO();
+        return new MyBatisAdmissionRecordDAOProxy();
     }
 
     /**
@@ -51,7 +53,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public EmergencyContactDAO getEmergencyContactDAO() {
-        return new MyBatisEmergencyContactDAO();
+        return new MyBatisEmergencyContactDAOProxy();
     }
 
     /**
@@ -59,7 +61,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceDAO getInvoiceDAO() {
-        return new MyBatisInvoiceDAO();
+        return new MyBatisInvoiceDAOProxy();
     }
 
     /**
@@ -67,7 +69,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceHasServiceDAO getInvoiceHasServiceDAO() {
-        return new MyBatisInvoiceHasServiceDAO();
+        return new MyBatisInvoiceHasServiceDAOProxy();
     }
 
     /**
@@ -75,7 +77,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public MedicineDAO getMedicineDAO() {
-        return new MyBatisMedicineDAO();
+        return new MyBatisMedicineDAOProxy();
     }
 
     /**
@@ -83,7 +85,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionDAO getPrescriptionDAO() {
-        return new MyBatisPrescriptionDAO();
+        return new MyBatisPrescriptionDAOProxy();
     }
 
     /**
@@ -91,7 +93,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionHasMedicineDAO getPrescriptionHasMedicineDAO() {
-        return new MyBatisPrescriptionHasMedicineDAO();
+        return new MyBatisPrescriptionHasMedicineDAOProxy();
     }
 
     /**
@@ -99,7 +101,7 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public ServiceDAO getServiceDAO() {
-        return new MyBatisServiceDAO();
+        return new MyBatisServiceDAOProxy();
     }
 
     /**
@@ -107,6 +109,6 @@ public class MyBatisDAOFactory extends DAOFactory{
      */
     @Override
     public TreatmentRecordDAO getTreatmentRecordDAO() {
-        return new MyBatisTreatmentRecordDAO();
+        return new MyBatisTreatmentRecordDAOProxy();
     }
 }
