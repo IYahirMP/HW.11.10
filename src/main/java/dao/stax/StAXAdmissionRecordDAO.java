@@ -3,11 +3,9 @@ package dao.stax;
 import dao.factories.StAXDAOFactory;
 import dao.interfaces.AdmissionRecordDAO;
 import models.AdmissionRecord;
+import models.xml.Hospital;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StAXAdmissionRecordDAO implements AdmissionRecordDAO {
+public class StAXAdmissionRecordDAO extends StAXDAO implements AdmissionRecordDAO {
     private final String tableName = "AdmissionRecord";
     private final String xsdRoot = "src/main/resources/xsd/";
     private final String xsdFile = "AdmissionRecord.xsd";
@@ -23,21 +21,79 @@ public class StAXAdmissionRecordDAO implements AdmissionRecordDAO {
 
     @Override
     public int insert(AdmissionRecord obj) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support insert operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of admissionRecords.");
+        List<AdmissionRecord> records = db.getAdmissionRecords();
+        logger.debug("List of admissionRecords retrieved");
+
+        //It is important to check latest id
+        logger.debug("Retrieving last register's id");
+        int latestId = records.getLast().getAdmissionId();
+        logger.debug("Setting new object's id");
+        obj.setAdmissionId(latestId+1);
+
+        logger.trace("Adding object to list");
+        records.add(obj);
+        logger.debug("Replacing database list of admissionRecords");
+        db.setAdmissionRecords(records);
+        logger.trace("Entering WriteDB");
+        writeDB(db);
+        return logger.traceExit(1);
     }
 
-    @Override
     public int update(int id, AdmissionRecord obj) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support update operations.");
-    }
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of admissionRecords.");
+        List<AdmissionRecord> records = db.getAdmissionRecords();
+        logger.debug("List of admissionRecords retrieved");;
+
+        logger.debug("Searching for admissionRecord with id: {}", id);
+        if (obj != null) {
+            records.forEach((p)-> {
+                if (p.getAdmissionId() == obj.getAdmissionId()) {
+                    logger.debug("Updating object's id");
+                    records.set(records.indexOf(p), obj);
+                }
+            });
+
+            db.setAdmissionRecords(records);
+            logger.trace("Entering WriteDB");
+            writeDB(db);
+            return logger.traceExit(1);
+        }
+        return logger.traceExit(0);    }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXAdmissionRecordDAO does not support delete operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of admissionRecords.");
+        List<AdmissionRecord> records = db.getAdmissionRecords();
+        logger.debug("List of admissionRecords retrieved");;
+
+        logger.debug("Searching for admissionRecord with id: {}", id);
+        for (AdmissionRecord record : records) {
+            if (record.getAdmissionId() == id) {
+                logger.debug("Deleting object's id");
+                records.remove(record);
+                db.setAdmissionRecords(records);
+                logger.trace("Entering WriteDB");
+                writeDB(db);
+                return logger.traceExit(1);
+            }
+        }
+        return 0;
     }
 
     @Override
     public Optional<AdmissionRecord> select(int id) {
+        validateDatabase();
+
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
             while (reader.hasNext()) {
@@ -62,6 +118,7 @@ public class StAXAdmissionRecordDAO implements AdmissionRecordDAO {
 
     @Override
     public List<AdmissionRecord> selectAll() {
+        validateDatabase();
 
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
@@ -130,4 +187,31 @@ public class StAXAdmissionRecordDAO implements AdmissionRecordDAO {
 
         return null; // Return null if the element is not found
     }
+
+    public void writeAdmissionRecord(XMLStreamWriter writer, AdmissionRecord admissionRecord) throws XMLStreamException {
+        writer.writeStartElement("AdmissionRecord");
+        writer.writeStartElement("admissionId");
+        writer.writeCharacters(String.valueOf(admissionRecord.getAdmissionId()));
+        writer.writeEndElement();
+        writer.writeStartElement("patientId");
+        writer.writeCharacters(String.valueOf(admissionRecord.getPatientId()));
+        writer.writeEndElement();
+        writer.writeStartElement("consultationId");
+        writer.writeCharacters(String.valueOf(admissionRecord.getConsultationId()));
+        writer.writeEndElement();
+        writer.writeStartElement("admissionDate");
+        writer.writeCharacters(String.valueOf(admissionRecord.getAdmissionDate()));
+        writer.writeEndElement();
+        writer.writeStartElement("dischargeDate");
+        writer.writeCharacters(String.valueOf(admissionRecord.getDischargeDate()));
+        writer.writeEndElement();
+        writer.writeStartElement("roomNumber");
+        writer.writeCharacters(String.valueOf(admissionRecord.getRoomNumber()));
+        writer.writeEndElement();
+        writer.writeStartElement("bedNumber");
+        writer.writeCharacters(String.valueOf(admissionRecord.getBedNumber()));
+        writer.writeEndElement();
+        writer.writeEndElement();
+    }
+
 }

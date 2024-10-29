@@ -3,11 +3,9 @@ package dao.stax;
 import dao.factories.StAXDAOFactory;
 import dao.interfaces.ConsultationDAO;
 import models.Consultation;
+import models.xml.Hospital;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StAXConsultationDAO implements ConsultationDAO {
+public class StAXConsultationDAO extends StAXDAO implements ConsultationDAO {
     private final String tableName = "Consultation";
     private final String xsdRoot = "src/main/resources/xsd/";
     private final String xsdFile = "Consultation.xsd";
@@ -23,21 +21,79 @@ public class StAXConsultationDAO implements ConsultationDAO {
 
     @Override
     public int insert(Consultation obj) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support insert operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of consultations.");
+        List<Consultation> records = db.getConsultations();
+        logger.debug("List of consultations retrieved");
+
+        //It is important to check latest id
+        logger.debug("Retrieving last register's id");
+        int latestId = records.getLast().getConsultationId();
+        logger.debug("Setting new object's id");
+        obj.setConsultationId(latestId+1);
+
+        logger.trace("Adding object to list");
+        records.add(obj);
+        logger.debug("Replacing database list of consultations");
+        db.setConsultations(records);
+        logger.trace("Entering WriteDB");
+        writeDB(db);
+        return logger.traceExit(1);
     }
 
-    @Override
     public int update(int id, Consultation obj) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support update operations.");
-    }
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of consultations.");
+        List<Consultation> records = db.getConsultations();
+        logger.debug("List of consultations retrieved");;
+
+        logger.debug("Searching for consultation with id: {}", id);
+        if (obj != null) {
+            records.forEach((p)-> {
+                if (p.getConsultationId() == obj.getConsultationId()) {
+                    logger.debug("Updating object's id");
+                    records.set(records.indexOf(p), obj);
+                }
+            });
+
+            db.setConsultations(records);
+            logger.trace("Entering WriteDB");
+            writeDB(db);
+            return logger.traceExit(1);
+        }
+        return logger.traceExit(0);    }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("STAXConsultationDAO does not support delete operations.");
+        logger.debug("Retrieving DataBase");
+        Hospital db = getDB();
+        logger.trace("Database retrieved", db);
+        logger.trace("Attempting to retrieve list of consultations.");
+        List<Consultation> records = db.getConsultations();
+        logger.debug("List of consultations retrieved");;
+
+        logger.debug("Searching for consultation with id: {}", id);
+        for (Consultation record : records) {
+            if (record.getConsultationId() == id) {
+                logger.debug("Deleting object's id");
+                records.remove(record);
+                db.setConsultations(records);
+                logger.trace("Entering WriteDB");
+                writeDB(db);
+                return logger.traceExit(1);
+            }
+        }
+        return 0;
     }
 
     @Override
     public Optional<Consultation> select(int id) {
+        validateDatabase();
+
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
             while (reader.hasNext()) {
@@ -62,6 +118,7 @@ public class StAXConsultationDAO implements ConsultationDAO {
 
     @Override
     public List<Consultation> selectAll() {
+        validateDatabase();
 
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
@@ -130,4 +187,31 @@ public class StAXConsultationDAO implements ConsultationDAO {
 
         return null; // Return null if the element is not found
     }
+
+    public void writeConsultation(XMLStreamWriter writer, Consultation consultation) throws XMLStreamException {
+        writer.writeStartElement("Consultation");
+        writer.writeStartElement("consultationId");
+        writer.writeCharacters(String.valueOf(consultation.getConsultationId()));
+        writer.writeEndElement();
+        writer.writeStartElement("date");
+        writer.writeCharacters(String.valueOf(consultation.getDate()));
+        writer.writeEndElement();
+        writer.writeStartElement("doctorId");
+        writer.writeCharacters(String.valueOf(consultation.getDoctorId()));
+        writer.writeEndElement();
+        writer.writeStartElement("patientId");
+        writer.writeCharacters(String.valueOf(consultation.getPatientId()));
+        writer.writeEndElement();
+        writer.writeStartElement("diagnose");
+        writer.writeCharacters(consultation.getDiagnose());
+        writer.writeEndElement();
+        writer.writeStartElement("prescriptionId");
+        writer.writeCharacters(String.valueOf(consultation.getPrescriptionId()));
+        writer.writeEndElement();
+        writer.writeStartElement("admittedForTreatment");
+        writer.writeCharacters(String.valueOf(consultation.getAdmittedForTreatment()));
+        writer.writeEndElement();
+        writer.writeEndElement();
+    }
+
 }
