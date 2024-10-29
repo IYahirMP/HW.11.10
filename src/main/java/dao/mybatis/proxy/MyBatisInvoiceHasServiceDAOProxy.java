@@ -13,7 +13,7 @@ import java.util.Optional;
 
 import static java.time.Instant.now;
 
-public class MyBatisInvoiceHasServiceDAOProxy implements InvoiceHasServiceDAO {
+public class MyBatisInvoiceHasServiceDAOProxy extends CacheProxy implements InvoiceHasServiceDAO {
     private MyBatisInvoiceHasServiceDAO currentDao = new MyBatisInvoiceHasServiceDAO();
     private Logger logger = LogManager.getLogger(MyBatisInvoiceHasServiceDAOProxy.class);
 
@@ -21,8 +21,7 @@ public class MyBatisInvoiceHasServiceDAOProxy implements InvoiceHasServiceDAO {
     private List<InvoiceHasService> lastSelectAll = null;
     private HashMap<Integer, List<InvoiceHasService>> lastSelectAllByInvoice = new HashMap<>();
     private HashMap<Integer, List<InvoiceHasService>> lastSelectAllByService = new HashMap<>();
-    private long lastUpdate = now().getNano() / 1000_000_000;
-    private boolean invalidateCache = false;
+
 
     /**
      * @param obj
@@ -31,7 +30,11 @@ public class MyBatisInvoiceHasServiceDAOProxy implements InvoiceHasServiceDAO {
     public int insert(InvoiceHasService obj) {
         logger.traceEntry();
         logger.debug("Attempting to insert object.");
-        return logger.traceExit(currentDao.insert(obj));
+
+        int modifiedRows = currentDao.insert(obj);
+        invalidateCache = modifiedRows > 0;
+
+        return logger.traceExit(modifiedRows);
     }
 
     /**
@@ -145,15 +148,5 @@ public class MyBatisInvoiceHasServiceDAOProxy implements InvoiceHasServiceDAO {
         logger.debug("Cache exists. Returning cached result.");
         //Returns cached result
         return logger.traceExit(lastSelectAllByService.get(serviceId));
-    }
-
-    public boolean needsUpdate(){
-        boolean timedOut = now().getNano() / 1000_000_000 - lastUpdate > 30;
-
-        return timedOut || invalidateCache;
-    }
-
-    public void setLastUpdate(){
-        lastUpdate = now().getNano() / 1000_000_000;
     }
 }
