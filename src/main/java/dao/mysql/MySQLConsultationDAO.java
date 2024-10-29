@@ -3,10 +3,7 @@ package dao.mysql;
 import dao.interfaces.ConsultationDAO;
 import models.Consultation;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,14 +16,16 @@ public class MySQLConsultationDAO implements ConsultationDAO {
      */
     @Override
     public int insert(Consultation obj) {
-        /*String sql = "insert into Consultation (name, age, address, phone) values(?, ?, ?, ?)";
+        String sql = "insert into Consultation (date, doctorId, patientId, diagnose, prescriptionId, admittedForTreatment) values(?, ?, ?, ?, ?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setDate(1, Date.valueOf(obj.getDate()));
+            ps.setInt(2, obj.getDoctorId());
+            ps.setInt(3, obj.getPatientId());
+            ps.setString(4, obj.getDiagnose());
+            ps.setInt(5, obj.getPrescriptionId());
+            ps.setInt(6, obj.isAdmittedForTreatment());
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +33,7 @@ public class MySQLConsultationDAO implements ConsultationDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -44,20 +42,24 @@ public class MySQLConsultationDAO implements ConsultationDAO {
      */
     @Override
     public int update(int id, Consultation obj) {
-        /*String sql = "update Consultation set " +
-                "name = ?," +
-                "age = ?," +
-                "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+        String sql = "update Consultation set " +
+                "date = ?," +
+                "doctorId = ?," +
+                "patientId = ?," +
+                "diagnose = ?," +
+                "prescriptionId = ?," +
+                "admittedForTreatment = ? " +
+                "where consultationId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
-            ps.setInt(5, id);
+            ps.setDate(1, Date.valueOf(obj.getDate()));
+            ps.setInt(2, obj.getDoctorId());
+            ps.setInt(3, obj.getPatientId());
+            ps.setString(4, obj.getDiagnose());
+            ps.setInt(5, obj.getPrescriptionId());
+            ps.setInt(6, obj.isAdmittedForTreatment());
+            ps.setInt(7, id);
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -66,8 +68,7 @@ public class MySQLConsultationDAO implements ConsultationDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**

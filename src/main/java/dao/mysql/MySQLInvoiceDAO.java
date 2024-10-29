@@ -3,10 +3,7 @@ package dao.mysql;
 import dao.interfaces.InvoiceDAO;
 import models.Invoice;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,15 +15,19 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
      * @param obj
      */
     @Override
-    public int insert(Invoice obj) {/*
-        String sql = "insert into Invoice (name, age, address, phone) values(?, ?, ?, ?)";
+    public int insert(Invoice obj) {
+        String sql = "insert into invoice (total, isPaid, patientId, paymentDate) values(?, ?, ?, ?)";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setDouble(1, obj.getTotal());
+            ps.setInt(2, obj.getIsPaid());
+            ps.setInt(3, obj.getPatientId());
+            if (obj.getPaymentDate() != null) {
+                ps.setDate(4, Date.valueOf(obj.getPaymentDate()));
+            } else {
+                ps.setNull(4, java.sql.Types.DATE);
+            }
 
             int affectedRows = ps.executeUpdate();
             return affectedRows;
@@ -34,8 +35,7 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -43,20 +43,24 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
      * @param obj
      */
     @Override
-    public int update(int id, Invoice obj) {/*
-        String sql = "update Invoice set " +
-                "name = ?," +
-                "age = ?," +
-                "address = ?," +
-                "phone = ? " +
-                "where patientId = ?";
+    public int update(int id, Invoice obj) {
+        String sql = "update invoice set " +
+                "total = ?," +
+                "isPaid = ?," +
+                "patientId = ?," +
+                "paymentDate = ?" +
+                "where invoiceId = ?";
 
         try(Connection con = createConnection()){
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, obj.getName());
-            ps.setInt(2, obj.getAge());
-            ps.setString(3, obj.getAddress());
-            ps.setString(4, obj.getPhone());
+            ps.setDouble(1, obj.getTotal());
+            ps.setInt(2, obj.getIsPaid());
+            ps.setInt(3, obj.getPatientId());
+            if (obj.getPaymentDate() != null) {
+                ps.setDate(4, Date.valueOf(obj.getPaymentDate()));
+            } else {
+                ps.setNull(4, java.sql.Types.DATE);
+            }
             ps.setInt(5, id);
 
             int affectedRows = ps.executeUpdate();
@@ -66,8 +70,7 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
             e.printStackTrace();
         }
 
-        return -1;*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        return -1;
     }
 
     /**
@@ -133,12 +136,18 @@ public class MySQLInvoiceDAO implements InvoiceDAO {
         return List.of();
     }
 
-    public Invoice constructObject(ResultSet rs) throws SQLException{
-        return new Invoice()
+    public Invoice constructObject(ResultSet rs) throws SQLException {
+        Invoice invoice = new Invoice()
                 .setInvoiceId(rs.getInt("invoiceId"))
-                .setPatientId(rs.getInt("patientId"))
                 .setTotal(rs.getDouble("total"))
-                .setPaymentDate(rs.getDate("paymentDate").toLocalDate())
-                .setIsPaid(rs.getInt("isPaid"));
+                .setIsPaid(rs.getInt("isPaid"))
+                .setPatientId(rs.getInt("patientId"));
+
+        Date paymentDate = rs.getDate("paymentDate");
+        if (paymentDate != null) {
+            invoice.setPaymentDate(paymentDate.toLocalDate());
+        }
+
+        return invoice;
     }
 }
