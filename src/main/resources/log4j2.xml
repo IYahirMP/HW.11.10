@@ -17,6 +17,16 @@
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
         </Layout>
     </Appender>
+    <Appender type="File" name="StAX" fileName="target/logs/dao/StAX.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
+    <Appender type="File" name="Jackson" fileName="target/logs/dao/Jackson.log">
+        <Layout type="PatternLayout">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </Layout>
+    </Appender>
     <Appender type="File" name="Factories" fileName="target/logs/dao/Factories.log">
         <Layout type="PatternLayout">
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
@@ -34,6 +44,12 @@
     </Logger>
     <Logger name="dao.jaxb.JAXBWrapper" level="trace" additivity="true">
         <AppenderRef ref="JAXB"/>
+    </Logger>
+    <Logger name="dao.stax.StAXDAO" level="trace" additivity="true">
+        <AppenderRef ref="StAX"/>
+    </Logger>
+    <Logger name="dao.jackson.JacksonWrapper" level="trace" additivity="true">
+        <AppenderRef ref="Jackson"/>
     </Logger>
     <Logger name="dao.factories.DAOFactory" level="trace" additivity="true">
         <AppenderRef ref="Factories"/>

@@ -113,7 +113,7 @@ public class Consultation {
         return this;
     }
 
-    public int isAdmittedForTreatment() {
+    public int getAdmittedForTreatment() {
         return admittedForTreatment;
     }
 

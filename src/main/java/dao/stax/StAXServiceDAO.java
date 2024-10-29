@@ -1,8 +1,8 @@
 package dao.stax;
 
 import dao.factories.StAXDAOFactory;
-import dao.interfaces.PatientDAO;
-import models.Patient;
+import dao.interfaces.ServiceDAO;
+import models.Service;
 import models.xml.Hospital;
 
 import javax.xml.stream.*;
@@ -12,52 +12,53 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StAXPatientDAO extends StAXDAO implements PatientDAO {
-    private final String tableName = "Patient";
-
+public class StAXServiceDAO extends StAXDAO implements ServiceDAO {
+    private final String tableName = "Service";
+    private final String xsdRoot = "src/main/resources/xsd/";
+    private final String xsdFile = "Service.xsd";
 
     @Override
-    public int insert(Patient obj) {
+    public int insert(Service obj) {
         logger.debug("Retrieving DataBase");
         Hospital db = getDB();
         logger.trace("Database retrieved", db);
-        logger.trace("Attempting to retrieve list of patients.");
-        List<Patient> records = db.getPatients();
-        logger.debug("List of patients retrieved");
+        logger.trace("Attempting to retrieve list of services.");
+        List<Service> records = db.getServices();
+        logger.debug("List of services retrieved");
 
         //It is important to check latest id
         logger.debug("Retrieving last register's id");
-        int latestId = records.getLast().getPatientId();
+        int latestId = records.getLast().getServiceId();
         logger.debug("Setting new object's id");
-        obj.setPatientId(latestId+1);
+        obj.setServiceId(latestId+1);
 
         logger.trace("Adding object to list");
         records.add(obj);
-        logger.debug("Replacing database list of patients");
-        db.setPatients(records);
+        logger.debug("Replacing database list of services");
+        db.setServices(records);
         logger.trace("Entering WriteDB");
         writeDB(db);
         return logger.traceExit(1);
     }
 
-    public int update(int id, Patient obj) {
+    public int update(int id, Service obj) {
         logger.debug("Retrieving DataBase");
         Hospital db = getDB();
         logger.trace("Database retrieved", db);
-        logger.trace("Attempting to retrieve list of patients.");
-        List<Patient> records = db.getPatients();
-        logger.debug("List of patients retrieved");;
+        logger.trace("Attempting to retrieve list of services.");
+        List<Service> records = db.getServices();
+        logger.debug("List of services retrieved");;
 
-        logger.debug("Searching for patient with id: {}", id);
+        logger.debug("Searching for service with id: {}", id);
         if (obj != null) {
             records.forEach((p)-> {
-                if (p.getPatientId() == obj.getPatientId()) {
+                if (p.getServiceId() == obj.getServiceId()) {
                     logger.debug("Updating object's id");
                     records.set(records.indexOf(p), obj);
                 }
             });
 
-            db.setPatients(records);
+            db.setServices(records);
             logger.trace("Entering WriteDB");
             writeDB(db);
             return logger.traceExit(1);
@@ -69,16 +70,16 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
         logger.debug("Retrieving DataBase");
         Hospital db = getDB();
         logger.trace("Database retrieved", db);
-        logger.trace("Attempting to retrieve list of patients.");
-        List<Patient> records = db.getPatients();
-        logger.debug("List of patients retrieved");;
+        logger.trace("Attempting to retrieve list of services.");
+        List<Service> records = db.getServices();
+        logger.debug("List of services retrieved");;
 
-        logger.debug("Searching for patient with id: {}", id);
-        for (Patient record : records) {
-            if (record.getPatientId() == id) {
+        logger.debug("Searching for service with id: {}", id);
+        for (Service record : records) {
+            if (record.getServiceId() == id) {
                 logger.debug("Deleting object's id");
                 records.remove(record);
-                db.setPatients(records);
+                db.setServices(records);
                 logger.trace("Entering WriteDB");
                 writeDB(db);
                 return logger.traceExit(1);
@@ -88,7 +89,7 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
     }
 
     @Override
-    public Optional<Patient> select(int id) {
+    public Optional<Service> select(int id) {
         validateDatabase();
 
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
@@ -99,9 +100,9 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
                 if (event == XMLStreamConstants.START_ELEMENT) {
                     String elementName = reader.getLocalName();
                     if (tableName.equals(elementName)) {
-                        Patient patient = parsePatient(reader);
-                        if (patient != null && patient.getPatientId() == id) {
-                            return Optional.of(patient);
+                        Service service = parseService(reader);
+                        if (service != null && service.getServiceId() == id) {
+                            return Optional.of(service);
                         }
                     }
                 }
@@ -114,12 +115,12 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
     }
 
     @Override
-    public List<Patient> selectAll() {
+    public List<Service> selectAll() {
         validateDatabase();
 
         try (FileInputStream fis = new FileInputStream(StAXDAOFactory.filepath)) {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(fis);
-            List<Patient> patients = new ArrayList<>();
+            List<Service> services = new ArrayList<>();
 
             while (reader.hasNext()) {
                 int event = reader.next();
@@ -127,15 +128,15 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
                 if (event == XMLStreamConstants.START_ELEMENT) {
                     String elementName = reader.getLocalName();
                     if (tableName.equals(elementName)) {
-                        Patient patient = parsePatient(reader);
-                        if (patient != null) {
-                            patients.add(patient);
+                        Service service = parseService(reader);
+                        if (service != null) {
+                            services.add(service);
                         }
                     }
                 }
             }
 
-            return patients;
+            return services;
         } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
@@ -143,12 +144,8 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
         return List.of();
     }
 
-    public void validate(){
-
-    }
-
-    private Patient parsePatient(XMLStreamReader reader) throws XMLStreamException {
-        Patient patient = new Patient();
+    private Service parseService(XMLStreamReader reader) throws XMLStreamException {
+        Service service = new Service();
 
         while (reader.hasNext()) {
             int event = reader.next();
@@ -156,23 +153,19 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
             switch (event) {
                 case XMLStreamConstants.START_ELEMENT:
                     String elementName = reader.getLocalName();
-                    if ("patientId".equals(elementName)) {
-                        patient.setPatientId(Integer.parseInt(reader.getElementText()));
-                    } else if ("name".equals(elementName)) {
-                        patient.setName(reader.getElementText());
-                    } else if ("age".equals(elementName)) {
-                        patient.setAge(Integer.parseInt(reader.getElementText()));
-                    } else if ("address".equals(elementName)) {
-                        patient.setAddress(reader.getElementText());
-                    } else if ("phone".equals(elementName)) {
-                        patient.setPhone(reader.getElementText());
+                    if ("serviceId".equals(elementName)) {
+                        service.setServiceId(Integer.parseInt(reader.getElementText()));
+                    } else if ("description".equals(elementName)) {
+                        service.setDescription(reader.getElementText());
+                    } else if ("cost".equals(elementName)) {
+                        service.setCost(Double.parseDouble(reader.getElementText()));
                     }
                     break;
 
                 case XMLStreamConstants.END_ELEMENT:
                     String endElementName = reader.getLocalName();
                     if (tableName.equals(endElementName)) {
-                        return patient;
+                        return service;
                     }
                     break;
             }
@@ -181,23 +174,19 @@ public class StAXPatientDAO extends StAXDAO implements PatientDAO {
         return null; // Return null if the element is not found
     }
 
-    public void writePatient(XMLStreamWriter writer, Patient patient) throws XMLStreamException {
-        writer.writeStartElement("Patient");
-        writer.writeStartElement("patientId");
-        writer.writeCharacters(String.valueOf(patient.getPatientId()));
+    public void writeService(XMLStreamWriter writer, Service service) throws XMLStreamException {
+        writer.writeStartElement("Service");
+        writer.writeStartElement("serviceId");
+        writer.writeCharacters(String.valueOf(service.getServiceId()));
         writer.writeEndElement();
-        writer.writeStartElement("name");
-        writer.writeCharacters(patient.getName());
+        writer.writeStartElement("description");
+        writer.writeCharacters(service.getDescription());
         writer.writeEndElement();
-        writer.writeStartElement("age");
-        writer.writeCharacters(String.valueOf(patient.getAge()));
-        writer.writeEndElement();
-        writer.writeStartElement("address");
-        writer.writeCharacters(patient.getAddress());
-        writer.writeEndElement();
-        writer.writeStartElement("phone");
-        writer.writeCharacters(patient.getPhone());
+        writer.writeStartElement("cost");
+        writer.writeCharacters(String.valueOf(service.getCost()));
         writer.writeEndElement();
         writer.writeEndElement();
     }
+
+
 }

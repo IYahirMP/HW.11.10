@@ -44,7 +44,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public EmergencyContactDAO getEmergencyContactDAO() {
-        return null;
+        return new StAXEmergencyContactDAO();
     }
 
     /**
@@ -60,7 +60,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public InvoiceHasServiceDAO getInvoiceHasServiceDAO() {
-        return null;
+        return new StAXInvoiceHasServiceDAO();
     }
 
     /**
@@ -68,7 +68,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public MedicineDAO getMedicineDAO() {
-        return null;
+        return new StAXMedicineDAO();
     }
 
     /**
@@ -76,7 +76,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionDAO getPrescriptionDAO() {
-        return null;
+        return new StAXPrescriptionDAO();
     }
 
     /**
@@ -84,7 +84,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public PrescriptionHasMedicineDAO getPrescriptionHasMedicineDAO() {
-        return null;
+        return new StAXPrescriptionHasMedicineDAO();
     }
 
     /**
@@ -92,7 +92,7 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public ServiceDAO getServiceDAO() {
-        return null;
+        return new StAXServiceDAO();
     }
 
     /**
@@ -100,6 +100,6 @@ public class StAXDAOFactory extends DAOFactory{
      */
     @Override
     public TreatmentRecordDAO getTreatmentRecordDAO() {
-        return null;
+        return new StAXTreatmentRecordDAO();
     }
 }
